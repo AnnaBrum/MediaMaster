@@ -1,2 +1,2 @@
-# MediaMaster
+# MediaWatch
 A media subscription manager
