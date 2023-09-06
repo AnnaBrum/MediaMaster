@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import Messages from './messages'
+import Link from 'next/link';
+import Messages from './messages';
 
 export default function Login() {
   return (
@@ -49,7 +49,10 @@ export default function Login() {
           placeholder="••••••••"
           required
         />
-        <button className="bg-green-700 rounded px-4 py-2 text-white mb-2">
+        <button
+          formAction="/auth/sign-in"
+          className="bg-green-700 rounded px-4 py-2 text-white mb-2"
+        >
           Sign In
         </button>
         <button
@@ -61,5 +64,5 @@ export default function Login() {
         <Messages />
       </form>
     </div>
-  )
+  );
 }
