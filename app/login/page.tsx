@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
-import Messages from "./messages";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { redirect } from 'next/navigation';
+import Messages from './messages';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
 export default async function Login() {
   const supabase = createServerComponentClient({ cookies });
@@ -11,7 +11,7 @@ export default async function Login() {
 
   if (session) {
     // this is a protected route - only users who are signed in can view this route
-    redirect("/");
+    redirect('/');
   }
 
   return (
@@ -27,6 +27,8 @@ export default async function Login() {
         <input
           className="rounded-md px-4 py-2 bg-inherit border mb-6"
           name="email"
+          id="email"
+          autoComplete="email"
           placeholder="you@example.com"
           required
         />
@@ -37,6 +39,8 @@ export default async function Login() {
           className="rounded-md px-4 py-2 bg-inherit border mb-6"
           type="password"
           name="password"
+          id="password"
+          autoComplete="current-password"
           placeholder="••••••••"
           required
         />
