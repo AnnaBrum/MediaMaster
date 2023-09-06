@@ -1,6 +1,5 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
-import Link from 'next/link';
 import LogoutButton from '../components/LogoutButton';
 import { redirect } from 'next/navigation';
 
@@ -33,12 +32,7 @@ export default async function Index() {
                 <LogoutButton />
               </div>
             ) : (
-              <Link
-                href="/login"
-                className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
-              >
-                Login
-              </Link>
+              redirect('/login')
             )}
           </div>
         </div>
