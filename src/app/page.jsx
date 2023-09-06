@@ -9,7 +9,7 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
-async function signup() {
+async function signUp() {
   try {
     const { data, error } = await supabase.auth.signUp({
       email: 'Jaaakeeen@gmail.com',
@@ -30,6 +30,45 @@ async function signup() {
   }
 }
 
+async function signInWithEmail() {
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: 'Jaaakeeen@gmail.com',
+      password: 'yeah222',
+    });
+
+    if (error) {
+      console.error('Error signing in:', error.message);
+      // Handle the error, e.g., show an error message to the user
+    } else {
+      // User signed up successfully
+      console.log('User signed in successfully:', data);
+      // Redirect the user or perform other actions as needed
+    }
+  } catch (error) {
+    console.error('An unexpected error occurred:', error);
+    // Handle unexpected errors
+  }
+}
+
+async function logOut() {
+  try {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      console.error('Error signing out:', error.message);
+      // Handle the error, e.g., show an error message to the user
+    } else {
+      // User signed up successfully
+      console.log('User signed out successfully:');
+      // Redirect the user or perform other actions as needed
+    }
+  } catch (error) {
+    console.error('An unexpected error occurred:', error);
+    // Handle unexpected errors
+  }
+}
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -37,10 +76,11 @@ export default function Home() {
         <h1>MEDIAWATCH</h1>
         {/* <RegistrationForm></RegistrationForm> */}
         <div>
-          <button onClick={signup}>SIGNUP</button>
+          <button onClick={signUp}>SIGNUP</button>
+          <button onClick={signInWithEmail}>SIGNIN</button>
+          <button onClick={logOut}>SIGN OUT</button>
         </div>
       </div>
     </main>
   );
 }
-
