@@ -1,7 +1,11 @@
+
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+
+
+
 
 export default async function Start() {
   const supabase = createServerComponentClient({ cookies });
@@ -17,6 +21,7 @@ export default async function Start() {
   return (
     <>
       <div className="flex min-h-screen flex-col items-center justify-center py-2">
+
         <h1 className="text-xl font-bold">Välkommen till Media Watch!</h1>
         <h2 className="text-xl">Samla dina betaltjänster på ett ställe</h2>
         <nav className="flex flex-col">

@@ -1,8 +1,8 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import LogoutButton from "../components/LogoutButton";
 import { redirect } from "next/navigation";
 import Account from "./account/page";
+
 
 export const dynamic = "force-dynamic";
 
@@ -23,9 +23,10 @@ export default async function Index() {
 
   return (
     <div className="">
+      
       <nav className="">
         <div className="">
-          <div />
+          
           <div>{user ? <Account /> : redirect("/login")}</div>
         </div>
       </nav>
