@@ -16,13 +16,34 @@ export default async function Start() {
 
   return (
     <>
-      <div className="flex flex-col text-center">
+      <div className="flex min-h-screen flex-col items-center justify-center py-2">
         <h1 className="text-xl font-bold">Välkommen till Media Watch!</h1>
         <h2 className="text-xl">Samla dina betaltjänster på ett ställe</h2>
         <nav className="flex flex-col">
-          <Link className="border border-gray-700 rounded px-4 py-2 text-black mb-2" href="/about">Hur fungerar det?</Link>
-          <Link className="border border-gray-700 rounded px-4 py-2 text-black mb-2" href="/conditions">Villkor</Link>
-          <Link className="border border-gray-700 rounded px-4 py-2 text-black mb-2" href="/registration">Skapa konto</Link>
+          <Link
+            className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+            href="/about"
+          >
+            Hur fungerar det?
+          </Link>
+          <Link
+            className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+            href="/conditions"
+          >
+            Villkor
+          </Link>
+          <Link
+            className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+            href="/registration"
+          >
+            Skapa konto
+          </Link>
+          <p className="text-sm">
+            Har du redan ett konto?
+            <Link className="font-bold" href="/login">
+              Logga in här
+            </Link>
+          </p>
         </nav>
       </div>
     </>

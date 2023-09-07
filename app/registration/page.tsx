@@ -15,6 +15,7 @@ export default async function Login() {
   }
 
   return (
+    <div className="flex min-h-screen flex-col items-center justify-center py-2">
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
       <form
         className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
@@ -48,6 +49,7 @@ export default async function Login() {
         </button>
         <Messages />
       </form>
+    </div>
     </div>
   );
 }
