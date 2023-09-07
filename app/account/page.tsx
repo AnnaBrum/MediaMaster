@@ -1,12 +1,12 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import LogoutButton from "../components/LogoutButton";
+import LogoutButton from "../../components/LogoutButton";
 import { redirect } from "next/navigation";
-import Account from "./account/page";
+// import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-export default async function Index() {
+export default async function Account() {
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },
@@ -22,13 +22,20 @@ export default async function Index() {
   } = await supabase.auth.getUser();
 
   return (
-    <div className="">
-      <nav className="">
-        <div className="">
-          <div />
-          <div>{user ? <Account /> : redirect("/login")}</div>
+    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      <h1 className="text-xl font-bold">Välkommen till Media Watch!</h1>
+      <div className="">
+        <div>
+          {user ? (
+            <div>
+              Hey, {user.email}!
+              <LogoutButton />
+            </div>
+          ) : (
+            redirect("/login")
+          )}
         </div>
-      </nav>
+      </div>
     </div>
   );
 }
