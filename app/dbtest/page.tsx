@@ -10,12 +10,14 @@ export default async function DBtest() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  console.log(session);
+  // console.log(session);
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log(user?.id);
+
+  const userId = user?.id;
+  // console.log(userId);
 
   async function Insert() {
     const { data, error } = await supabase
@@ -24,8 +26,8 @@ export default async function DBtest() {
       // .select();
 
       .from('users')
-      .insert({ intro: 'this is intro for jaaakeeen' })
-      .select();
+      .insert({ user_id: userId, intro: 'this is 5nd intro for jaaakeeen' });
+    // .select();
     if (data) {
       console.log(data);
     }
