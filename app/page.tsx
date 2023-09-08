@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Account from "./account/page";
 
-
 export const dynamic = "force-dynamic";
 
 export default async function Index() {
@@ -21,15 +20,5 @@ export default async function Index() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return (
-    <div className="">
-      
-      <nav className="">
-        <div className="">
-          
-          <div>{user ? <Account /> : redirect("/login")}</div>
-        </div>
-      </nav>
-    </div>
-  );
+  return <div className="flex flex-col justify-center min-h-screen">{user ? <Account /> : redirect("/login")}</div>;
 }

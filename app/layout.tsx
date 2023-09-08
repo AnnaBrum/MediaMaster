@@ -14,7 +14,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         
-          <main className="flex w-full flex-1 shrink-0 flex-col items-center justify-center px-8 text-center sm:px-20">{children}</main>
+          <main className="flex w-full flex-col  justify-center px-8 text-center">{children}</main>
         
       </body>
     </html>
