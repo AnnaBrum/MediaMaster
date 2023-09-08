@@ -10,10 +10,21 @@ export default async function DBtest() {
     data: { session },
   } = await supabase.auth.getSession();
 
+  console.log(session);
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  console.log(user?.id);
+
   async function Insert() {
     const { data, error } = await supabase
-      .from('dbtest')
-      .insert({ name: 'Petter' })
+      // .from('dbtest')
+      // .insert({ name: 'Petter' })
+      // .select();
+
+      .from('users')
+      .insert({ intro: 'this is intro for jaaakeeen' })
       .select();
     if (data) {
       console.log(data);
