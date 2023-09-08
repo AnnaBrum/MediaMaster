@@ -23,21 +23,19 @@ export default async function Account() {
   } = await supabase.auth.getUser();
 
   return (
-    <>
+    <div className="profile py-8">
       <HamburgerMenu />
-      <div className="flex flex-col items-center justify-center py-2">
+      <div className="py-20">
         <h1 className="text-xl font-bold">Välkommen till Media Watch!</h1>
-        <div>
-          {user ? (
-            <div>
-              Hey, {user.email}!
-              <LogoutButton />
-            </div>
-          ) : (
-            redirect("/login")
-          )}
-        </div>
+        {user ? (
+          <div>
+            <p>Hey, {user.email}!</p>
+            <LogoutButton />
+          </div>
+        ) : (
+          redirect("/login")
+        )}
       </div>
-    </>
+    </div>
   );
 }

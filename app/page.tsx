@@ -20,5 +20,5 @@ export default async function Index() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return <div className="flex flex-col justify-center min-h-screen">{user ? <Account /> : redirect("/login")}</div>;
+  return <div className="startpage h-full">{user ? <Account /> : redirect("/login")}</div>;
 }
