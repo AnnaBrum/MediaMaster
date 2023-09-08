@@ -12,8 +12,8 @@ export default async function DBtest() {
 
   async function Insert() {
     const { data, error } = await supabase
-      .from('countries')
-      .insert({ id: 1, name: 'Denmark' })
+      .from('dbtest')
+      .insert({ name: 'Petter' })
       .select();
     if (data) {
       console.log(data);
