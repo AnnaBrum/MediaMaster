@@ -6,27 +6,26 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export default async function DBtest() {
   const supabase = createClientComponentClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
 
-  // console.log(session);
+  // const {
+  //   data: { session },
+  // } = await supabase.auth.getSession();
 
+  //getting the current auth user data.
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
   const userId = user?.id;
-  // console.log(userId);
 
+  //inserting into users
   async function Insert() {
     const { data, error } = await supabase
-      // .from('dbtest')
-      // .insert({ name: 'Petter' })
-      // .select();
 
       .from('users')
-      .insert({ user_id: userId, intro: 'this is 5nd intro for jaaakeeen' });
+      // .insert({ user_id: userId, intro: 'this is 4nd intro for petjak' })
+      .delete()
+      .eq('id', 7);
     // .select();
     if (data) {
       console.log(data);
