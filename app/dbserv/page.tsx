@@ -1,11 +1,15 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
-import LogoutButton from '../../components/LogoutButton/LogoutButton';
 import { redirect } from 'next/navigation';
-import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
+import DbClient from '@/components/DbClient/DbClient';
+import { useEffect, useState } from 'react';
 // import Link from "next/link";
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
+interface Props {
+  // Define the type for the insert function
+  insertData: () => Promise<void>;
+}
 
 export default async function DbServ() {
   const supabase = createServerComponentClient({ cookies });
@@ -22,20 +26,16 @@ export default async function DbServ() {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const userId = user?.id;
+
+  //inserting into users
+  async function myInsertFunction() {
+    // Your insert logic here
+  }
+
   return (
-    <div className="profile py-8">
-      <HamburgerMenu />
-      <div className="py-20">
-        <h1 className="text-xl font-bold">Välkommen till Media Watch!</h1>
-        {user ? (
-          <div>
-            <p>Hey, {user.email}!</p>
-            <LogoutButton />
-          </div>
-        ) : (
-          redirect('/login')
-        )}
-      </div>
-    </div>
+    <>
+      <DbClient insert={myInsertFunction}></DbClient>
+    </>
   );
 }

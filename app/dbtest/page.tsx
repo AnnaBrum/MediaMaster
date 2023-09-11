@@ -23,10 +23,10 @@ export default async function DBtest() {
     const { data, error } = await supabase
 
       .from('users')
-      // .insert({ user_id: userId, intro: 'this is 4nd intro for petjak' })
-      // .delete()
-      // .eq('id', 7);
-      .select();
+      .insert({ user_id: userId, intro: 'entry withouth forced uuid' });
+    // .delete()
+    // .eq('id', 7);
+    // .select();
     if (data) {
       console.log(data);
     }
