@@ -1,41 +1,56 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-import LogoutButton from '../../components/LogoutButton/LogoutButton';
-import { redirect } from 'next/navigation';
-import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
-// import Link from "next/link";
+'use client';
 
-export const dynamic = 'force-dynamic';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useEffect, useState } from 'react';
 
-export default async function DbServ() {
-  const supabase = createServerComponentClient({ cookies });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+export default function ClientComponent() {
+  const supabase = createClientComponentClient();
+  const [users, setUsers] = useState<any[]>([]);
 
-  if (!session) {
-    // this is a protected route - only users who are signed in can view this route
-    redirect('/start');
-  }
+  useEffect(() => {
+    const getUsers = async () => {
+      // This assumes you have a `todos` table in Supabase. Check out
+      // the `Create Table and seed with data` section of the README 👇
+      // https://github.com/vercel/next.js/blob/canary/examples/with-supabase/README.md
+      const { data } = await supabase.from('users').select();
+      if (data) {
+        setUsers(data);
+      }
+    };
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    getUsers();
+  }, [supabase, setUsers]);
 
   return (
-    <div className="profile py-8">
-      <HamburgerMenu />
-      <div className="py-20">
-        <h1 className="text-xl font-bold">Välkommen till Media Watch!</h1>
-        {user ? (
-          <div>
-            <p>Hey, {user.email}!</p>
-            <LogoutButton />
-          </div>
-        ) : (
-          redirect('/login')
-        )}
-      </div>
+    <div>
+      <h1>Intro and ID</h1>
+      <ol>
+        {users?.map((item) => (
+          <li key={item.id}>{item.intro}</li>
+        ))}
+      </ol>
+      <form
+        className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
+        action="/route-handler/add-sub"
+        method="post"
+      >
+        <label className="text-md" htmlFor="text">
+          Intro Text
+        </label>
+        <input
+          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          type="text"
+          name="text"
+          placeholder="intro text"
+          required
+        />
+        <button
+          formAction="/route-handler/add-sub"
+          className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+        >
+          Insert Values
+        </button>
+      </form>
     </div>
   );
 }
