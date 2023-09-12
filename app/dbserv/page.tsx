@@ -1,22 +1,25 @@
-// TODO: Duplicate or move this file outside the `_examples` folder to make it a route
+'use client';
 
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useEffect, useState } from 'react';
 
-export const dynamic = 'force-dynamic';
+export default function ClientComponent() {
+  const supabase = createClientComponentClient();
+  const [users, setUsers] = useState<any[]>([]);
 
-export default async function ServerComponent() {
-  // Create a Supabase client configured to use cookies
-  const supabase = createServerComponentClient({ cookies });
+  useEffect(() => {
+    const getUsers = async () => {
+      // This assumes you have a `todos` table in Supabase. Check out
+      // the `Create Table and seed with data` section of the README 👇
+      // https://github.com/vercel/next.js/blob/canary/examples/with-supabase/README.md
+      const { data } = await supabase.from('users').select();
+      if (data) {
+        setUsers(data);
+      }
+    };
 
-  // This assumes you have a `todos` table in Supabase. Check out
-  // the `Create Table and seed with data` section of the README 👇
-  // https://github.com/vercel/next.js/blob/canary/examples/with-supabase/README.md
-  const { data: users } = await supabase.from('users').select();
-
-  // console.log(JSON.stringify(users));
-
-  // const ParsedUsers = JSON.stringify(users);
+    getUsers();
+  }, [supabase, setUsers]);
 
   return (
     <div>
@@ -28,10 +31,10 @@ export default async function ServerComponent() {
       </ol>
       <form
         className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-        action="/route-handler"
+        action="/route-handler/add-sub"
         method="post"
       >
-        <label className="text-md" htmlFor="password">
+        <label className="text-md" htmlFor="text">
           Intro Text
         </label>
         <input
@@ -42,7 +45,7 @@ export default async function ServerComponent() {
           required
         />
         <button
-          formAction="/route-handler"
+          formAction="/route-handler/add-sub"
           className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
         >
           Insert Values

@@ -17,7 +17,7 @@ export default async function DBtest() {
   } = await supabase.auth.getUser();
 
   const userId = user?.id;
-
+  
   //inserting into users
   async function Insert() {
     const { data, error } = await supabase
