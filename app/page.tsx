@@ -2,6 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Account from './account/page';
+import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,13 +24,14 @@ export default async function Index() {
   return (
     <div className="startpage h-full">
       <div>
+        <Link href="/dbserv">Go to account</Link>
         <form action="/route-handler/see-sub">
-          <button
+          {/* <button
             formAction="/route-handler/see-sub"
             className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
           >
             See Subs
-          </button>
+          </button> */}
         </form>
       </div>
       {user ? <Account /> : redirect('/login')}

@@ -26,7 +26,7 @@ export default function ClientComponent() {
       <h1>Intro and ID</h1>
       <ol>
         {users?.map((item) => (
-          <li key={item.id}>{item.intro}</li>
+          <li key={item.id}>{item.name}</li>
         ))}
       </ol>
       <form
