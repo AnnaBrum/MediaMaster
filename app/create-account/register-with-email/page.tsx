@@ -3,7 +3,7 @@ import Messages from "./messages";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-export default async function Login() {
+export default async function RegisterWithEmail() {
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },
@@ -19,7 +19,7 @@ export default async function Login() {
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
       <form
         className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-        action="/auth/sign-in"
+        action="/auth/sign-up"
         method="post"
       >
         <label className="text-md" htmlFor="email" >
@@ -43,7 +43,7 @@ export default async function Login() {
         />
         <button
           formAction="/auth/sign-up"
-          className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+          className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2"
         >
           Sign Up
         </button>

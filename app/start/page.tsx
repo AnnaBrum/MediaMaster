@@ -26,27 +26,27 @@ export default async function Start() {
         <h2 className="text-xl">Samla dina betaltjänster på ett ställe</h2>
         <nav className="flex flex-col">
           <Link
-            className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+            className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2"
             href="/about"
           >
             Hur fungerar det?
           </Link>
           <Link
-            className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+            className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2"
             href="/conditions"
           >
             Villkor
           </Link>
           <Link
-            className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
-            href="/registration"
+            className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2"
+            href="/create-account"
           >
             Skapa konto
           </Link>
           <p className="text-sm">
-            Har du redan ett konto?
+            Har du redan ett konto? 
             <Link className="font-bold" href="/login">
-              Logga in här
+               Logga in här
             </Link>
           </p>
         </nav>
