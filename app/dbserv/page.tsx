@@ -2,6 +2,7 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
@@ -12,7 +13,7 @@ export default function ClientComponent() {
       // This assumes you have a `todos` table in Supabase. Check out
       // the `Create Table and seed with data` section of the README 👇
       // https://github.com/vercel/next.js/blob/canary/examples/with-supabase/README.md
-      const { data } = await supabase.from('users').select();
+      const { data } = await supabase.from('services').select();
       if (data) {
         setUsers(data);
         console.log(data);
@@ -27,7 +28,15 @@ export default function ClientComponent() {
       <h1>Intro and ID</h1>
       <ol>
         {users?.map((item) => (
-          <li key={item.id}>{item.firstname}</li>
+          <li key={item.id}>
+            <h1>{item.service_name}</h1>
+            <Image
+              src={item.service_logo}
+              alt="huhu"
+              width={44}
+              height={44}
+            ></Image>
+          </li>
         ))}
       </ol>
       <form
