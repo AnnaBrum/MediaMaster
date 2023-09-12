@@ -34,7 +34,7 @@ export default async function Login() {
             required
           />
           <label className="text-md" htmlFor="password">
-            Password
+            Lösenord
           </label>
           <input
             className="rounded-md px-4 py-2 bg-inherit border mb-6"
@@ -47,9 +47,9 @@ export default async function Login() {
           />
           <button
             formAction="/auth/sign-in"
-            className="bg-green-700 rounded px-4 py-2 text-white mb-2"
+            className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2"
           >
-            Sign In
+            Logga in
           </button>
 
           <Messages />
