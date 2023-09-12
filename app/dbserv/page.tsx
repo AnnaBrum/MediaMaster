@@ -15,6 +15,7 @@ export default function ClientComponent() {
       const { data } = await supabase.from('users').select();
       if (data) {
         setUsers(data);
+        console.log(data);
       }
     };
 
@@ -26,7 +27,7 @@ export default function ClientComponent() {
       <h1>Intro and ID</h1>
       <ol>
         {users?.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <li key={item.id}>{item.firstname}</li>
         ))}
       </ol>
       <form

@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
-import Messages from "./messages";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { redirect } from 'next/navigation';
+import Messages from './messages';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
 export default async function Login() {
   const supabase = createServerComponentClient({ cookies });
@@ -11,7 +11,7 @@ export default async function Login() {
 
   if (session) {
     // this is a protected route - only users who are signed in can view this route
-    redirect("/");
+    redirect('/');
   }
 
   return (
