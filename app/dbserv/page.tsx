@@ -3,6 +3,8 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
+import { CostSlider } from '@/components/CostSlider/CostSlider';
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
@@ -28,9 +30,34 @@ export default function ClientComponent() {
   }, [supabase, setUsers]);
 
   return (
-    <>
-      <h1>Intro and ID</h1>
-      <ul className="flex flex-col gap-8">
+    <div className="py-8">
+      <section className="px-8">
+        <HamburgerMenu />
+        <h1 className="text-left mt-8 mb-8 text-3xl">Home</h1>
+        <div className="h-20 rounded-2xl border-2 border-black flex justify-between">
+          <h2 className="px-3 text-2xl align-middle self-center">
+            Totalkostnad:
+          </h2>
+          <div className="px-3 rounded-2xl border-l-2 border-black flex items-center">
+            <h3 className="r">Visa Kostnad</h3>
+          </div>
+        </div>
+      </section>
+      <section className="border-t-2 rounded-2xl border-black mt-8 px-8">
+        <h2 className="text-left mt-8 mb-8 text-3xl">Prenumerationer</h2>
+        <ul className="flex flex-col gap-8">
+          {users.map((item) => (
+            <li key={item.id}>
+              <CostSlider
+                logoUrl={item.subscriptions.services.service_logo}
+                serviceName={item.subscriptions.services.service_name}
+                cost={item.subscriptions.plan_name}
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
+      {/* <ul className="flex flex-col gap-8">
         {users.map((item) => (
           <li
             className="flex flex-row justify-between items-center"
@@ -48,8 +75,9 @@ export default function ClientComponent() {
             <h2>{item.subscriptions.plan_name}</h2>
           </li>
         ))}
-      </ul>
-      <form
+      </ul> */}
+
+      {/* <form
         className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
         action="/route-handler/add-sub"
         method="post"
@@ -70,7 +98,7 @@ export default function ClientComponent() {
         >
           Insert Values
         </button>
-      </form>
-    </>
+      </form> */}
+    </div>
   );
 }
