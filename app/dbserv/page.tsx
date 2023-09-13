@@ -6,9 +6,24 @@ import Image from 'next/image';
 import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
 
+interface SubscriptionItem {
+  billing_start_date: string;
+  billing_date: number;
+  id: number;
+  subscriptions: {
+    plan_name: string;
+    price: number;
+    services: {
+      service_logo: string;
+      service_name: string;
+    };
+  };
+}
+
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
   const [users, setUsers] = useState<any[]>([]);
+  const [totalCost, setTotalCost] = useState<number>(0);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -23,11 +38,33 @@ export default function ClientComponent() {
       if (data) {
         setUsers(data);
         console.log(data);
+
+        // data.forEach((iteration) => {
+        //   console.log(iteration);
+        //   iteration.subscriptions.forEach((subscription) => {
+        //     console.log(subscription.price);
+        //   });
+        // });
+
+        // users.map((item) => console.log(item));
       }
     };
 
     getUsers();
   }, [supabase, setUsers]);
+
+  useEffect(() => {
+    let totalcost = 0;
+    users.forEach((item) => {
+      totalcost += item.subscriptions.price;
+    });
+    setTotalCost(totalcost);
+  }, [users]);
+
+  useEffect(() => {
+    // This will log the updated totalCost value
+    console.log(totalCost);
+  }, [totalCost]);
 
   return (
     <div className="py-8">
@@ -39,7 +76,7 @@ export default function ClientComponent() {
             Totalkostnad:
           </h2>
           <div className="px-3 rounded-2xl border-l-2 border-black flex items-center">
-            <h3 className="r">Visa Kostnad</h3>
+            <h3 className="r">{totalCost}</h3>
           </div>
         </div>
       </section>
