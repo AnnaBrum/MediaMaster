@@ -33,7 +33,7 @@ export default async function RegisterWithEmail() {
             required
           />
           <label className="text-md" htmlFor="password">
-            Password
+            Lösenord
           </label>
           <input
             className="rounded-md px-4 py-2 bg-inherit border mb-6"
@@ -46,7 +46,7 @@ export default async function RegisterWithEmail() {
             formAction="/auth/sign-up"
             className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2"
           >
-            Sign Up
+           Registrera dig
           </button>
           <Messages />
         </form>
