@@ -16,7 +16,7 @@ export default function ClientComponent() {
     id,
     billing_start_date,
     billing_date,
-    subscriptions:subscription_id (plan_name, services:service_id (service_name, service_logo))
+    subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo))
   `);
 
       // const { data } = await supabase.from('services').select();
@@ -51,7 +51,7 @@ export default function ClientComponent() {
               <CostSlider
                 logoUrl={item.subscriptions.services.service_logo}
                 serviceName={item.subscriptions.services.service_name}
-                cost={item.subscriptions.plan_name}
+                cost={item.subscriptions.price}
               />
             </li>
           ))}
