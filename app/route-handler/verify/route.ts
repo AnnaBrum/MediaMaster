@@ -9,7 +9,8 @@ export const dynamic = 'force-dynamic';
 export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
-  const introtext = String(formData.get('text'));
+  const firstName = String(formData.get('text'));
+  const lastName = String(formData.get('text'));
   const supabase = createRouteHandlerClient({ cookies });
 
   // This assumes you have a `todos` table in Supabase. Check out
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const userId = user?.id;
+  const firstname = user?.firstname;
   await supabase.from('users').insert({ firstname: userId, lastname: introtext });
 
   //   if (error) {
