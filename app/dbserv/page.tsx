@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
+import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
 
 interface SubscriptionItem {
   billing_start_date: string;
@@ -71,14 +72,7 @@ export default function ClientComponent() {
       <section className="px-8">
         <HamburgerMenu />
         <h1 className="text-left mt-8 mb-8 text-3xl">Home</h1>
-        <div className="h-20 rounded-2xl border-2 border-black flex justify-between">
-          <h2 className="px-3 text-2xl align-middle self-center">
-            Totalkostnad:
-          </h2>
-          <div className="px-3 rounded-2xl border-l-2 border-black flex items-center">
-            <h3 className="r">{totalCost}</h3>
-          </div>
-        </div>
+        <TotalCostSlider totalCost={totalCost} />
       </section>
       <section className="border-t-2 rounded-2xl border-black mt-8 px-8">
         <h2 className="text-left mt-8 mb-8 text-3xl">Prenumerationer</h2>
@@ -114,7 +108,7 @@ export default function ClientComponent() {
         ))}
       </ul> */}
 
-      {/* <form
+      <form
         className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
         action="/route-handler/add-sub"
         method="post"
@@ -135,7 +129,7 @@ export default function ClientComponent() {
         >
           Insert Values
         </button>
-      </form> */}
+      </form>
     </div>
   );
 }
