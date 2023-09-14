@@ -108,7 +108,7 @@ export default function ClientComponent() {
         ))}
       </ul> */}
 
-      <form
+      {/* <form
         className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
         action="/route-handler/add-sub"
         method="post"
@@ -129,7 +129,7 @@ export default function ClientComponent() {
         >
           Insert Values
         </button>
-      </form>
+      </form> */}
     </div>
   );
 }
