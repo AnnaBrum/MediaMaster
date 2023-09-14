@@ -1,7 +1,7 @@
-"use client";
+'use client';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-export default function VerifyAccount({ user }: { user: any }) {
+export default function VerifyAccount() {
   const supabase = createClientComponentClient();
 
   // const handleSubmit = async (formData: FormData) => {
@@ -13,35 +13,60 @@ export default function VerifyAccount({ user }: { user: any }) {
   // };
 
   return (
-    <form
-      className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-      action="/route-handler/verify"
-    >
-      <label className="text-md" htmlFor="firstname">
-        Förnamn*
-      </label>
-      <input
-        className="rounded-md px-4 py-2 bg-inherit border mb-6"
-        name="firstname"
-        placeholder="Skriv in ditt förnamn"
-        required
-      />
-      <label className="text-md" htmlFor="lastname">
-        Efternamn*
-      </label>
-      <input
-        className="rounded-md px-4 py-2 bg-inherit border mb-6"
-        name="lastname"
-        placeholder="Skriv in ditt efternamn"
-        required
-      />
-      <button
-        formAction="/route-handler/verify"
-        className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+    <>
+      <form
+        className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
+        action="/route-handler/verify"
       >
-       Kom igång
-      </button>
-    </form>
+        <label className="text-md" htmlFor="firstname">
+          Förnamn*
+        </label>
+        <input
+          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          name="firstname"
+          placeholder="Skriv in ditt förnamn"
+          required
+        />
+        <label className="text-md" htmlFor="lastname">
+          Efternamn*
+        </label>
+        <input
+          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          name="lastname"
+          placeholder="Skriv in ditt efternamn"
+          required
+        />
+        <button
+          formAction="/route-handler/verify"
+          className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+        >
+          Kom igång
+        </button>
+      </form>
+      <form
+        className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
+        action="/route-handler/add-sub"
+        method="post"
+      >
+        <label className="text-md" htmlFor="text">
+          Intro Text
+        </label>
+        <input
+          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          type="text"
+          name="text"
+          placeholder="intro text"
+          required
+        />
+        <button
+          formAction="/route-handler/add-sub"
+          className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+        >
+          Insert Values
+        </button>
+      </form>
+      
+    </>
   );
 }
 // import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';

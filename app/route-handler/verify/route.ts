@@ -18,14 +18,12 @@ export async function POST(request: Request) {
   } = await supabase.auth.getUser();
 
   const userId = user?.id;
-  await supabase.from('users').insert({ user_id: userId, firstname: firstName, lastname: lastName });
+  await supabase
+    .from('users')
+    .insert({ user_id: userId, firstname: firstName, lastname: lastName });
 
-
-  return NextResponse.redirect(
-    `${requestUrl.origin}/account`,
-    {
-      // a 301 status is required to redirect from a POST to a GET route
-      status: 301,
-    }
-  );
+  return NextResponse.redirect(`${requestUrl.origin}/account`, {
+    // a 301 status is required to redirect from a POST to a GET route
+    status: 301,
+  });
 }
