@@ -49,13 +49,13 @@ export default function VerifyAccount() {
         method="post"
       >
         <label className="text-md" htmlFor="text">
-          Intro Text
+          First Name
         </label>
         <input
           className="rounded-md px-4 py-2 bg-inherit border mb-6"
           type="text"
           name="text"
-          placeholder="intro text"
+          placeholder="firstname"
           required
         />
         <button
@@ -65,7 +65,6 @@ export default function VerifyAccount() {
           Insert Values
         </button>
       </form>
-      
     </>
   );
 }
