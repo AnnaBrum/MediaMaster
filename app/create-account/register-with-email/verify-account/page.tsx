@@ -1,32 +1,46 @@
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
-import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
+"use client";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-export default async function VerifyAccount() {
-  const handleSubmit = async (formData: FormData) => {
-    "use server"
-    const firstName = formData.get("firstname");
-    const lastName = formData.get("lastname");
-    const supabase = createServerActionClient({ cookies });
-    await supabase.from("users").insert({ firstName, lastName })
-    revalidatePath("/account")
-  };
+export default function VerifyAccount({ user }: { user: any }) {
+  const supabase = createClientComponentClient();
+
+  // const handleSubmit = async (formData: FormData) => {
+  //   await fetch(`http://localhost:3000/verify`, {
+  //     method: "put",
+  //     body: JSON.stringify({ id: user.id }),
+  //   });
+  //   router.refresh();
+  // };
 
   return (
     <form
       className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-      action={handleSubmit}
+      action="/route-handler/verify"
     >
-       <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
-    name ="firstname"
-          required
-        />
-       <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
-    name ="lastname"
-          required
-        />
+      <label className="text-md" htmlFor="firstname">
+        Förnamn*
+      </label>
+      <input
+        className="rounded-md px-4 py-2 bg-inherit border mb-6"
+        name="firstname"
+        placeholder="Skriv in ditt förnamn"
+        required
+      />
+      <label className="text-md" htmlFor="lastname">
+        Efternamn*
+      </label>
+      <input
+        className="rounded-md px-4 py-2 bg-inherit border mb-6"
+        name="lastname"
+        placeholder="Skriv in ditt efternamn"
+        required
+      />
+      <button
+        formAction="/route-handler/verify"
+        className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+      >
+       Kom igång
+      </button>
     </form>
   );
 }

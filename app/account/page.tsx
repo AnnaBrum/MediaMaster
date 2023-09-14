@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import LogoutButton from '../../components/LogoutButton/LogoutButton';
 import { redirect } from 'next/navigation';
 import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
-// import Link from "next/link";
+
 
 export const dynamic = 'force-dynamic';
 
