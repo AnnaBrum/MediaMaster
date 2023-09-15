@@ -11,12 +11,12 @@ export function HamburgerMenu(): JSX.Element {
   };
 
   return (
-    <div className="navWrapper">
-      {/* hamburger */}
+    <>
+      
       {nav ? (
         /* CLOSE ICON */
         <div
-          className="min-h-screen"
+          className={styles.toggleNav}
           aria-hidden="true"
           onClick={showNav}
         >
@@ -34,26 +34,29 @@ export function HamburgerMenu(): JSX.Element {
               />
             </svg>
           </div>
-          {/* mobile nav */}
+          {/* mobile nav */} 
           <nav
-            className={`flex flex-col justify-center w-full bg-white z-40 ${
+            className={`flex flex-col  ${
               nav ? "right-[0px]" : "right-[-100vw]"
             } `}
           >
-            <a href="#" className="underline">
+            <a href="#" className={styles.menuItem}>
               Hem
             </a>
-            <a href="#" className="underline">
+            <a href="#" className={styles.menuItem}>
               Mina prenumerationer
             </a>
-            <a href="#" className="underline">
+            <a href="#" className={styles.menuItem}>
               Profil
             </a>
-            <a href="#" className="underline">
+            <a href="#" className={styles.menuItem}>
               Kontakt
             </a>
-            <a href="#" className="underline">
+            <a href="#" className={styles.menuItem}>
               Inställningar
+            </a>
+            <a href="#" className={styles.menuItem}>
+              Logga ut
             </a>
             {/* < LogoutButton /> */}
           </nav>
@@ -81,6 +84,6 @@ export function HamburgerMenu(): JSX.Element {
           </div>
         
       )}
-    </div>
+    </>
   );
 }
