@@ -1,4 +1,4 @@
-"use client";
+import Link from "next/link";
 
 export default function VerifyAccount() {
   return (
@@ -27,6 +27,19 @@ export default function VerifyAccount() {
         placeholder="Skriv in ditt efternamn"
         required
       />
+      <div>
+        <input type="checkbox" id="CAPTCHA" name="CAPTCHA" required />
+        <label htmlFor="CAPTCHA">Jag är ingen robot</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="conditions" name="conditions" required />
+        <label htmlFor="conditions">
+          <Link className="underline " href="/conditions">
+            Användarvillkor
+          </Link>
+        </label>
+      </div>
       <button
         formAction="/route-handler/verify"
         className="border border-gray-700 rounded px-4 py-2 text-black mb-2"

@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import Messages from './messages';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import Link from 'next/link';
 
 export default async function Login() {
   const supabase = createServerComponentClient({ cookies });
@@ -51,7 +52,7 @@ export default async function Login() {
           >
             Logga in
           </button>
-
+        <Link className="underline " href="/reset-password">Återställ lösenord</Link>
           <Messages />
         </form>
       </div>

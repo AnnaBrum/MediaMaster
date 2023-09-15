@@ -1,0 +1,35 @@
+.toggleNav {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  padding: 2rem;
+}
+
+.navWrapper {
+ 
+}
+
+/* .navList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  z-index: 40;
+} */
+
+.hamburgerIcon {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 50;
+  flex-direction: row-reverse;
+  display: flex;
+  gap: 2px;
+}
+
+.menuItem {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
