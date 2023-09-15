@@ -11,7 +11,7 @@ export function HamburgerMenu(): JSX.Element {
   };
 
   // const handleSubmit = (event: { preventDefault: () => void; }) => {
-  //   event.preventDefault(); 
+  //   event.preventDefault();
   // };
 
   return (
@@ -39,23 +39,20 @@ export function HamburgerMenu(): JSX.Element {
               nav ? "right-[0px]" : "right-[-100vw]"
             } `}
           >
-            <a href="#" className={styles.menuItem}>
+            <a href="/home" className={styles.menuItem}>
               Hem
             </a>
-            <a href="#" className={styles.menuItem}>
+            <a href="/my-subscriptions" className={styles.menuItem}>
               Mina prenumerationer
             </a>
-            <a href="#" className={styles.menuItem}>
-              Profil
-            </a>
-            <a href="#" className={styles.menuItem}>
+            <a href="/contact" className={styles.menuItem}>
               Kontakt
             </a>
-            <a href="#" className={styles.menuItem}>
+            <a href="/settings" className={styles.menuItem}>
               Inställningar
             </a>
             <form action="/auth/sign-out" method="post">
-              <button className={styles.menuItem} name="sign-out" type="button">
+              <button className={styles.menuItem} name="logout" type="button">
                 Logout
               </button>
             </form>

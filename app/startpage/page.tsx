@@ -7,7 +7,7 @@ import Link from "next/link";
 
 
 
-export default async function Start() {
+export default async function StartPage() {
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },
