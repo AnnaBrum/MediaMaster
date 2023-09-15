@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
 import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
+import '../styles/globals.css';
+import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
 
 interface SubscriptionItem {
   billing_start_date: string;
@@ -88,6 +90,10 @@ export default function ClientComponent() {
           ))}
         </ul>
       </section>
+      <div>
+        <LogoutButton />
+      </div>
+
       {/* <ul className="flex flex-col gap-8">
         {users.map((item) => (
           <li
@@ -131,4 +137,5 @@ export default function ClientComponent() {
         </button>
       </form> */}
     </div>
-)}
+  );
+}

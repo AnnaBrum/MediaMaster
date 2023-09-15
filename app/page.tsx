@@ -1,10 +1,11 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import Account from './account/page';
+import Account from './home/page';
+
 import Link from 'next/link';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export default async function Index() {
   const supabase = createServerComponentClient({ cookies });
@@ -14,7 +15,7 @@ export default async function Index() {
 
   if (!session) {
     // this is a protected route - only users who are signed in can view this route
-    redirect("/start");
+    redirect('/startpage');
   }
 
   const {
@@ -34,7 +35,7 @@ export default async function Index() {
           </button> */}
         </form>
       </div>
-      {user ? <Account /> : redirect("/login")}
+      {user ? <Account /> : redirect('/login')}
     </div>
   );
 }
