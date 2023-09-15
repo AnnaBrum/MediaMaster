@@ -27,6 +27,7 @@ export default function ClientComponent() {
   const supabase = createClientComponentClient();
   const [users, setUsers] = useState<any[]>([]);
   const [totalCost, setTotalCost] = useState<number>(0);
+  const [subs, setSubs] = useState<number>(0);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -57,16 +58,19 @@ export default function ClientComponent() {
   }, [supabase, setUsers]);
 
   useEffect(() => {
+    let amountOfsubs = 0;
     let totalcost = 0;
     users.forEach((item) => {
       totalcost += item.subscriptions.price;
+      amountOfsubs += 1;
     });
     setTotalCost(totalcost);
+    setSubs(amountOfsubs);
   }, [users]);
 
   useEffect(() => {
     // This will log the updated totalCost value
-    console.log(totalCost);
+    console.log(subs);
   }, [totalCost]);
 
   return (
@@ -77,7 +81,10 @@ export default function ClientComponent() {
         <TotalCostSlider totalCost={totalCost} />
       </section>
       <section className="border-t-2 rounded-2xl border-black mt-8 px-8">
-        <h2 className="text-left mt-8 mb-8 text-3xl">Prenumerationer</h2>
+        <div className="flex justify-between">
+          <h2 className="text-left mt-8 mb-8 text-3xl">Prenumerationer</h2>
+          <h2 className="text-left mt-8 mb-8 text-3xl">{subs}st</h2>
+        </div>
         <ul className="flex flex-col gap-8">
           {users.map((item) => (
             <li key={item.id}>
