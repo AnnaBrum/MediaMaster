@@ -21,8 +21,9 @@ interface SubscriptionItem {
   };
 }
 
-export default function ClientComponent() {
+export default function ClientComponent({}) {
   const supabase = createClientComponentClient();
+
   const [users, setUsers] = useState<any[]>([]);
   const [totalCost, setTotalCost] = useState<number>(0);
 
@@ -30,6 +31,7 @@ export default function ClientComponent() {
     const getUsers = async () => {
       const { data } = await supabase.from('user_subscriptions').select(`
     id,
+    user_id,
     billing_start_date,
     billing_date,
     subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo))

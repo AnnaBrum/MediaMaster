@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Account from './account/page';
 import Link from 'next/link';
+import './globals.css';
 
 export const dynamic = 'force-dynamic';
 
