@@ -1,6 +1,5 @@
-'use client';
-import Messages from './messages';
-import Link from 'next/link';
+import Messages from "./messages";
+import Link from "next/link";
 
 export default async function CreateAccount() {
   return (

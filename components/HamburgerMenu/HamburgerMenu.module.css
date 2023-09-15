@@ -1,0 +1,13 @@
+.navWrapper {
+    min-width: 100%;
+}
+
+.hamburgerIcon {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 50;
+    flex-direction: row-reverse;
+    display: flex;
+    gap: 2px;
+};

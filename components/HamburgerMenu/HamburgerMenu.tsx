@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+// import LogoutButton from "../LogoutButton/LogoutButton";
+import styles from "./HamburgerMenu.module.css";
 
 export function HamburgerMenu(): JSX.Element {
   const [nav, setNav] = useState(false);
@@ -9,7 +11,7 @@ export function HamburgerMenu(): JSX.Element {
   };
 
   return (
-    <div className="nav-wrapper min-w-full">
+    <div className="navWrapper">
       {/* hamburger */}
       {nav ? (
         /* CLOSE ICON */
@@ -18,7 +20,7 @@ export function HamburgerMenu(): JSX.Element {
           aria-hidden="true"
           onClick={showNav}
         >
-          <div className="EXIT flex justify-end">
+          <div className={styles.hamburgerIcon}>
             <svg
               width="23"
               height="23"
@@ -53,15 +55,13 @@ export function HamburgerMenu(): JSX.Element {
             <a href="#" className="underline">
               Inställningar
             </a>
-            <a href="#" className="underline">
-              Logga ut
-            </a>
+            {/* < LogoutButton /> */}
           </nav>
         </div>
       ) : (
         /* HAMBURGER ICON */
         <div
-          className="HAMBURGER-ICON fixed top-[0px] z-50 space-y-2 flex justify-end"
+          className={styles.hamburgerIcon}
           aria-hidden="true"
           onClick={showNav}
         >
