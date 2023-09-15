@@ -20,15 +20,15 @@ export default async function Account() {
 
   const { data: users } = await supabase.from("users").select();
   return (
-    <div className="profile py-8">
+    <div className="profile flex justify-center">
       <HamburgerMenu />
       <div className="py-20">
-        <h1 className="text-xl font-bold">Välkommen till Media Watch!</h1>
+        <h1 className="text-xl font-bold text-center">Välkommen till Media Watch!</h1>
         <div>
           {users?.map((user) => (
-            <p>Hey, {user.firstname}!</p>
+            <p className="text-center">Hey, {user.firstname}!</p>
           ))}
-          < LogoutButton /> 
+          {/* < LogoutButton />  */}
         </div>
       </div>
     </div>

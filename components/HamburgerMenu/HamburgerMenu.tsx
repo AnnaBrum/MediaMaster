@@ -10,16 +10,15 @@ export function HamburgerMenu(): JSX.Element {
     setNav(!nav);
   };
 
+  // const handleSubmit = (event: { preventDefault: () => void; }) => {
+  //   event.preventDefault(); 
+  // };
+
   return (
     <>
-      
       {nav ? (
         /* CLOSE ICON */
-        <div
-          className={styles.toggleNav}
-          aria-hidden="true"
-          onClick={showNav}
-        >
+        <div className={styles.toggleNav} aria-hidden="true" onClick={showNav}>
           <div className={styles.hamburgerIcon}>
             <svg
               width="23"
@@ -34,7 +33,7 @@ export function HamburgerMenu(): JSX.Element {
               />
             </svg>
           </div>
-          {/* mobile nav */} 
+          {/* mobile nav */}
           <nav
             className={`flex flex-col  ${
               nav ? "right-[0px]" : "right-[-100vw]"
@@ -55,10 +54,11 @@ export function HamburgerMenu(): JSX.Element {
             <a href="#" className={styles.menuItem}>
               Inställningar
             </a>
-            <a href="#" className={styles.menuItem}>
-              Logga ut
-            </a>
-            {/* < LogoutButton /> */}
+            <form action="/auth/sign-out" method="post">
+              <button className={styles.menuItem} name="sign-out" type="button">
+                Logout
+              </button>
+            </form>
           </nav>
         </div>
       ) : (
@@ -68,21 +68,19 @@ export function HamburgerMenu(): JSX.Element {
           aria-hidden="true"
           onClick={showNav}
         >
-          
-            <svg
-              width="27"
-              height="18"
-              viewBox="0 0 27 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0 0H27V3H0V0ZM0 7.5H27V10.5H0V7.5ZM0 15H27V18H0V15Z"
-                fill="black"
-              />
-            </svg>
-          </div>
-        
+          <svg
+            width="27"
+            height="18"
+            viewBox="0 0 27 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0H27V3H0V0ZM0 7.5H27V10.5H0V7.5ZM0 15H27V18H0V15Z"
+              fill="black"
+            />
+          </svg>
+        </div>
       )}
     </>
   );
