@@ -11,12 +11,15 @@ import styles from './CostSlider.module.css';
 
 export function CostSlider({ logoUrl, serviceName, cost }) {
   const [content, setContent] = useState('Visa kostnad');
-  const [padding, setPadding] = useState('px-3');
 
   const handleClick = () => {
-    setContent(String(cost));
-    setPadding(String('px-10'));
+    if (content == cost) {
+      setContent('Visa kostnad');
+    } else {
+      setContent(cost);
+    }
   };
+
   return (
     <div className={styles.costSliderWrapper}>
       <div className={styles.imageContainer}>

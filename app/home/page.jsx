@@ -7,15 +7,19 @@ import { CostSlider } from '@/components/CostSlider/CostSlider';
 import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
 import '../styles/globals.css';
 import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
+import { LoadingSvg } from '@/public/images/loading/loading.svg';
+import Image from 'next/image';
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
-  const [users, setUsers] = useState([]);
+  const [subsData, setSubsData] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
-  const [subs, setSubs] = useState(0);
+  const [subsCount, setSubsCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const getUsers = async () => {
+    setIsLoading(true);
+    const getData = async () => {
       const { data } = await supabase.from('user_subscriptions').select(`
     id,
     billing_start_date,
@@ -23,28 +27,24 @@ export default function ClientComponent() {
     subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo))
   `);
       if (data) {
-        setUsers(data);
+        setSubsData(data);
+        setIsLoading(false);
       }
     };
 
-    getUsers();
-  }, [supabase, setUsers]);
+    getData();
+  }, [supabase, setSubsData]);
 
   useEffect(() => {
     let amountOfsubs = 0;
     let totalcost = 0;
-    users.forEach((item) => {
+    subsData.forEach((item) => {
       totalcost += item.subscriptions.price;
       amountOfsubs += 1;
     });
     setTotalCost(totalcost);
-    setSubs(amountOfsubs);
-  }, [users]);
-
-  // useEffect(() => {
-  //   // This will log the updated totalCost value
-  //   console.log(subs);
-  // }, [totalCost]);
+    setSubsCount(amountOfsubs);
+  }, [subsData]);
 
   return (
     <div className={styles.page}>
@@ -56,10 +56,23 @@ export default function ClientComponent() {
       <section className={styles.sectionTwo}>
         <div className={styles.amountOfSubsWrapper}>
           <h2 className={styles.amountOfSubsHeading}>Prenumerationer</h2>
-          <h2 className={styles.subAmount}>{subs}st</h2>
+          <h2 className={styles.subAmount}>{subsCount}st</h2>
         </div>
         <ul className={styles.costSliderList}>
-          {users.map((item) => (
+          {isLoading ? (
+            <div className={styles.loadingContainer}>
+              <Image
+                className={styles.loading}
+                alt="huhu"
+                width={44}
+                height={44}
+                placeholder="empty"
+                priority={false}
+                src="/images/loading/loading.svg"
+              ></Image>
+            </div>
+          ) : null}
+          {subsData.map((item) => (
             <li key={item.id}>
               <CostSlider
                 logoUrl={item.subscriptions.services.service_logo}

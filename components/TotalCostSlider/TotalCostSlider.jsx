@@ -3,14 +3,15 @@
 import { useState } from 'react';
 import styles from './TotalCostSlider.module.css';
 
-//   const [padding, setPadding] = useState('px-3');
-
 export function TotalCostSlider({ totalCost }) {
   const [content, setContent] = useState('Visa kostnad');
 
   const handleClick = () => {
-    setContent(totalCost);
-    // setPadding(String('px-10'));
+    if (content == totalCost) {
+      setContent('Visa kostnad');
+    } else {
+      setContent(totalCost);
+    }
   };
   return (
     <div className={styles.totalCostWrapper}>
