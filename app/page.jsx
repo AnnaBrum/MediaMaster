@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Account from './home/page';
 
-// import Link from 'next/link';
+import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,7 +25,7 @@ export default async function Index() {
   return (
     <div className="startpage h-full">
       <div>
-        {/* <Link href="/dbserv">Go to account</Link> */}
+        <Link href="/home/my-subscriptions">Go to account</Link>
         <form action="/route-handler/see-sub">
           {/* <button
             formAction="/route-handler/see-sub"
