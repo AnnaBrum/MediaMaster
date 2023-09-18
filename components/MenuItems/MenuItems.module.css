@@ -1,6 +1,8 @@
+
 .menuItems {
   font-weight: bold;
   font-size: 1.5rem;
+  margin-top: 3rem;
 }
 
 .subMenuButton {
@@ -8,14 +10,6 @@
   flex-direction: column;
 }
 
-.subMenuItems {
-  font-weight: 200;
-  font-size: 1rem;
-}
-
-ul .dropdown {
-  margin-left: 2rem;
-}
 .dropdownButton {
   cursor: pointer;
 }

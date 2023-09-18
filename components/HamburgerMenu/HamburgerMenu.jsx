@@ -3,7 +3,7 @@ import { useState } from "react";
 import MenuItems from "../MenuItems/MenuItems";
 // import LogoutButton from "../LogoutButton/LogoutButton";
 import styles from "./HamburgerMenu.module.css";
-
+import { LogoutButton } from "../LogoutButton/LogoutButton";
 export const menuItems = [
   {
     title: "Hem",
@@ -26,11 +26,7 @@ export const menuItems = [
       { title: "Kontoinställningar", url: "settings" },
       { title: "Villkor och sekretess", url: "conditions" },
     ],
-  },
-  {
-    title: "Logga ut",
-    url: "/auth/sign-out",
-  },
+  }
 ];
 
 export function HamburgerMenu() {
@@ -53,7 +49,7 @@ export function HamburgerMenu() {
     <header>
       {nav ? (
         /* CLOSE ICON */
-        <div className={styles.toggleNav} aria-hidden="true" >
+        <div className={styles.menu} aria-hidden="true" >
           <div className={styles.hamburgerIcon} onClick={closeMenu}>
             <svg
               width="23"
@@ -74,11 +70,12 @@ export function HamburgerMenu() {
               nav ? "right-[0px]" : "right-[-100vw]"
             } `}
           >
-            <ul className="menus">
+            <ul>
               {menuItems.map((menu, index) => {
                 return <MenuItems items={menu} key={index} isOpen={openSubMenu === index} onClick={() => handleMenuClick(index)}/>;
               })}
             </ul>
+            <LogoutButton />
           </nav>
         </div>
       ) : (

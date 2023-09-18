@@ -3,18 +3,9 @@ import DropDown from "../DropDown/DropDown";
 import styles from "./MenuItems.module.css";
 import { useState, useEffect } from "react";
 // import { menuItems } from "../HamburgerMenu/HamburgerMenu";
-// import Link from "next/link";
+import Link from "next/link";
 
 const MenuItems = ({ items, isOpen, onClick }) => {
-  // const [dropdown, setDropdown] = useState(false);
-
-  // const toggleDropdown = () => {
-  //   setDropdown((prev) => !prev);
-  // };
-
-  // const openDropdown = () => {
-  //   setDropdown(true);
-  // }
 
   return (
     <>
@@ -33,7 +24,7 @@ const MenuItems = ({ items, isOpen, onClick }) => {
           {isOpen && <DropDown submenus={items.submenu} />}
         </>
       ) : (
-        <li className={styles.menuItems}><a href={items.url}>{items.title}</a></li>
+        <li className={styles.menuItems}><Link href={items.url}>{items.title}</Link></li>
       )}
     </>
   );

@@ -32,3 +32,13 @@ main {
   min-height: 100vh;
 }
 
+ul .dropdown {
+  margin-top: 1.25rem;
+  margin-left: 1rem;
+}
+
+.subMenuItems {
+  margin-top: 1rem;
+  font-weight: 400;
+  font-size: 1.25rem;
+}
