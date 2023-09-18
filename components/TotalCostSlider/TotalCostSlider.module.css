@@ -1,3 +1,39 @@
 .fixedWidth {
   width: 121px;
 }
+
+.totalCostWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 326px;
+  height: 75px;
+  flex-shrink: 0;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 20px;
+  margin-bottom: 32px;
+}
+.totalCostHeading {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 20px;
+}
+.totalCostinnerDiv {
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 20px;
+  width: 99px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.TotalCostPrice {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
