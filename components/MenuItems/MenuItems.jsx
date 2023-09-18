@@ -1,21 +1,41 @@
-import React from 'react';
-import Dropdown  from '../DropDown/DropDown.jsx';
+import React from "react";
+import DropDown from "../DropDown/DropDown";
+import styles from "./MenuItems.module.css";
+import { useState, useEffect } from "react";
+// import { menuItems } from "../HamburgerMenu/HamburgerMenu";
+// import Link from "next/link";
 
+const MenuItems = ({ items, isOpen, onClick }) => {
+  // const [dropdown, setDropdown] = useState(false);
 
-const MenuItems = ({ items }) => {
+  // const toggleDropdown = () => {
+  //   setDropdown((prev) => !prev);
+  // };
+
+  // const openDropdown = () => {
+  //   setDropdown(true);
+  // }
+
   return (
-    <li className="menu-items">
+    <>
       {items.submenu ? (
         <>
-          <button type="button" aria-haspopup="menu">
-            {items.title}{' '}
+        <div className={styles.subMenuButton}></div>
+          <button
+            className={styles.menuItems}
+            aria-expanded={isOpen ? "true" : "false"}
+            onClick={onClick}
+            type="button"
+            aria-haspopup="menu"
+          >
+            {items.title}
           </button>
-          <Dropdown submenus={items.submenu} />
+          {isOpen && <DropDown submenus={items.submenu} />}
         </>
       ) : (
-        <a href={items.url}>{items.title}</a>
+        <li className={styles.menuItems}><a href={items.url}>{items.title}</a></li>
       )}
-    </li>
+    </>
   );
 };
 

@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import  MenuItems from "../MenuItems/MenuItems"
+import MenuItems from "../MenuItems/MenuItems";
 // import LogoutButton from "../LogoutButton/LogoutButton";
 import styles from "./HamburgerMenu.module.css";
 
-const menuItems = [
+export const menuItems = [
   {
     title: "Hem",
     url: "/home",
@@ -15,7 +15,6 @@ const menuItems = [
   },
   {
     title: "Kontakt",
-    url: "/about",
     submenu: [
       { title: "Support", url: "support" },
       { title: "Om Media Watch", url: "about" },
@@ -23,7 +22,6 @@ const menuItems = [
   },
   {
     title: "Inställningar",
-    url: "/settings",
     submenu: [
       { title: "Kontoinställningar", url: "settings" },
       { title: "Villkor och sekretess", url: "conditions" },
@@ -37,34 +35,26 @@ const menuItems = [
 
 export function HamburgerMenu() {
   const [nav, setNav] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState(null);
 
   const showNav = () => {
     setNav(!nav);
   };
 
-  //
-  // const Navbar = () => {
-  //   return (
-  //     <nav>
-  //       <ul className="menus">
-  //         {menuItems.map((menu, index) => {
-  //           return (
-  //             <li className="menu-items" key={index}>
-  //               <a href={menu.url}>{menu.title}</a>
-  //             </li>
-  //           );
-  //         })}
-  //       </ul>
-  //     </nav>
-  //   );
-  // };
+  const closeMenu = () => {
+    setNav(false); 
+  };
+
+  const handleMenuClick = (index) => {
+    setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
+  }
 
   return (
     <header>
       {nav ? (
         /* CLOSE ICON */
-        <div className={styles.toggleNav} aria-hidden="true" onClick={showNav}>
-          <div className={styles.hamburgerIcon}>
+        <div className={styles.toggleNav} aria-hidden="true" >
+          <div className={styles.hamburgerIcon} onClick={closeMenu}>
             <svg
               width="23"
               height="23"
@@ -84,39 +74,11 @@ export function HamburgerMenu() {
               nav ? "right-[0px]" : "right-[-100vw]"
             } `}
           >
-        
             <ul className="menus">
               {menuItems.map((menu, index) => {
-                return <MenuItems items={menu} key={index} />;
+                return <MenuItems items={menu} key={index} isOpen={openSubMenu === index} onClick={() => handleMenuClick(index)}/>;
               })}
             </ul>
-            
-            {/* <ul className="menus">
-              {menuItems.map((menu, index) => {
-                return (
-                  <li className="menu-items" key={index}>
-                    <a href={menu.url}>{menu.title}</a>
-                  </li>
-                );
-              })}
-            </ul> */}
-            {/* <a href="/home" className={styles.menuItem}>
-              Hem
-            </a>
-            <a href="/my-subscriptions" className={styles.menuItem}>
-              Mina prenumerationer
-            </a>
-            <a href="/contact" className={styles.menuItem}>
-              Kontakt
-            </a>
-            <a href="/settings" className={styles.menuItem}>
-              Inställningar
-            </a>
-            <form action="/auth/sign-out" method="post">
-              <button className={styles.menuItem} name="logout" type="button">
-                Logout
-              </button>
-            </form> */}
           </nav>
         </div>
       ) : (
