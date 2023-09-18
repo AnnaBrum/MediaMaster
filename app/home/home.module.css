@@ -1,3 +1,68 @@
-.banana{
-    background-color: yellow;
+.page {
+  background: var(
+    --Gradient,
+    linear-gradient(180deg, #ececff 0%, #99b6ff 100%)
+  );
+  min-height: 100vh;
+}
+
+.sectionOne {
+  padding-left: 32px;
+  padding-right: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTwo {
+  padding-left: 32px;
+  padding-right: 32px;
+  border-top: 2px solid black;
+  border-radius: 20px;
+}
+
+/*TotalCostSection*/
+
+.headingOne {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 420;
+  line-height: 30px; /* 107.143% */
+  letter-spacing: 1.4px;
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+
+.totalCostStyling {
+  margin-bottom: 32px;
+}
+
+/*subscriptions-section*/
+
+.amountOfSubsWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 52px;
+  margin-bottom: 10px;
+}
+
+.amountOfSubsHeading {
+  /* font-family: Sequel Sans; */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 420;
+  line-height: normal;
+}
+
+.subAmount {
+  text-align: right;
+  /* font-family: Sequel Sans; */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.costSliderList{
+    
 }

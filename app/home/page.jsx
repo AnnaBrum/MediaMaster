@@ -9,8 +9,6 @@ import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
 import '../styles/globals.css';
 import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
 
-
-
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
   const [users, setUsers] = useState([]);
@@ -25,12 +23,9 @@ export default function ClientComponent() {
     billing_date,
     subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo))
   `);
-
-      // const { data } = await supabase.from('services').select();
       if (data) {
         setUsers(data);
         console.log(data);
-
       }
     };
 
@@ -48,24 +43,26 @@ export default function ClientComponent() {
     setSubs(amountOfsubs);
   }, [users]);
 
-  useEffect(() => {
-    // This will log the updated totalCost value
-    console.log(subs);
-  }, [totalCost]);
+  // useEffect(() => {
+  //   // This will log the updated totalCost value
+  //   console.log(subs);
+  // }, [totalCost]);
 
   return (
-    <div className="">
-      <section className={styles.banana}>
-        <HamburgerMenu />
-        <h1 className="text-left mt-8 mb-8 text-3xl">Home</h1>
+    <div className={styles.page}>
+      <section className={styles.sectionOne}>
+        <div>
+          <HamburgerMenu />
+        </div>
+        <h1 className={styles.headingOne}>Home</h1>
         <TotalCostSlider totalCost={totalCost} />
       </section>
-      <section className="border-t-2 rounded-2xl border-black mt-8 px-8">
-        <div className="flex justify-between">
-          <h2 className="text-left mt-8 mb-8 text-3xl">Prenumerationer</h2>
-          <h2 className="text-left mt-8 mb-8 text-3xl">{subs}st</h2>
+      <section className={styles.sectionTwo}>
+        <div className={styles.amountOfSubsWrapper}>
+          <h2 className={styles.amountOfSubsHeading}>Prenumerationer</h2>
+          <h2 className={styles.subAmount}>{subs}st</h2>
         </div>
-        <ul className="flex flex-col gap-8">
+        <ul className={styles.costSliderList}>
           {users.map((item) => (
             <li key={item.id}>
               <CostSlider

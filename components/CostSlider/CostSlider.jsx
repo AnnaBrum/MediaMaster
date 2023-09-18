@@ -9,11 +9,7 @@ import styles from './CostSlider.module.css';
 //   cost: string;
 // }
 
-export function CostSlider({
-  logoUrl,
-  serviceName,
-  cost,
-}){
+export function CostSlider({ logoUrl, serviceName, cost }) {
   const [content, setContent] = useState('Visa kostnad');
   const [padding, setPadding] = useState('px-3');
 
@@ -22,8 +18,8 @@ export function CostSlider({
     setPadding(String('px-10'));
   };
   return (
-    <div className="h-20 rounded-2xl border-2 border-black flex justify-between">
-      <div className="flex items-center">
+    <div className={styles.costSliderWrapper}>
+      <div className={styles.imageContainer}>
         <Image
           src={logoUrl}
           alt="huhu"
@@ -32,10 +28,10 @@ export function CostSlider({
           placeholder="empty"
           priority={false}
         ></Image>
+        <h2 className={styles.serviceNameHeading}>{serviceName}</h2>
       </div>
-      <h2 className=" text-xl align-middle self-center">{serviceName}</h2>
-      <div className="shrink-0 rounded-2xl border-l-2 border-black flex items-center justify-center">
-        <h3 className={styles.fixedWidth} onClick={handleClick}>
+      <div className={styles.innerDiv}>
+        <h3 className={styles.costHeading} onClick={handleClick}>
           {content}
         </h3>
       </div>
