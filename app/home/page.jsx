@@ -2,32 +2,20 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
 import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
 import '../styles/globals.css';
 import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
 
-interface SubscriptionItem {
-  billing_start_date: string;
-  billing_date: number;
-  id: number;
-  subscriptions: {
-    plan_name: string;
-    price: number;
-    services: {
-      service_logo: string;
-      service_name: string;
-    };
-  };
-}
+
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
-  const [users, setUsers] = useState<any[]>([]);
-  const [totalCost, setTotalCost] = useState<number>(0);
-  const [subs, setSubs] = useState<number>(0);
+  const [users, setUsers] = useState([]);
+  const [totalCost, setTotalCost] = useState(0);
+  const [subs, setSubs] = useState(0);
 
   useEffect(() => {
     const getUsers = async () => {

@@ -1,21 +1,37 @@
 "use client";
 import { useState } from "react";
+import MenuItems from "../MenuItems/MenuItems"
+import  menuItems  from "../MenuItems/MenuItems";
 // import LogoutButton from "../LogoutButton/LogoutButton";
 import styles from "./HamburgerMenu.module.css";
 
-export function HamburgerMenu(): JSX.Element {
+
+export function HamburgerMenu() {
   const [nav, setNav] = useState(false);
 
   const showNav = () => {
     setNav(!nav);
   };
 
-  // const handleSubmit = (event: { preventDefault: () => void; }) => {
-  //   event.preventDefault();
+  //
+  // const Navbar = () => {
+  //   return (
+  //     <nav>
+  //       <ul className="menus">
+  //         {menuItems.map((menu, index) => {
+  //           return (
+  //             <li className="menu-items" key={index}>
+  //               <a href={menu.url}>{menu.title}</a>
+  //             </li>
+  //           );
+  //         })}
+  //       </ul>
+  //     </nav>
+  //   );
   // };
 
   return (
-    <>
+    <header>
       {nav ? (
         /* CLOSE ICON */
         <div className={styles.toggleNav} aria-hidden="true" onClick={showNav}>
@@ -39,7 +55,23 @@ export function HamburgerMenu(): JSX.Element {
               nav ? "right-[0px]" : "right-[-100vw]"
             } `}
           >
-            <a href="/home" className={styles.menuItem}>
+        
+            <ul className="menus">
+              {menuItems.map((menu, index) => {
+                return <MenuItems items={menu} key={index} />;
+              })}
+            </ul>
+            
+            {/* <ul className="menus">
+              {menuItems.map((menu, index) => {
+                return (
+                  <li className="menu-items" key={index}>
+                    <a href={menu.url}>{menu.title}</a>
+                  </li>
+                );
+              })}
+            </ul> */}
+            {/* <a href="/home" className={styles.menuItem}>
               Hem
             </a>
             <a href="/my-subscriptions" className={styles.menuItem}>
@@ -55,7 +87,7 @@ export function HamburgerMenu(): JSX.Element {
               <button className={styles.menuItem} name="logout" type="button">
                 Logout
               </button>
-            </form>
+            </form> */}
           </nav>
         </div>
       ) : (
@@ -79,6 +111,6 @@ export function HamburgerMenu(): JSX.Element {
           </svg>
         </div>
       )}
-    </>
+    </header>
   );
 }

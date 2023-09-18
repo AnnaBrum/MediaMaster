@@ -3,14 +3,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styles from './TotalCostSlider.module.css';
 
-interface TotalCostSliderProps {
-  totalCost: number;
-}
-
-export function TotalCostSlider({
-  totalCost,
-}: TotalCostSliderProps): JSX.Element {
-  const [content, setContent] = useState('Visa kostnad');
   //   const [padding, setPadding] = useState('px-3');
 
   const handleClick = () => {
@@ -27,4 +19,4 @@ export function TotalCostSlider({
       </div>
     </div>
   );
-}
+
