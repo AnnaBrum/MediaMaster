@@ -2,7 +2,6 @@
 import styles from './home.module.css';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
-// import Image from 'next/image';
 import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
 import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
@@ -25,7 +24,6 @@ export default function ClientComponent() {
   `);
       if (data) {
         setUsers(data);
-        console.log(data);
       }
     };
 
@@ -50,10 +48,8 @@ export default function ClientComponent() {
 
   return (
     <div className={styles.page}>
+      <HamburgerMenu />
       <section className={styles.sectionOne}>
-        <div>
-          <HamburgerMenu />
-        </div>
         <h1 className={styles.headingOne}>Home</h1>
         <TotalCostSlider totalCost={totalCost} />
       </section>
@@ -77,49 +73,6 @@ export default function ClientComponent() {
       <div>
         <LogoutButton />
       </div>
-
-      {/* <ul className="flex flex-col gap-8">
-        {users.map((item) => (
-          <li
-            className="flex flex-row justify-between items-center"
-            key={item.id}
-          >
-            <Image
-              src={item.subscriptions.services.service_logo}
-              alt="huhu"
-              width={44}
-              height={44}
-              placeholder="empty"
-              priority={false}
-            ></Image>
-            <h1>{item.subscriptions.services.service_name}</h1>
-            <h2>{item.subscriptions.plan_name}</h2>
-          </li>
-        ))}
-      </ul> */}
-
-      {/* <form
-        className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-        action="/route-handler/add-sub"
-        method="post"
-      >
-        <label className="text-md" htmlFor="text">
-          Intro Text
-        </label>
-        <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
-          type="text"
-          name="text"
-          placeholder="intro text"
-          required
-        />
-        <button
-          formAction="/route-handler/add-sub"
-          className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
-        >
-          Insert Values
-        </button>
-      </form> */}
     </div>
   );
 }
