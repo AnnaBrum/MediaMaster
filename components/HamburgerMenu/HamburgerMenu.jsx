@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import MenuItems from "../MenuItems/MenuItems"
-import  menuItems  from "../MenuItems/MenuItems";
+import  menuItems  from "../MenuItems/MenuItems.jsx";
 // import LogoutButton from "../LogoutButton/LogoutButton";
 import styles from "./HamburgerMenu.module.css";
 

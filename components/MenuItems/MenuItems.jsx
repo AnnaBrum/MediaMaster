@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from '../DropDown';
+import Dropdown  from '../DropDown';
 
 export const menuItems = [
     {
@@ -33,7 +33,7 @@ export const menuItems = [
   ];
   
 
-const MenuItems({ items }) => {
+const MenuItems = ({ items }) => {
   return (
     <li className="menu-items">
       {items.submenu ? (

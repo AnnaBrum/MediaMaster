@@ -1,12 +1,12 @@
 'use client';
-import Image from 'next/image';
-import { useState } from 'react';
+// import Image from 'next/image';
+// import { useState } from 'react';
 import styles from './TotalCostSlider.module.css';
 
   //   const [padding, setPadding] = useState('px-3');
 
   const handleClick = () => {
-    setContent(String(totalCost));
+    setContent((totalCost));
     // setPadding(String('px-10'));
   };
   return (
