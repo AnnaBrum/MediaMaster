@@ -3,17 +3,17 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styles from './CostSlider.module.css';
 
-interface CostSliderProps {
-  logoUrl: string;
-  serviceName: string;
-  cost: string;
-}
+// interface CostSliderProps {
+//   logoUrl: string;
+//   serviceName: string;
+//   cost: string;
+// }
 
 export function CostSlider({
   logoUrl,
   serviceName,
   cost,
-}: CostSliderProps): JSX.Element {
+}){
   const [content, setContent] = useState('Visa kostnad');
   const [padding, setPadding] = useState('px-3');
 
