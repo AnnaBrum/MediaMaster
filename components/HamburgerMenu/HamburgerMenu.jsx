@@ -1,10 +1,39 @@
 "use client";
 import { useState } from "react";
-import MenuItems from "../MenuItems/MenuItems"
-import  menuItems  from "../MenuItems/MenuItems.jsx";
+import  MenuItems from "../MenuItems/MenuItems"
 // import LogoutButton from "../LogoutButton/LogoutButton";
 import styles from "./HamburgerMenu.module.css";
 
+const menuItems = [
+  {
+    title: "Hem",
+    url: "/home",
+  },
+  {
+    title: "Mina Prenumerationer",
+    url: "/my-subscriptions",
+  },
+  {
+    title: "Kontakt",
+    url: "/about",
+    submenu: [
+      { title: "Support", url: "support" },
+      { title: "Om Media Watch", url: "about" },
+    ],
+  },
+  {
+    title: "Inställningar",
+    url: "/settings",
+    submenu: [
+      { title: "Kontoinställningar", url: "settings" },
+      { title: "Villkor och sekretess", url: "conditions" },
+    ],
+  },
+  {
+    title: "Logga ut",
+    url: "/auth/sign-out",
+  },
+];
 
 export function HamburgerMenu() {
   const [nav, setNav] = useState(false);
