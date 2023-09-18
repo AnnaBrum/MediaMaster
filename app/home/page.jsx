@@ -1,5 +1,5 @@
 'use client';
-
+import styles from './home.module.css';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
 // import Image from 'next/image';
@@ -31,14 +31,6 @@ export default function ClientComponent() {
         setUsers(data);
         console.log(data);
 
-        // data.forEach((iteration) => {
-        //   console.log(iteration);
-        //   iteration.subscriptions.forEach((subscription) => {
-        //     console.log(subscription.price);
-        //   });
-        // });
-
-        // users.map((item) => console.log(item));
       }
     };
 
@@ -63,7 +55,7 @@ export default function ClientComponent() {
 
   return (
     <div className="">
-      <section className="">
+      <section className={styles.banana}>
         <HamburgerMenu />
         <h1 className="text-left mt-8 mb-8 text-3xl">Home</h1>
         <TotalCostSlider totalCost={totalCost} />
