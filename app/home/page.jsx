@@ -2,7 +2,6 @@
 import styles from './home.module.css';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
-import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
 import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
 import '../styles/globals.css';
@@ -48,7 +47,6 @@ export default function ClientComponent() {
 
   return (
     <>
-      <HamburgerMenu />
       <section className={styles.sectionOne}>
         <h1 className={styles.headingOne}>Home</h1>
         <TotalCostSlider totalCost={totalCost} />

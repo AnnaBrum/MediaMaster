@@ -1,31 +1,31 @@
-"use client";
-import { useState } from "react";
-import MenuItems from "../MenuItems/MenuItems";
-import styles from "./HamburgerMenu.module.css";
-import { LogoutButton } from "../LogoutButton/LogoutButton";
-import { ExitButton } from "../ExitButton/ExitButton";
+'use client';
+import { useState } from 'react';
+import MenuItems from '../MenuItems/MenuItems';
+import styles from './HamburgerMenu.module.css';
+import { LogoutButton } from '../LogoutButton/LogoutButton';
+import { ExitButton } from '../ExitButton/ExitButton';
 
 export const menuItems = [
   {
-    title: "Hem",
-    url: "/home",
+    title: 'Hem',
+    url: '/home',
   },
   {
-    title: "Mina Prenumerationer",
-    url: "/home/my-subscriptions",
+    title: 'Mina Prenumerationer',
+    url: '/home/my-subscriptions',
   },
   {
-    title: "Kontakt",
+    title: 'Kontakt',
     submenu: [
-      { title: "Support", url: "contact/support" },
-      { title: "Om Media Watch", url: "contact/about" },
+      { title: 'Support', url: 'contact/support' },
+      { title: 'Om Media Watch', url: 'contact/about' },
     ],
   },
   {
-    title: "Inställningar",
+    title: 'Inställningar',
     submenu: [
-      { title: "Kontoinställningar", url: "settings/account-settings" },
-      { title: "Villkor och sekretess", url: "settings/conditions" },
+      { title: 'Kontoinställningar', url: 'settings/account-settings' },
+      { title: 'Villkor och sekretess', url: 'settings/conditions' },
     ],
   },
 ];
@@ -43,7 +43,6 @@ export function HamburgerMenu() {
   };
 
   const handleMenuClick = (index) => {
-    setNav(false);
     setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
   };
 
@@ -58,7 +57,7 @@ export function HamburgerMenu() {
           {/* mobile nav */}
           <nav
             className={`flex flex-col  ${
-              nav ? "right-[0px]" : "right-[-100vw]"
+              nav ? 'right-[0px]' : 'right-[-100vw]'
             } `}
           >
             <ul>

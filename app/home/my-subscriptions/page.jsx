@@ -23,6 +23,9 @@ export default async function ServerComponent() {
     <>
       <section className={styles.sectionOne}>
         <h1 className={styles.headingOne}>Mina Prenumerationer</h1>
+        <button className={styles.addPlanContainer}>
+          <p>Lägg till prenumeration +</p>
+        </button>
       </section>
       <section className={styles.sectionTwo}>
         {subsData.map((item) => (
