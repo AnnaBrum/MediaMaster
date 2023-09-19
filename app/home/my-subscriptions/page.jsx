@@ -10,15 +10,18 @@ export default async function ServerComponent() {
   // Create a Supabase client configured to use cookies
   const supabase = createServerComponentClient({ cookies });
 
-  const { data } = await supabase.from('user_subscriptions').select(`
+  const { data: subsData } = await supabase.from('user_subscriptions').select(`
   id,
   billing_start_date,
   billing_date,
   subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo))
 `);
 
-  const subsData = data;
+  const { data: serviceCategories } = await supabase
+    .from('services')
+    .select('service_category');
 
+  console.log(serviceCategories);
   return (
     <>
       <section className={styles.sectionOne}>
