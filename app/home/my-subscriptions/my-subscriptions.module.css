@@ -6,6 +6,7 @@
   line-height: 30px; /* 107.143% */
   letter-spacing: 1.4px;
   margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 .sectionOne {
@@ -20,11 +21,24 @@
 
 .addPlanContainer {
   width: 90%;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 30px;
   display: flex;
   padding: 10px 20px;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  background: #e6e7fe;
+  margin-bottom: 20px;
+}
+
+.searchField {
+  border-radius: 30px;
+  border: 1px solid #000;
+  background: #fff;
+
+  display: flex;
+  width: 100%;
+  padding: 10px 20px;
+  align-items: center;
 }

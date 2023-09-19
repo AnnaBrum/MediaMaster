@@ -26,6 +26,11 @@ export default async function ServerComponent() {
         <button className={styles.addPlanContainer}>
           <p>Lägg till prenumeration +</p>
         </button>
+        <input
+          className={styles.searchField}
+          type="text"
+          placeholder="Sök bland dina prenumerationer"
+        />
       </section>
       <section className={styles.sectionTwo}>
         {subsData.map((item) => (
