@@ -43,7 +43,6 @@ export function HamburgerMenu() {
   };
 
   const handleMenuClick = (index) => {
-    setNav(false);
     setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
   };
 
