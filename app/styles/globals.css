@@ -37,6 +37,7 @@ main {
   min-height: 100vh;
 }
 
+/* HamburgerMenu */
 ul .dropdown {
   margin-top: 1.25rem;
   margin-left: 1rem;
@@ -46,4 +47,47 @@ ul .dropdown {
   margin-top: 1rem;
   font-weight: 400;
   font-size: 1.25rem;
+}
+
+/* contact/support, contact/about */
+.exitButton {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 50;
+  flex-direction: row-reverse;
+  display: flex;
+  gap: 2px;
+}
+
+.wrapper {
+  padding: 5rem 2rem;
+  word-wrap: break-word;
+}
+
+.wrapper h1 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: start;
+  line-height: 1.2;
+}
+
+.intro {
+  margin-top: 1rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  text-align: start;
+  line-height: 1.2;
+}
+
+.wrapper ul {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  text-align: start;
+}
+
+.wrapper li {
+  font-size: 1rem;
+  list-style-type: disc;
+  padding-top: 1rem;
 }
