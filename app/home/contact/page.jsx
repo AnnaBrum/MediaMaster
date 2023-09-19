@@ -13,9 +13,9 @@ import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
-  const [users, setUsers] = useState<any[]>([]);
-  const [totalCost, setTotalCost] = useState<number>(0);
-  const [subs, setSubs] = useState<number>(0);
+  const [users, setUsers] = useState([]);
+  const [totalCost, setTotalCost] = useState(0);
+  const [subs, setSubs] = useState(0);
 
   useEffect(() => {
     const getUsers = async () => {
