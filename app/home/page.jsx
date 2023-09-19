@@ -47,7 +47,7 @@ export default function ClientComponent() {
   }, [subsData]);
 
   return (
-    <div className={styles.page}>
+    <>
       <HamburgerMenu />
       <section className={styles.sectionOne}>
         <h1 className={styles.headingOne}>Home</h1>
@@ -86,6 +86,6 @@ export default function ClientComponent() {
       <div>
         <LogoutButton />
       </div>
-    </div>
+    </>
   );
 }

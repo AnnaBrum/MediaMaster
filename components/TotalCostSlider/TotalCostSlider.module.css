@@ -5,7 +5,7 @@
 .totalCostWrapper {
   display: flex;
   justify-content: space-between;
-  width: 326px;
+  /* width: 326px; */
   height: 75px;
   flex-shrink: 0;
   align-items: center;

@@ -1,32 +1,32 @@
-"use client";
-import { useState } from "react";
-import MenuItems from "../MenuItems/MenuItems";
+'use client';
+import { useState } from 'react';
+import MenuItems from '../MenuItems/MenuItems';
 // import LogoutButton from "../LogoutButton/LogoutButton";
-import styles from "./HamburgerMenu.module.css";
-import { LogoutButton } from "../LogoutButton/LogoutButton";
+import styles from './HamburgerMenu.module.css';
+import { LogoutButton } from '../LogoutButton/LogoutButton';
 export const menuItems = [
   {
-    title: "Hem",
-    url: "/home",
+    title: 'Hem',
+    url: '/home',
   },
   {
-    title: "Mina Prenumerationer",
-    url: "/my-subscriptions",
+    title: 'Mina Prenumerationer',
+    url: '/home/my-subscriptions',
   },
   {
-    title: "Kontakt",
+    title: 'Kontakt',
     submenu: [
-      { title: "Support", url: "support" },
-      { title: "Om Media Watch", url: "about" },
+      { title: 'Support', url: 'support' },
+      { title: 'Om Media Watch', url: 'about' },
     ],
   },
   {
-    title: "Inställningar",
+    title: 'Inställningar',
     submenu: [
-      { title: "Kontoinställningar", url: "settings" },
-      { title: "Villkor och sekretess", url: "conditions" },
+      { title: 'Kontoinställningar', url: 'settings' },
+      { title: 'Villkor och sekretess', url: 'conditions' },
     ],
-  }
+  },
 ];
 
 export function HamburgerMenu() {
@@ -38,18 +38,18 @@ export function HamburgerMenu() {
   };
 
   const closeMenu = () => {
-    setNav(false); 
+    setNav(false);
   };
 
   const handleMenuClick = (index) => {
     setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
-  }
+  };
 
   return (
     <header>
       {nav ? (
         /* CLOSE ICON */
-        <div className={styles.menu} aria-hidden="true" >
+        <div className={styles.menu} aria-hidden="true">
           <div className={styles.hamburgerIcon} onClick={closeMenu}>
             <svg
               width="23"
@@ -67,12 +67,19 @@ export function HamburgerMenu() {
           {/* mobile nav */}
           <nav
             className={`flex flex-col  ${
-              nav ? "right-[0px]" : "right-[-100vw]"
+              nav ? 'right-[0px]' : 'right-[-100vw]'
             } `}
           >
             <ul>
               {menuItems.map((menu, index) => {
-                return <MenuItems items={menu} key={index} isOpen={openSubMenu === index} onClick={() => handleMenuClick(index)}/>;
+                return (
+                  <MenuItems
+                    items={menu}
+                    key={index}
+                    isOpen={openSubMenu === index}
+                    onClick={() => handleMenuClick(index)}
+                  />
+                );
               })}
             </ul>
             <LogoutButton />

@@ -1,24 +1,40 @@
-'use client';
-import styles from './my-subscriptions.module.css';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useEffect, useState } from 'react';
-// import Image from 'next/image';
-import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
+// TODO: Duplicate or move this file outside the `_examples` folder to make it a route
+
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
-import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
-import '../../styles/globals.css';
-import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
+import styles from './my-subscriptions.module.css';
+export const dynamic = 'force-dynamic';
 
+export default async function ServerComponent() {
+  // Create a Supabase client configured to use cookies
+  const supabase = createServerComponentClient({ cookies });
 
+  const { data } = await supabase.from('user_subscriptions').select(`
+  id,
+  billing_start_date,
+  billing_date,
+  subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo))
+`);
 
-export default function ClientComponent() {
-  const supabase = createClientComponentClient();
+  const subsData = data;
 
-  return(
+  return (
     <>
-    <h1>This is the my-subscriptions page</h1>
+      <section className={styles.sectionOne}>
+        <h1 className={styles.headingOne}>Mina Prenumerationer</h1>
+      </section>
+      <section className={styles.sectionTwo}>
+        {subsData.map((item) => (
+          <li key={item.id}>
+            <CostSlider
+              logoUrl={item.subscriptions.services.service_logo}
+              serviceName={item.subscriptions.services.service_name}
+              cost={item.subscriptions.price}
+            />
+          </li>
+        ))}
+      </section>
     </>
-  )
-
-
+  );
 }

@@ -1,7 +1,19 @@
-.test{
-    background-color: rgba(105, 255, 105, 0.699)
+.headingOne {
+  /* font-family: Sequel Sans; */
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 420;
+  line-height: 30px; /* 107.143% */
+  letter-spacing: 1.4px;
+  margin-top: 100px;
 }
 
-.btn{
-    background: teal;
+.sectionOne {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.sectionTwo {
+  padding-left: 32px;
+  padding-right: 32px;
 }

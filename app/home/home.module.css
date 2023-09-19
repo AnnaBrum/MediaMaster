@@ -1,10 +1,4 @@
-.page {
-  background: var(
-    --Gradient,
-    linear-gradient(180deg, #ececff 0%, #99b6ff 100%)
-  );
-  min-height: 100vh;
-}
+
 
 .sectionOne {
   padding-left: 32px;
@@ -69,6 +63,7 @@
 .loadingContainer {
   display: flex;
   justify-content: center;
+  margin: 100px;
 }
 .loading {
   animation: spin 1s linear infinite;
