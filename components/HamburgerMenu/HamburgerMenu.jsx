@@ -7,22 +7,22 @@ import { ExitButton } from "../ExitButton/ExitButton";
 
 export const menuItems = [
   {
-    title: 'Hem',
-    url: '/home',
+    title: "Hem",
+    url: "/home",
   },
   {
-    title: 'Mina Prenumerationer',
-    url: '/home/my-subscriptions',
+    title: "Mina Prenumerationer",
+    url: "/home/my-subscriptions",
   },
   {
-    title: 'Kontakt',
+    title: "Kontakt",
     submenu: [
       { title: "Support", url: "contact/support" },
       { title: "Om Media Watch", url: "contact/about" },
     ],
   },
   {
-    title: 'Inställningar',
+    title: "Inställningar",
     submenu: [
       { title: "Kontoinställningar", url: "settings/account-settings" },
       { title: "Villkor och sekretess", url: "settings/conditions" },
@@ -43,8 +43,8 @@ export function HamburgerMenu() {
   };
 
   const handleMenuClick = (index) => {
-    setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
     setNav(false);
+    setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
   };
 
   return (
@@ -53,12 +53,12 @@ export function HamburgerMenu() {
         /* CLOSE ICON */
         <div className={styles.menu} aria-hidden="true">
           <div className={styles.hamburgerIcon} onClick={closeMenu}>
-            < ExitButton />
+            <ExitButton />
           </div>
           {/* mobile nav */}
           <nav
             className={`flex flex-col  ${
-              nav ? 'right-[0px]' : 'right-[-100vw]'
+              nav ? "right-[0px]" : "right-[-100vw]"
             } `}
           >
             <ul>
