@@ -16,9 +16,6 @@
 .sectionTwo {
   padding-left: 32px;
   padding-right: 32px;
-  /* border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-right: 2px solid black; */
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   width: 101vw;
