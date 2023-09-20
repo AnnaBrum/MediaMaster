@@ -21,7 +21,7 @@ export default async function ServerComponent() {
     .from('service_categories')
     .select();
 
-  console.log(subsData);
+  // console.log(subsData);
 
   return (
     <>

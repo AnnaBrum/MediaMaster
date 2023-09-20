@@ -1,0 +1,40 @@
+.headingOne {
+  /* font-family: Sequel Sans; */
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 420;
+  line-height: 30px; /* 107.143% */
+  letter-spacing: 1.4px;
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+
+.sectionOne {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 32px;
+}
+
+.serviceForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.headingTwo {
+  /* font-family: Sequel Sans; */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 375;
+  line-height: normal;
+}
+
+.inputField {
+  border-radius: 30px;
+  border: 1px solid var(--Stroke-grey, #747373);
+  background: #fff;
+  display: flex;
+  padding: 10px 18px;
+  align-items: center;
+  gap: 10px;
+}

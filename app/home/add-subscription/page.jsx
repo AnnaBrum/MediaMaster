@@ -1,59 +1,101 @@
 'use client';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import styles from './add-subscription.module.css';
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
-  const [subsData, setSubsData] = useState([]);
+  const [serviceData, setServiceData] = useState([]);
   const [input, setInput] = useState('');
-  const [inputLength, setInputLength] = useState();
+  // const [inputLength, setInputLength] = useState();
 
   useEffect(() => {
     const getData = async () => {
       const { data } = await supabase.from('services').select();
       if (data) {
-        setSubsData(data);
+        setServiceData(data);
       }
     };
 
     getData();
-  }, [supabase, setSubsData]);
+  }, [supabase, setServiceData]);
 
-  useEffect(() => {
-    console.log(subsData);
-  }, [subsData]);
+  // useEffect(() => {
+  //   console.log(subsData);
+  // }, [subsData]);
+
   const handleChange = (e) => {
+    e.preventDefault();
     setInput(e.target.value);
-    setInputLength(input.length);
-    console.log(inputLength);
+    // setInputLength(input.length);
+    // console.log(inputLength);
   };
 
-  const filteredData = subsData.filter((item) => {
-    const str = input.charAt(0).toUpperCase() + input.slice(1);
+  //filtering the array as value of inputfield changes.
+  const filteredData = serviceData
+    .filter((item) =>
+      item.service_name.toLowerCase().includes(input.toLowerCase())
+    )
+    .sort((a, b) => {
+      // Sort by whether the item starts with the input letter
+      const aStartsWithInput = a.service_name
+        .toLowerCase()
+        .startsWith(input.toLowerCase()); // returns true/false
+      const bStartsWithInput = b.service_name
+        .toLowerCase()
+        .startsWith(input.toLowerCase());
 
-    return item.service_name.includes(str);
-  });
+      if (aStartsWithInput && !bStartsWithInput) {
+        //if a starts with input and b doesnt, put a before b in the array.
+        return -1;
+      }
+      if (bStartsWithInput && !aStartsWithInput) {
+        //if b starts with innput and a doesnt, put b before a in the array
+        return 1;
+      }
+
+      // If both start with the input letter, sort by asc(default=)
+      return 0;
+    });
+
+  const handleClick = (e) => {
+    // const selectedValue = e.target.value;
+    setInput(e.target.value);
+  };
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="service-name"
-        onChange={handleChange}
-        value={input}
-      />
-      {filteredData.map((item) => {
-        return (
-          <ul key={item.id}>
-            <li>{item.service_name}</li>
-          </ul>
-        );
-      })}
-      <h1>
-        This is the add subscription page, the from below is not finished.{' '}
-      </h1>
-      <form
+      <section className={styles.sectionOne}>
+        <h1 className={styles.headingOne}>Lägg till prenumeration</h1>
+        <form className={styles.serviceForm} action="" method="post">
+          <label htmlFor="serviceName" className={styles.headingTwo}>
+            Lägg till
+          </label>
+          <input
+            className={styles.inputField}
+            name="serviceName"
+            type="text"
+            required
+            placeholder="Service Name"
+            onChange={handleChange}
+            value={input}
+          />
+
+          {true && (
+            <>
+              {filteredData.map((item) => (
+                <ul key={item.id}>
+                  <option onClick={handleClick} value={item.service_name}>
+                    {item.service_name}
+                  </option>
+                </ul>
+              ))}
+            </>
+          )}
+        </form>
+      </section>
+      {/* <form
         className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
         action="/route-handler/add-sub"
         method="post"
@@ -74,7 +116,7 @@ export default function ClientComponent() {
         >
           Insert Values
         </button>
-      </form>
+      </form> */}
     </>
   );
 }
