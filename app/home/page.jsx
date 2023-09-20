@@ -4,7 +4,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
 import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
-import '../styles/globals.css';
+import '../globals.css';
 import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
 import { LoadingSvg } from '@/public/images/loading/loading.svg';
 import Image from 'next/image';

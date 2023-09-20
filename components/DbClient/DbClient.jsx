@@ -3,13 +3,9 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState } from 'react';
 
-interface Props {
-  // Define the type for the insert function
-  insert: () => Promise<void>;
-}
 
-export default function ClientComponent({ insert }: Props) {
-  const [users, setUsers] = useState<any[]>([]);
+export default function ClientComponent({ insert }) {
+  const [users, setUsers] = useState([]);
 
   // Create a Supabase client configured to use cookies
   const supabase = createClientComponentClient();

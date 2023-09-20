@@ -43,7 +43,7 @@
     "app/create-account/page.jsx",
     "app/dbserv/page.jsx",
     "app/home/add-subscription/page.jsx",
-    "app/home/contact/page.jsx",
+    "app/home/(contact)/page.jsx",
     "app/home/my-subscriptions/page.jsx",
     "app/home/layout.jsx",
     "app/home/page.jsx",
