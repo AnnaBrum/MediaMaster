@@ -52,9 +52,6 @@ export default async function ServerComponent() {
                 serviceName={item.subscriptions.services.service_name}
                 cost={item.subscriptions.price}
               />
-              <div>
-                <h1>{item.subscriptions.services.category_id}</h1>
-              </div>
             </li>
           ))}
         </ul>

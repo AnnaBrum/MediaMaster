@@ -29,7 +29,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/MenuItems/menuItems.ts",
-    "app/contact/about/page.jsx",
+    "app/home/(contact)/about/page.jsx",
     "app/auth/callback/route.js",
     "app/auth/register-with-email/route.js",
     "app/auth/sign-in/route.js",
