@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%);
+
+  --primary-box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.25);
+  /* --font-size: 16px;
+  --border-radius: 8px; */
+}
+
 * {
   box-sizing: border-box;
 }
@@ -15,8 +23,8 @@
     margin: 0;
     padding: 0;
     background: var(
-      --Gradient,
-      linear-gradient(180deg, #ececff 0%, #99b6ff 100%)
+      --Gradient-Frame,
+      linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%)
     );
     min-height: 100vh;
   }

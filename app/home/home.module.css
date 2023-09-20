@@ -16,16 +16,14 @@
 .sectionTwo {
   padding-left: 32px;
   padding-right: 32px;
-  border-top: 2px solid black;
+  /* border-top: 2px solid black;
   border-left: 2px solid black;
-  border-right: 2px solid black;
+  border-right: 2px solid black; */
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   width: 101vw;
-  background-color: var(
-    --Gradient-Frame,
-    linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%)
-  );
+  background: var(--primary-color);
+  box-shadow: var(--primary-box-shadow);
   /* box-shadow: 0 0 0 2px black; */
 }
 

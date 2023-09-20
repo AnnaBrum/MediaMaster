@@ -81,10 +81,10 @@ export default function ClientComponent() {
               </li>
             ))}
           </ul>
+          <div>
+            <LogoutButton />
+          </div>
         </section>
-        <div>
-          <LogoutButton />
-        </div>
       </div>
     </>
   );
