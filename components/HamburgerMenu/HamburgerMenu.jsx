@@ -24,8 +24,8 @@ export const menuItems = [
   {
     title: 'Inställningar',
     submenu: [
-      { title: 'Kontoinställningar', url: 'settings/account-settings' },
-      { title: 'Villkor och sekretess', url: 'settings/conditions' },
+      { title: 'Kontoinställningar', url: '/home/settings/account-settings' },
+      { title: 'Villkor och sekretess', url: '/home/settings/conditions' },
     ],
   },
 ];

@@ -1,6 +1,8 @@
+import styles from './conditions.module.css';
+
 export default async function Conditions() {
   return (
-    <>
+    <div className={styles.wrapper}>
       <h1 className="text-xl">Villkor och sekretess</h1>
       <div className="conditionsIntro">
         <p>Din Integritet är Vår Prioritet. GDPR och WCAG-Överensstämmelse:</p>
@@ -79,6 +81,6 @@ export default async function Conditions() {
         några frågor eller önskar mer information, är du välkommen att kontakta
         vår support.
       </p>
-    </>
+    </div>
   );
 }
