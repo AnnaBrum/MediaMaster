@@ -47,42 +47,44 @@ export default function ClientComponent() {
 
   return (
     <>
-      <section className={styles.sectionOne}>
-        <h1 className={styles.headingOne}>Home</h1>
-        <TotalCostSlider totalCost={totalCost} />
-      </section>
-      <section className={styles.sectionTwo}>
-        <div className={styles.amountOfSubsWrapper}>
-          <h2 className={styles.amountOfSubsHeading}>Prenumerationer</h2>
-          <h2 className={styles.subAmount}>{subsCount}st</h2>
+      <div className={styles.homeWrapper}>
+        <section className={styles.sectionOne}>
+          <h1 className={styles.headingOne}>Home</h1>
+          <TotalCostSlider totalCost={totalCost} />
+        </section>
+        <section className={styles.sectionTwo}>
+          <div className={styles.amountOfSubsWrapper}>
+            <h2 className={styles.amountOfSubsHeading}>Prenumerationer</h2>
+            <h2 className={styles.subAmount}>{subsCount}st</h2>
+          </div>
+          <ul className={styles.costSliderList}>
+            {isLoading ? (
+              <div className={styles.loadingContainer}>
+                <Image
+                  className={styles.loading}
+                  alt="huhu"
+                  width={44}
+                  height={44}
+                  placeholder="empty"
+                  priority={false}
+                  src="/images/loading/loading.svg"
+                ></Image>
+              </div>
+            ) : null}
+            {subsData.map((item) => (
+              <li key={item.id}>
+                <CostSlider
+                  logoUrl={item.subscriptions.services.service_logo}
+                  serviceName={item.subscriptions.services.service_name}
+                  cost={item.subscriptions.price}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+        <div>
+          <LogoutButton />
         </div>
-        <ul className={styles.costSliderList}>
-          {isLoading ? (
-            <div className={styles.loadingContainer}>
-              <Image
-                className={styles.loading}
-                alt="huhu"
-                width={44}
-                height={44}
-                placeholder="empty"
-                priority={false}
-                src="/images/loading/loading.svg"
-              ></Image>
-            </div>
-          ) : null}
-          {subsData.map((item) => (
-            <li key={item.id}>
-              <CostSlider
-                logoUrl={item.subscriptions.services.service_logo}
-                serviceName={item.subscriptions.services.service_name}
-                cost={item.subscriptions.price}
-              />
-            </li>
-          ))}
-        </ul>
-      </section>
-      <div>
-        <LogoutButton />
       </div>
     </>
   );

@@ -14,14 +14,14 @@ export default async function ServerComponent() {
   id,
   billing_start_date,
   billing_date,
-  subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo))
+  subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo, service_category))
 `);
 
   const { data: serviceCategories } = await supabase
     .from('services')
     .select('service_category');
 
-  console.log(serviceCategories);
+  console.log(subsData);
   return (
     <>
       <section className={styles.sectionOne}>
@@ -43,6 +43,9 @@ export default async function ServerComponent() {
               serviceName={item.subscriptions.services.service_name}
               cost={item.subscriptions.price}
             />
+            <div>
+              {console.log(item.subscriptions.services.service_category)}
+            </div>
           </li>
         ))}
       </section>
