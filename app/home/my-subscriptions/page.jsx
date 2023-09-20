@@ -1,8 +1,7 @@
-// TODO: Duplicate or move this file outside the `_examples` folder to make it a route
 
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
-import { CostSlider } from '@/components/CostSlider/CostSlider';
+import { BrandBox } from '@/components/BrandBox/BrandBox';
 import styles from './my-subscriptions.module.css';
 export const dynamic = 'force-dynamic';
 
@@ -24,11 +23,11 @@ export default async function ServerComponent() {
   // console.log(subsData);
 
   return (
-    <>
+    <div className={styles.pageWrapper}>
       <section className={styles.sectionOne}>
         <h1 className={styles.headingOne}>Mina Prenumerationer</h1>
         <button className={styles.addPlanContainer}>
-          <p>Lägg till prenumeration +</p>
+          <p>Lägg till prenumerationer</p>
         </button>
         <input
           className={styles.searchField}
@@ -43,11 +42,19 @@ export default async function ServerComponent() {
           </button>
         ))}
       </section>
-      <section>
+      <section className={styles.sectionThree}>
+        <h3>
+          Totalkostnad/mån
+        </h3>
+        <h3>
+          Antal
+        </h3>
+      </section>
+      <section className={styles.sectionFour}>
         <ul>
           {subsData.map((item) => (
             <li key={item.id}>
-              <CostSlider
+              <BrandBox
                 logoUrl={item.subscriptions.services.service_logo}
                 serviceName={item.subscriptions.services.service_name}
                 cost={item.subscriptions.price}
@@ -56,6 +63,6 @@ export default async function ServerComponent() {
           ))}
         </ul>
       </section>
-    </>
+    </div>
   );
 }
