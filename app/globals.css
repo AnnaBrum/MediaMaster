@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 :root {
+  /* colors */
   --primary-color: linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%);
-
+  /* effects */
   --primary-box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.25);
-  /* --font-size: 16px;
-  --border-radius: 8px; */
+  /* fonts */
+  --Bold-Display: "SequelSans-BoldDisp", "Inter", sans-serif;
+  --Bold-Head: "SequelSans-BoldHead", "Inter", sans-serif;
+  --Light-Display: "SequelSans-LightDisp", "Inter", sans-serif;
+  --Medium-Head: "SequelSans-MediumHead", "Inter", sans-serif;
+  --Semi-Bold-Display: "SequelSans-SBoldDisp", "Inter", sans-serif;
 }
 
 * {
@@ -55,47 +60,4 @@ ul .dropdown {
   margin-top: 1rem;
   font-weight: 400;
   font-size: 1.25rem;
-}
-
-/* contact/support, contact/about */
-.exitButton {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  z-index: 50;
-  flex-direction: row-reverse;
-  display: flex;
-  gap: 2px;
-}
-
-.wrapper {
-  padding: 5rem 2rem;
-  word-wrap: break-word;
-}
-
-.wrapper h1 {
-  font-size: 1.75rem;
-  font-weight: bold;
-  text-align: start;
-  line-height: 1.2;
-}
-
-.intro {
-  margin-top: 1rem;
-  font-size: 1.7rem;
-  font-weight: 400;
-  text-align: start;
-  line-height: 1.2;
-}
-
-.wrapper ul {
-  margin-top: 1rem;
-  padding-left: 1rem;
-  text-align: start;
-}
-
-.wrapper li {
-  font-size: 1rem;
-  list-style-type: disc;
-  padding-top: 1rem;
 }

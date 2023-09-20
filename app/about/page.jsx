@@ -1,12 +1,15 @@
-import { ExitButton } from "../../../components/ExitButton/ExitButton";
+import { ExitButton } from "@/components/ExitButton/ExitButton";
+import styles from "./about.module.css";
 
 export default async function About() {
   return (
-    <div className="wrapper">
-      <div className="exitButton">
+    <div className={styles.wrapper}>
+      <div className={styles.exitButton} >
         <ExitButton />
-        <h1>Hur fungerar Media Watch?</h1>
-        <p className="intro">
+      </div>
+      <div className={styles.infoContainer}>
+        <h1>Hur fungerar <br/> Media Watch?</h1>
+        <p className={styles.intro}>
           Håll enkelt koll på dina webbaserade betalningar med vår app – få
           översikt, påminnelser och säkerhet i ett enda verktyg.
         </p>

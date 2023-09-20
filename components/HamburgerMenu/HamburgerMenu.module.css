@@ -4,7 +4,11 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: white;
+  background: var(
+    --Gradient-Frame,
+    linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%)
+  );
+  min-height: 100vh;
   padding: 2rem;
 }
 

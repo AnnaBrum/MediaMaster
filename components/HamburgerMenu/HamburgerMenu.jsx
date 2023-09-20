@@ -17,8 +17,8 @@ export const menuItems = [
   {
     title: 'Kontakt',
     submenu: [
-      { title: 'Support', url: 'home/support' },
-      { title: 'Om Media Watch', url: 'home/about' },
+      { title: 'Support', url: 'support' },
+      { title: 'Om Media Watch', url: 'about' },
     ],
   },
   {
@@ -45,18 +45,6 @@ export function HamburgerMenu() {
   const handleMenuClick = (index) => {
     setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
   };
-
-  // const menuItem = menuItems[index];
-  // const handleClick = (index) => {
-    
-  //   if (menuItem.submenu) {
-  //     // If the menuItem has a submenu, run the handleClick logic
-  //     handleMenuClick(index);
-  //   } else {
-  //     // If there's no submenu, simply close the menu
-  //     closeMenu();
-  //   }
-  // };
 
   return (
     <header>
