@@ -92,7 +92,7 @@ export default function ClientComponent() {
       </section>
       <section className={styles.sectionFour}>
         <ul>
-          {filteredByCategory.map((item) => (
+          {subsData.map((item) => (
             <li key={item.id}>
               <BrandBox
                 logoUrl={item.subscriptions.services.service_logo}
