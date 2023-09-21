@@ -8,7 +8,7 @@ export default function ClientComponent() {
   const supabase = createClientComponentClient();
   const [serviceData, setServiceData] = useState([]);
   const [input, setInput] = useState('');
-  // const [inputLength, setInputLength] = useState();
+  const [dropdown, setDropdown] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -21,15 +21,10 @@ export default function ClientComponent() {
     getData();
   }, [supabase, setServiceData]);
 
-  // useEffect(() => {
-  //   console.log(subsData);
-  // }, [subsData]);
-
   const handleChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
-    // setInputLength(input.length);
-    // console.log(inputLength);
+    setDropdown(true);
   };
 
   //filtering the array as value of inputfield changes.
@@ -60,8 +55,17 @@ export default function ClientComponent() {
     });
 
   const handleClick = (e) => {
-    // const selectedValue = e.target.value;
     setInput(e.target.value);
+  };
+
+  const handleFocus = () => {
+    console.log('focused');
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setDropdown(false);
+    }, 30);
   };
 
   return (
@@ -79,18 +83,23 @@ export default function ClientComponent() {
             required
             placeholder="Service Name"
             onChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             value={input}
+            autoComplete="off"
           />
 
-          {true && (
+          {dropdown && (
             <>
-              {filteredData.map((item) => (
-                <ul key={item.id}>
-                  <option onClick={handleClick} value={item.service_name}>
-                    {item.service_name}
-                  </option>
-                </ul>
-              ))}
+              <div className={styles.dropDown}>
+                {filteredData.map((item) => (
+                  <ul key={item.id}>
+                    <option onClick={handleClick} value={item.service_name}>
+                      {item.service_name}
+                    </option>
+                  </ul>
+                ))}
+              </div>
             </>
           )}
         </form>

@@ -18,7 +18,7 @@
 .serviceForm {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  /* gap: 10px; */
 }
 
 .headingTwo {
@@ -36,5 +36,15 @@
   display: flex;
   padding: 10px 18px;
   align-items: center;
+  gap: 10px;
+}
+.dropDown {
+  border-radius: 30px;
+  /* border: 1px solid var(--Stroke-grey, #747373); */
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-left: 30px;
   gap: 10px;
 }
