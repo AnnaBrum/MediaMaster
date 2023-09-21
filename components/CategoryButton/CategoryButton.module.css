@@ -1,0 +1,14 @@
+.categoryButton {
+    font-family: var(--Light-Display);
+    font-style: normal;
+    font-size: 1.25rem;
+    font-weight: 400;
+    box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);
+    border-radius: 1.875rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+  }
+  
+  .categoryButton :active {
+    border: 1px solid #000;
+  }

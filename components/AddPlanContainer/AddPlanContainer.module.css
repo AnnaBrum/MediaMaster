@@ -1,0 +1,13 @@
+.addPlanContainer {
+    display: flex;
+    font-size: 1.25rem;
+    width: 100%;
+    box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);
+    border-radius: 1.875rem;
+    display: flex;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    background: #e6e7fe;
+    margin-bottom: 20px;
+  }

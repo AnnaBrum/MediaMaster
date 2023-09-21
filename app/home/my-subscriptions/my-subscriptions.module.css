@@ -1,5 +1,4 @@
 .headingOne {
-  /* font-family: Sequel Sans; */
   font-size: 28px;
   font-style: normal;
   font-weight: 420;
@@ -10,38 +9,58 @@
 }
 
 .pageWrapper {
-  padding-left: 32px;
-  padding-right: 32px;
-}
-
-
-.addPlanContainer {
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 30px;
-  display: flex;
-  padding: 10px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  background: #e6e7fe;
-  margin-bottom: 20px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .searchField {
-  border-radius: 30px;
-  border: 1px solid #000;
+  font-size: 1.25rem;
+  border-radius: 1.875rem;
+  border: 1px solid var(--Stroke-grey, #747373);
   background: #fff;
 
   display: flex;
   width: 100%;
-  padding: 10px 20px;
+  padding: 0.5rem 1rem;
   align-items: center;
 }
 
 .categoryButton {
-  box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35); 
-  border-radius: 30px;
-  padding: 0.625rem 1.5rem;
+  font-family: var(--Light-Display);
+  font-style: normal;
+  font-size: 1.25rem;
+  font-weight: 400;
+  box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);
+  border-radius: 1.875rem;
+  padding: 0.5rem 1rem;
   margin: 0.5rem;
+}
+
+.categoryButton :active {
+  border: 1px solid #000;
+}
+
+.sectionTwo {
+  margin-top: 1.19rem;
+  margin-bottom: 1.19rem;
+}
+
+.sectionThree {
+  margin-top: 1.19rem;
+  margin-bottom: 1.19rem;
+}
+
+.sectionThreeInfo {
+  font-style: normal;
+  font-weight: 375;
+}
+
+.total, .amount{
+  display: flex;
+  justify-content: space-between;
+}
+
+.result {
+  font-family: var(--Light-Display);
+  font-style: normal;
 }
