@@ -31,7 +31,7 @@
     "components/MenuItems/menuItems.ts",
     "app/home/(contact)/about/page.jsx",
     "app/auth/callback/route.js",
-    "app/auth/register-with-email/route.js",
+    "app/auth/sign-up/route.js",
     "app/auth/sign-in/route.js",
     "app/auth/sign-out/route.js",
     "app/settings/conditions/page.jsx",

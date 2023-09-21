@@ -1,8 +1,11 @@
-export default async function Conditions() {
+import { ExitButton } from '@/components/ExitButton/ExitButton';
+import styles from './settings.module.css';
+
+export default async function Settings() {
   return (
-    <>
-      <h1 className="text-xl">Villkor och sekretess</h1>
-      <div className="conditionsIntro">
+    <div className={styles.wrapper}>
+      <h1 className="text-xl">Kontoinställningar</h1>
+      <div className={styles.intro}>
         <p>Din Integritet är Vår Prioritet. GDPR och WCAG-Överensstämmelse:</p>
         <p>
           I vår strävan efter att säkerställa din integritet och tillgänglighet
@@ -79,6 +82,6 @@ export default async function Conditions() {
         några frågor eller önskar mer information, är du välkommen att kontakta
         vår support.
       </p>
-    </>
+    </div>
   );
 }
