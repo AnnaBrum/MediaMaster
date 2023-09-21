@@ -65,7 +65,7 @@ export default function ClientComponent() {
   const handleBlur = () => {
     setTimeout(() => {
       setDropdown(false);
-    }, 30);
+    }, 100);
   };
 
   return (
@@ -88,20 +88,40 @@ export default function ClientComponent() {
             value={input}
             autoComplete="off"
           />
+          <div className={styles.dropdownContainer}>
+            {dropdown && (
+              <>
+                <div className={styles.dropDown}>
+                  {filteredData.map((item) => (
+                    <ul key={item.id}>
+                      <option onClick={handleClick} value={item.service_name}>
+                        {item.service_name}
+                      </option>
+                    </ul>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+          <label htmlFor="users" className={styles.headingTwo}>
+            Antal Användare
+          </label>
+          <input type="text" placeholder="2" className={styles.inputField} />
 
-          {dropdown && (
-            <>
-              <div className={styles.dropDown}>
-                {filteredData.map((item) => (
-                  <ul key={item.id}>
-                    <option onClick={handleClick} value={item.service_name}>
-                      {item.service_name}
-                    </option>
-                  </ul>
-                ))}
-              </div>
-            </>
-          )}
+          <label htmlFor="users" className={styles.headingTwo}>
+            Pris
+          </label>
+          <input type="text" placeholder="2" className={styles.inputField} />
+
+          <label htmlFor="period" className={styles.headingTwo}>
+            Period
+          </label>
+          <input type="text" placeholder="2" className={styles.inputField} />
+
+          <label htmlFor="period" className={styles.headingTwo}>
+            Period
+          </label>
+          <input type="text" placeholder="2" className={styles.inputField} />
         </form>
       </section>
       {/* <form
