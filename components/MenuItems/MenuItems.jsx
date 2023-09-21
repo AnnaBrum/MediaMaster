@@ -24,7 +24,7 @@ const MenuItems = ({ items, isOpen, onClick }) => {
           {isOpen && <DropDown submenus={items.submenu} />}
         </>
       ) : (
-        <li className={styles.menuItems}><Link href={items.url}>{items.title}</Link></li>
+        <li className={styles.menuItems}><Link href={items.url} onClick={() => setTimeout(() => onClick(), 500)}>{items.title}</Link></li>
       )}
     </>
   );

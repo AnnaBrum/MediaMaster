@@ -1,54 +1,62 @@
-'use client';
-import { useState } from 'react';
-import MenuItems from '../MenuItems/MenuItems';
-import styles from './HamburgerMenu.module.css';
-import { LogoutButton } from '../LogoutButton/LogoutButton';
-import { ExitButton } from '../ExitButton/ExitButton';
+"use client";
+import { useState } from "react";
+import MenuItems from "../MenuItems/MenuItems";
+import styles from "./HamburgerMenu.module.css";
+import { LogoutButton } from "../LogoutButton/LogoutButton";
+import { ExitButton } from "../ExitButton/ExitButton";
 
 export const menuItems = [
   {
-    title: 'Hem',
-    url: '/home',
+    title: "Hem",
+    url: "/home",
   },
   {
-    title: 'Mina Prenumerationer',
-    url: '/home/my-subscriptions',
+    title: "Mina Prenumerationer",
+    url: "/home/my-subscriptions",
   },
   {
-    title: 'Kontakt',
+    title: "Kontakt",
     submenu: [
-      { title: 'Support', url: 'support' },
-      { title: 'Om Media Watch', url: 'about' },
+      { title: "Support", url: "support" },
+      { title: "Om Media Watch", url: "about" },
     ],
   },
   {
-    title: 'Inställningar',
+    title: "Inställningar",
     submenu: [
-      { title: 'Kontoinställningar', url: '/home/settings/account-settings' },
-      { title: 'Villkor och sekretess', url: '/home/settings/conditions' },
+      { title: "Kontoinställningar", url: "/home/account-settings" },
+      { title: "Villkor och sekretess", url: "/home/conditions" },
     ],
   },
 ];
 
 export function HamburgerMenu() {
-  const [nav, setNav] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
 
-  const showNav = () => {
-    setNav(!nav);
+  const openMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   const closeMenu = () => {
-    setNav(false);
+    setMenuOpen(false);
   };
 
-  const handleMenuClick = (index) => {
+  const handleMenuClick = (index, hasSubMenu) => {
+    if (hasSubMenu) {
     setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
+    } else {
+      setTimeout(closeMenu, 500); // Delay the closing of the menu so that the redirect happens under the hood
+    }
+  };
+
+  const handleSubMenuClick = () => {
+    closeMenu(); // Close the menu when a submenu item is clicked
   };
 
   return (
     <header>
-      {nav ? (
+      {menuOpen ? (
         /* CLOSE ICON */
         <div className={styles.menu} aria-hidden="true">
           <div className={styles.hamburgerIcon} onClick={closeMenu}>
@@ -57,7 +65,7 @@ export function HamburgerMenu() {
           {/* mobile nav */}
           <nav
             className={`flex flex-col  ${
-              nav ? 'right-[0px]' : 'right-[-100vw]'
+              menuOpen ? "right-[0px]" : "right-[-100vw]"
             } `}
           >
             <ul>
@@ -67,7 +75,8 @@ export function HamburgerMenu() {
                     items={menu}
                     key={index}
                     isOpen={openSubMenu === index}
-                    onClick={() => handleMenuClick(index)}
+                    onClick={() =>handleMenuClick(index, !!menu.submenu)}
+                    onSubMenuClick={handleSubMenuClick}
                   />
                 );
               })}
@@ -80,7 +89,7 @@ export function HamburgerMenu() {
         <div
           className={styles.hamburgerIcon}
           aria-hidden="true"
-          onClick={showNav}
+          onClick={openMenu}
         >
           <svg
             width="27"

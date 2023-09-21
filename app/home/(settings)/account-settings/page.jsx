@@ -4,9 +4,6 @@ import styles from './settings.module.css';
 export default async function Settings() {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.exitButton}>
-        <ExitButton />
-      </div>
       <h1 className="text-xl">Kontoinställningar</h1>
       <div className={styles.intro}>
         <p>Din Integritet är Vår Prioritet. GDPR och WCAG-Överensstämmelse:</p>
