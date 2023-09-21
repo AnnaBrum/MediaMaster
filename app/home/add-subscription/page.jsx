@@ -106,12 +106,40 @@ export default function ClientComponent() {
           <label htmlFor="users" className={styles.headingTwo}>
             Antal Användare
           </label>
-          <input type="text" placeholder="2" className={styles.inputField} />
+          <select
+            placeholder="2"
+            className={styles.inputField}
+            name="users"
+            type="text"
+            htmlFor="users"
+            id="users"
+          >
+            {/* <option value="" disabled selected>
+              Select your option
+            </option> */}
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
 
-          <label htmlFor="users" className={styles.headingTwo}>
-            Pris
+          <label htmlFor="price" className={styles.headingTwo}>
+            Antal Användare
           </label>
-          <input type="text" placeholder="2" className={styles.inputField} />
+          <select
+            placeholder="Pris plan"
+            className={styles.inputField}
+            name="users"
+            type="text"
+            htmlFor="users"
+            id="price"
+          >
+            {/* <option value="" disabled selected>
+              Select your option
+            </option> */}
+            <option value="1">Basic 99kr</option>
+            <option value="2">Standard 120kr</option>
+            <option value="3">Premium 159kr</option>
+          </select>
 
           <label htmlFor="period" className={styles.headingTwo}>
             Period
