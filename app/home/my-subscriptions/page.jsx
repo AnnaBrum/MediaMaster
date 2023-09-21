@@ -11,7 +11,7 @@ export default function ClientComponent() {
   const supabase = createClientComponentClient();
   const [subsData, setSubsData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
-  const [filteredCategory, setFilteredCategory] = useState([]);
+  const [category, setCategory] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -53,17 +53,15 @@ export default function ClientComponent() {
   }, [subsData]);
 
   const handleClick = (e) => {
-    setFilteredCategory(e.target.value);
+    setCategory(e.target.value);
     setFilter(true);
     console.log(e.target.value);
   };
 
-  const filteredByCategory = subsData.filter(
+  const filteredCategory = subsData.filter(
     (item) =>
-      item.subscriptions.services.service_categories.id == filteredCategory
+      item.subscriptions.services.service_categories.id == category
   );
-
-  console.log(categoryData);
 
   return (
     <div className={styles.pageWrapper}>
@@ -110,21 +108,19 @@ export default function ClientComponent() {
                   serviceName={item.subscriptions.services.service_name}
                   cost={item.subscriptions.price}
                 />
-                <p>{item.subscriptions.services.service_categories.id}</p>
               </li>
             ))}
           </ul>
         )}
         {filter && (
           <ul>
-            {filteredByCategory.map((item) => (
+            {filteredCategory.map((item) => (
               <li key={item.id}>
                 <BrandBox
                   logoUrl={item.subscriptions.services.service_logo}
                   serviceName={item.subscriptions.services.service_name}
                   cost={item.subscriptions.price}
                 />
-                <p>{item.subscriptions.services.service_categories.id}</p>
               </li>
             ))}
           </ul>
