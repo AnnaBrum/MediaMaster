@@ -26,7 +26,7 @@ export default function ClientComponent() {
     id,
     billing_start_date,
     billing_date,
-    subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo,
+    subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_icon,
     service_categories:category_id(category, id))
     )
   `);
@@ -43,32 +43,47 @@ export default function ClientComponent() {
     getData();
   }, [supabase, setSubsData]);
 
+  // Filter subscription data on service category
+  const filteredCategory = subsData
+  .filter((item) =>
+      item.subscriptions.services.service_categories.id == category
+  )
+
+  // Count totalcost and number of subscriptions for every filtering
   useEffect(() => {
     let amountOfsubs = 0;
     let totalcost = 0;
-    subsData.forEach((item) => {
-      totalcost += item.subscriptions.price;
-      amountOfsubs += 1;
-    });
+
+    if (!filter) {
+      subsData.forEach((item) => {
+        totalcost += item.subscriptions.price;
+        amountOfsubs += 1;
+      });
+    } else {
+      filteredCategory.forEach((item) => {
+        totalcost += item.subscriptions.price;
+        amountOfsubs += 1;
+      });
+    }
     setTotalCost(totalcost);
     setSubsCount(amountOfsubs);
-  }, [subsData]);
+  }, [subsData, filter, filteredCategory]);
 
+
+  // Get the value from category-button to filter on
   const handleClick = (e) => {
     setCategory(e.target.value);
     setFilter(true);
     
   };
 
+  // Read changes in searchfield
   const handleChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
   };
 
-  const filteredCategory = subsData
-  .filter((item) =>
-      item.subscriptions.services.service_categories.id == category
-  )
+
   
 
   return (
@@ -114,7 +129,7 @@ export default function ClientComponent() {
             {subsData.map((item) => (
               <li key={item.id}>
                 <BrandBox
-                  logoUrl={item.subscriptions.services.service_logo}
+                  logoUrl={item.subscriptions.services.service_icon}
                   serviceName={item.subscriptions.services.service_name}
                   cost={item.subscriptions.price}
                 />
@@ -127,7 +142,7 @@ export default function ClientComponent() {
             {filteredCategory.map((item) => (
               <li key={item.id}>
                 <BrandBox
-                  logoUrl={item.subscriptions.services.service_logo}
+                  logoUrl={item.subscriptions.services.service_icon}
                   serviceName={item.subscriptions.services.service_name}
                   cost={item.subscriptions.price}
                 />
