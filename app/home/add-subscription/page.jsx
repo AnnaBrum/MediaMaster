@@ -9,6 +9,7 @@ export default function ClientComponent() {
   const [serviceData, setServiceData] = useState([]);
   const [input, setInput] = useState('');
   const [dropdown, setDropdown] = useState(false);
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -27,32 +28,32 @@ export default function ClientComponent() {
     setDropdown(true);
   };
 
-  //filtering the array as value of inputfield changes.
-  const filteredData = serviceData
-    .filter((item) =>
-      item.service_name.toLowerCase().includes(input.toLowerCase())
-    )
-    .sort((a, b) => {
-      // Sort by whether the item starts with the input letter
-      const aStartsWithInput = a.service_name
-        .toLowerCase()
-        .startsWith(input.toLowerCase()); // returns true/false
-      const bStartsWithInput = b.service_name
-        .toLowerCase()
-        .startsWith(input.toLowerCase());
+  useEffect(() => {
+    const filteredData = serviceData
+      .filter((item) =>
+        item.service_name.toLowerCase().includes(input.toLowerCase())
+      )
+      .sort((a, b) => {
+        // Sort by whether the item starts with the input letter
+        const aStartsWithInput = a.service_name
+          .toLowerCase()
+          .startsWith(input.toLowerCase()); // returns true/false
+        const bStartsWithInput = b.service_name
+          .toLowerCase()
+          .startsWith(input.toLowerCase());
 
-      if (aStartsWithInput && !bStartsWithInput) {
-        //if a starts with input and b doesnt, put a before b in the array.
-        return -1;
-      }
-      if (bStartsWithInput && !aStartsWithInput) {
-        //if b starts with innput and a doesnt, put b before a in the array
-        return 1;
-      }
+        if (aStartsWithInput && !bStartsWithInput) {
+          //if a starts with input and b doesnt, put a before b in the array.
+          return -1;
+        }
+        if (bStartsWithInput && !aStartsWithInput) {
+          //if b starts with innput and a doesnt, put b before a in the array
+          return 1;
+        }
+      });
 
-      // If both start with the input letter, sort by asc(default=)
-      return 0;
-    });
+    setFilteredData(filteredData);
+  }, [input, serviceData]);
 
   const handleClick = (e) => {
     setInput(e.target.value);

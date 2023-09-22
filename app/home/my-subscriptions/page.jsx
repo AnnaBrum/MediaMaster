@@ -59,6 +59,7 @@ export default function ClientComponent() {
   // Filter subscription data on service category
   let filteredCategory;
 
+  /*********************************** CLEAN THIS UP  *******************************************************/
   if (category > 0) {
     filteredCategory = subsData
       .filter(
@@ -68,37 +69,58 @@ export default function ClientComponent() {
         item.subscriptions.services.service_name
           .toLowerCase()
           .includes(input.toLowerCase())
-      );
+      )
+      .sort((a, b) => {
+        // Sort by whether the item starts with the input letter
+        const aStartsWithInput = a.subscriptions.services.service_name
+          .toLowerCase()
+          .startsWith(input.toLowerCase()); // returns true/false
+        const bStartsWithInput = b.subscriptions.services.service_name
+          .toLowerCase()
+          .startsWith(input.toLowerCase());
+
+        if (aStartsWithInput && !bStartsWithInput) {
+          //if a starts with input and b doesnt, put a before b in the array.
+          return -1;
+        }
+        if (bStartsWithInput && !aStartsWithInput) {
+          //if b starts with innput and a doesnt, put b before a in the array
+          return 1;
+        }
+
+        // If both start with the input letter, sort by asc(default=)
+        return 0;
+      });
   } else {
     // Only apply the second filter if the condition for the first filter is not met
-    filteredCategory = subsData.filter((item) =>
-      item.subscriptions.services.service_name
-        .toLowerCase()
-        .includes(input.toLowerCase())
-    );
+    filteredCategory = subsData
+      .filter((item) =>
+        item.subscriptions.services.service_name
+          .toLowerCase()
+          .includes(input.toLowerCase())
+      )
+      .sort((a, b) => {
+        // Sort by whether the item starts with the input letter
+        const aStartsWithInput = a.subscriptions.services.service_name
+          .toLowerCase()
+          .startsWith(input.toLowerCase()); // returns true/false
+        const bStartsWithInput = b.subscriptions.services.service_name
+          .toLowerCase()
+          .startsWith(input.toLowerCase());
+
+        if (aStartsWithInput && !bStartsWithInput) {
+          //if a starts with input and b doesnt, put a before b in the array.
+          return -1;
+        }
+        if (bStartsWithInput && !aStartsWithInput) {
+          //if b starts with innput and a doesnt, put b before a in the array
+          return 1;
+        }
+
+        // If both start with the input letter, sort by asc(default=)
+        return 0;
+      });
   }
-
-  // .sort((a, b) => {
-  //   // Sort by whether the item starts with the input letter
-  //   const aStartsWithInput = a.service_name
-  //     .toLowerCase()
-  //     .startsWith(input.toLowerCase()); // returns true/false
-  //   const bStartsWithInput = b.service_name
-  //     .toLowerCase()
-  //     .startsWith(input.toLowerCase());
-
-  //   if (aStartsWithInput && !bStartsWithInput) {
-  //     //if a starts with input and b doesnt, put a before b in the array.
-  //     return -1;
-  //   }
-  //   if (bStartsWithInput && !aStartsWithInput) {
-  //     //if b starts with innput and a doesnt, put b before a in the array
-  //     return 1;
-  //   }
-
-  //   // If both start with the input letter, sort by asc(default=)
-  //   return 0;
-  // });
 
   console.log(filteredCategory);
   // Count totalcost and number of subscriptions for every filtering

@@ -14,11 +14,11 @@
   /* color styles */
   --primary: linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%);
   /* fonts */
-  --Bold-Display: "SequelSans-BoldDisp", "Inter", sans-serif;
-  --Bold-Head: "SequelSans-BoldHead", "Inter", sans-serif;
-  --Light-Display: "SequelSans-LightDisp", "Inter", sans-serif;
-  --Medium-Head: "SequelSans-MediumHead", "Inter", sans-serif;
-  --Semi-Bold-Display: "SequelSans-SBoldDisp", "Inter", sans-serif;
+  --Bold-Display: 'SequelSans-BoldDisp', 'Inter', sans-serif;
+  --Bold-Head: 'SequelSans-BoldHead', 'Inter', sans-serif;
+  --Light-Display: 'SequelSans-LightDisp', 'Inter', sans-serif;
+  --Medium-Head: 'SequelSans-MediumHead', 'Inter', sans-serif;
+  --Semi-Bold-Display: 'SequelSans-SBoldDisp', 'Inter', sans-serif;
 }
 
 * {
