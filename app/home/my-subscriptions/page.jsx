@@ -16,6 +16,8 @@ export default function ClientComponent() {
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState(false);
+  const [input, setInput] = useState("");
+
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
@@ -55,13 +57,19 @@ export default function ClientComponent() {
   const handleClick = (e) => {
     setCategory(e.target.value);
     setFilter(true);
-    console.log(e.target.value);
+    
   };
 
-  const filteredCategory = subsData.filter(
-    (item) =>
+  const handleChange = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+  };
+
+  const filteredCategory = subsData
+  .filter((item) =>
       item.subscriptions.services.service_categories.id == category
-  );
+  )
+  
 
   return (
     <div className={styles.pageWrapper}>
@@ -73,6 +81,8 @@ export default function ClientComponent() {
           className={styles.searchField}
           type="text"
           placeholder="Sök bland dina prenumerationer"
+          onChange={handleChange}
+          value={input}
         />
       </section>
       <section className={styles.sectionTwo}>
