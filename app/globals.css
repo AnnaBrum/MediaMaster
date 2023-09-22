@@ -12,7 +12,7 @@
   --primary-box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.25);
 
   /* color styles */
-  --primary: linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%);
+  --primary-color: linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%);
   /* fonts */
   --Bold-Display: 'SequelSans-BoldDisp', 'Inter', sans-serif;
   --Bold-Head: 'SequelSans-BoldHead', 'Inter', sans-serif;
@@ -40,12 +40,20 @@
     min-height: 100vh;
   }
 
-  /* h1 {
+  .welcomePage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .welcomePage h1 {
+    text-align: center;
     font-family: var(--Bold-Display);
+    font-weight: bold;
     font-size: 1.75rem;
-    line-height: 30;
     letter-spacing: 5%;
-  } */
+  } 
 
   /* h2 {
     font-family: var(--Light-Display);
