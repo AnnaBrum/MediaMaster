@@ -16,7 +16,7 @@ export default function ClientComponent() {
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState(false);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,37 +43,52 @@ export default function ClientComponent() {
     getData();
   }, [supabase, setSubsData]);
 
+  // Get the value from category-button to filter on
+  const handleClick = (e) => {
+    setCategory(e.target.value);
+    setFilter(true);
+  };
+
+  // Read changes in searchfield
+  const handleChange = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+    setFilter(true);
+  };
+
   // Filter subscription data on service category
   const filteredCategory = subsData
-  .filter((item) =>
-      item.subscriptions.services.service_categories.id == category
-  ).filter((item) =>
-  item.subscriptions.services.service_name.toLowerCase().includes(input.toLowerCase())
-)
-.sort((a, b) => {
-  // Sort by whether the item starts with the input letter
-  const aStartsWithInput = a.service_name
-    .toLowerCase()
-    .startsWith(input.toLowerCase()); // returns true/false
-  const bStartsWithInput = b.service_name
-    .toLowerCase()
-    .startsWith(input.toLowerCase());
+    // .filter(
+    //   (item) => item.subscriptions.services.service_categories.id == category
+    // )
+    .filter((item) =>
+      item.subscriptions.services.service_name
+        .toLowerCase()
+        .includes(input.toLowerCase())
+    );
+  // .sort((a, b) => {
+  //   // Sort by whether the item starts with the input letter
+  //   const aStartsWithInput = a.service_name
+  //     .toLowerCase()
+  //     .startsWith(input.toLowerCase()); // returns true/false
+  //   const bStartsWithInput = b.service_name
+  //     .toLowerCase()
+  //     .startsWith(input.toLowerCase());
 
-  if (aStartsWithInput && !bStartsWithInput) {
-    //if a starts with input and b doesnt, put a before b in the array.
-    return -1;
-  }
-  if (bStartsWithInput && !aStartsWithInput) {
-    //if b starts with innput and a doesnt, put b before a in the array
-    return 1;
-  }
+  //   if (aStartsWithInput && !bStartsWithInput) {
+  //     //if a starts with input and b doesnt, put a before b in the array.
+  //     return -1;
+  //   }
+  //   if (bStartsWithInput && !aStartsWithInput) {
+  //     //if b starts with innput and a doesnt, put b before a in the array
+  //     return 1;
+  //   }
 
-  // If both start with the input letter, sort by asc(default=)
-  return 0;
-});
+  //   // If both start with the input letter, sort by asc(default=)
+  //   return 0;
+  // });
 
-  
-
+  console.log(filteredCategory);
   // Count totalcost and number of subscriptions for every filtering
   useEffect(() => {
     let amountOfsubs = 0;
@@ -93,24 +108,6 @@ export default function ClientComponent() {
     setTotalCost(totalcost);
     setSubsCount(amountOfsubs);
   }, [subsData, filter, filteredCategory]);
-
-
-  // Get the value from category-button to filter on
-  const handleClick = (e) => {
-    setCategory(e.target.value);
-    setFilter(true);
-    
-  };
-
-  // Read changes in searchfield
-  const handleChange = (e) => {
-    e.preventDefault();
-    setInput(e.target.value);
-  };
-
-
-  
-
   return (
     <div className={styles.pageWrapper}>
       <section className={styles.sectionOne}>
