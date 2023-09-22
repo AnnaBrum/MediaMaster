@@ -22,7 +22,7 @@ export async function POST(request) {
     .from('users')
     .insert({ user_id: userId, firstname: firstName, lastname: lastName });
 
-  return NextResponse.redirect(`${requestUrl.origin}/account`, {
+  return NextResponse.redirect(`${requestUrl.origin}/home`, {
     // a 301 status is required to redirect from a POST to a GET route
     status: 301,
   });

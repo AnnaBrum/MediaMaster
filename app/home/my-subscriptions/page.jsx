@@ -47,7 +47,32 @@ export default function ClientComponent() {
   const filteredCategory = subsData
   .filter((item) =>
       item.subscriptions.services.service_categories.id == category
-  )
+  ).filter((item) =>
+  item.subscriptions.services.service_name.toLowerCase().includes(input.toLowerCase())
+)
+.sort((a, b) => {
+  // Sort by whether the item starts with the input letter
+  const aStartsWithInput = a.service_name
+    .toLowerCase()
+    .startsWith(input.toLowerCase()); // returns true/false
+  const bStartsWithInput = b.service_name
+    .toLowerCase()
+    .startsWith(input.toLowerCase());
+
+  if (aStartsWithInput && !bStartsWithInput) {
+    //if a starts with input and b doesnt, put a before b in the array.
+    return -1;
+  }
+  if (bStartsWithInput && !aStartsWithInput) {
+    //if b starts with innput and a doesnt, put b before a in the array
+    return 1;
+  }
+
+  // If both start with the input letter, sort by asc(default=)
+  return 0;
+});
+
+  
 
   // Count totalcost and number of subscriptions for every filtering
   useEffect(() => {
@@ -89,7 +114,7 @@ export default function ClientComponent() {
   return (
     <div className={styles.pageWrapper}>
       <section className={styles.sectionOne}>
-        <CategoryButton />
+        {/* <CategoryButton /> */}
         <h1 className={styles.headingOne}>Mina Prenumerationer</h1>
         <AddPlanContainer />
         <input

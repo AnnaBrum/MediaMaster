@@ -11,7 +11,7 @@ export function BrandBox({ logoUrl, serviceName, cost, serviceUrl }) {
       <div className={styles.imageContainer}>
         <Image
           src={logoUrl}
-          alt="huhu"
+          alt="service icon"
           width={44}
           height={44}
           placeholder="empty"
