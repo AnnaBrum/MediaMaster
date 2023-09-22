@@ -58,9 +58,9 @@ export default function ClientComponent() {
 
   // Filter subscription data on service category
   const filteredCategory = subsData
-    // .filter(
-    //   (item) => item.subscriptions.services.service_categories.id == category
-    // )
+    .filter(
+      (item) => item.subscriptions.services.service_categories.id == category
+    )
     .filter((item) =>
       item.subscriptions.services.service_name
         .toLowerCase()

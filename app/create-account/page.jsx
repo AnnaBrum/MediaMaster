@@ -1,6 +1,7 @@
 import Messages from "./messages";
 import Link from "next/link";
 
+
 export default async function CreateAccount() {
   return (
     <div className="flex min-h-screen flex-col py-12">
