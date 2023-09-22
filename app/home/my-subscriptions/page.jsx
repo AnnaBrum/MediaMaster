@@ -57,15 +57,27 @@ export default function ClientComponent() {
   };
 
   // Filter subscription data on service category
-  const filteredCategory = subsData
-    .filter(
-      (item) => item.subscriptions.services.service_categories.id == category
-    )
-    .filter((item) =>
+  let filteredCategory;
+
+  if (category > 0) {
+    filteredCategory = subsData
+      .filter(
+        (item) => item.subscriptions.services.service_categories.id == category
+      )
+      .filter((item) =>
+        item.subscriptions.services.service_name
+          .toLowerCase()
+          .includes(input.toLowerCase())
+      );
+  } else {
+    // Only apply the second filter if the condition for the first filter is not met
+    filteredCategory = subsData.filter((item) =>
       item.subscriptions.services.service_name
         .toLowerCase()
         .includes(input.toLowerCase())
     );
+  }
+
   // .sort((a, b) => {
   //   // Sort by whether the item starts with the input letter
   //   const aStartsWithInput = a.service_name
