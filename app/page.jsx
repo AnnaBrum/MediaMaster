@@ -18,7 +18,9 @@ export default async function Index() {
 
   // Redirect to /home after 5 seconds
   setTimeout(() => {
+    console.log("hejsan")
     redirect("/home");
+   
   }, 5000);
 
   return (
