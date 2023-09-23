@@ -1,12 +1,14 @@
 import { ExitButton } from "@/components/ExitButton/ExitButton";
 import styles from "./about.module.css";
+import Link from "next/link";
 
 export default async function About() {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.exitButton} >
-        <ExitButton />
-      </div>
+      <Link className={styles.exitButton} href="/startpage">
+        <ExitButton 
+        />
+      </Link>
       <div className={styles.infoContainer}>
         <h1>Hur fungerar <br/> Media Watch?</h1>
         <p className={styles.intro}>

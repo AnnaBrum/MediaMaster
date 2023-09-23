@@ -1,12 +1,15 @@
 import { ExitButton } from '@/components/ExitButton/ExitButton';
 import styles from './conditions.module.css';
+import Link from 'next/link';
 
 export default async function Conditions() {
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.exitButton}>
-        <ExitButton />
-      </div>
+      <Link className={styles.exitButton} href="/startpage">
+        <ExitButton 
+        />
+      </Link>
       <h1 className="text-xl">Villkor och sekretess</h1>
       <div className="conditionsIntro">
         <p>Din Integritet är Vår Prioritet. GDPR och WCAG-Överensstämmelse:</p>
