@@ -11,12 +11,12 @@ export default function ClientComponent() {
   const supabase = createClientComponentClient();
   const [subsData, setSubsData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [filter, setFilter] = useState(false);
   const [input, setInput] = useState('');
+  const [filteredCategory, setFilteredCategory] = useState(subsData);
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,8 +45,7 @@ export default function ClientComponent() {
 
   // Get the value from category-button to filter on
   const handleClick = (e) => {
-    setCategory(e.target.value);
-    setFilter(true);
+    setCategory(parseInt(e.target.value));
   };
 
   // Read changes in searchfield
@@ -56,15 +55,10 @@ export default function ClientComponent() {
     setFilter(true);
   };
 
-  // Filter subscription data on service category
-  let filteredCategory;
+  // Function to filter subscription data based on category + input, sorts order based on firstletter match.
 
-  /*********************************** CLEAN THIS UP  *******************************************************/
-  if (category > 0) {
-    filteredCategory = subsData
-      .filter(
-        (item) => item.subscriptions.services.service_categories.id == category
-      )
+  function filterAndSortSubs(subscriptionsArray, input) {
+    return subscriptionsArray
       .filter((item) =>
         item.subscriptions.services.service_name
           .toLowerCase()
@@ -74,74 +68,52 @@ export default function ClientComponent() {
         // Sort by whether the item starts with the input letter
         const aStartsWithInput = a.subscriptions.services.service_name
           .toLowerCase()
-          .startsWith(input.toLowerCase()); // returns true/false
+          .startsWith(input.toLowerCase());
         const bStartsWithInput = b.subscriptions.services.service_name
           .toLowerCase()
           .startsWith(input.toLowerCase());
 
         if (aStartsWithInput && !bStartsWithInput) {
-          //if a starts with input and b doesnt, put a before b in the array.
           return -1;
         }
         if (bStartsWithInput && !aStartsWithInput) {
-          //if b starts with innput and a doesnt, put b before a in the array
           return 1;
         }
 
-        // If both start with the input letter, sort by asc(default=)
-        return 0;
-      });
-  } else {
-    // Only apply the second filter if the condition for the first filter is not met
-    filteredCategory = subsData
-      .filter((item) =>
-        item.subscriptions.services.service_name
-          .toLowerCase()
-          .includes(input.toLowerCase())
-      )
-      .sort((a, b) => {
-        // Sort by whether the item starts with the input letter
-        const aStartsWithInput = a.subscriptions.services.service_name
-          .toLowerCase()
-          .startsWith(input.toLowerCase()); // returns true/false
-        const bStartsWithInput = b.subscriptions.services.service_name
-          .toLowerCase()
-          .startsWith(input.toLowerCase());
-
-        if (aStartsWithInput && !bStartsWithInput) {
-          //if a starts with input and b doesnt, put a before b in the array.
-          return -1;
-        }
-        if (bStartsWithInput && !aStartsWithInput) {
-          //if b starts with innput and a doesnt, put b before a in the array
-          return 1;
-        }
-
-        // If both start with the input letter, sort by asc(default=)
         return 0;
       });
   }
 
-  console.log(filteredCategory);
+  useEffect(() => {
+    if (category !== 0) {
+      setFilteredCategory(
+        filterAndSortSubs(
+          subsData.filter(
+            (item) =>
+              item.subscriptions.services.service_categories.id == category
+          ),
+          input
+        )
+      );
+    } else {
+      setFilteredCategory(filterAndSortSubs(subsData, input));
+    }
+  }, [subsData, category, input]);
+
   // Count totalcost and number of subscriptions for every filtering
   useEffect(() => {
     let amountOfsubs = 0;
     let totalcost = 0;
 
-    if (!filter) {
-      subsData.forEach((item) => {
-        totalcost += item.subscriptions.price;
-        amountOfsubs += 1;
-      });
-    } else {
-      filteredCategory.forEach((item) => {
-        totalcost += item.subscriptions.price;
-        amountOfsubs += 1;
-      });
-    }
+    filteredCategory.forEach((item) => {
+      totalcost += item.subscriptions.price;
+      amountOfsubs += 1;
+    });
+
     setTotalCost(totalcost);
     setSubsCount(amountOfsubs);
-  }, [subsData, filter, filteredCategory]);
+  }, [subsData, filteredCategory]);
+
   return (
     <div className={styles.pageWrapper}>
       <section className={styles.sectionOne}>
@@ -167,7 +139,13 @@ export default function ClientComponent() {
             {item.category}
           </button>
         ))}
-        <button className={styles.categoryButton}>Alla kategorier</button>
+        <button
+          className={styles.categoryButton}
+          value={0}
+          onClick={handleClick}
+        >
+          Alla kategorier
+        </button>
       </section>
       <section className={styles.sectionThree}>
         <div className={styles.total}>
@@ -180,32 +158,17 @@ export default function ClientComponent() {
         </div>
       </section>
       <section className={styles.sectionFour}>
-        {!filter && (
-          <ul>
-            {subsData.map((item) => (
-              <li key={item.id}>
-                <BrandBox
-                  logoUrl={item.subscriptions.services.service_icon}
-                  serviceName={item.subscriptions.services.service_name}
-                  cost={item.subscriptions.price}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
-        {filter && (
-          <ul>
-            {filteredCategory.map((item) => (
-              <li key={item.id}>
-                <BrandBox
-                  logoUrl={item.subscriptions.services.service_icon}
-                  serviceName={item.subscriptions.services.service_name}
-                  cost={item.subscriptions.price}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul>
+          {filteredCategory.map((item) => (
+            <li key={item.id}>
+              <BrandBox
+                logoUrl={item.subscriptions.services.service_icon}
+                serviceName={item.subscriptions.services.service_name}
+                cost={item.subscriptions.price}
+              />
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
