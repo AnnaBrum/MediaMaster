@@ -52,7 +52,6 @@ export default function ClientComponent() {
   const handleChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
-    setFilter(true);
   };
 
   // Function to filter subscription data based on category + input, sorts order based on firstletter match.
