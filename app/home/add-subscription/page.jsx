@@ -124,7 +124,7 @@ export default function ClientComponent() {
           </select>
 
           <label htmlFor="price" className={styles.headingTwo}>
-            Antal Användare
+            Pris
           </label>
           <select
             placeholder="Pris plan"
