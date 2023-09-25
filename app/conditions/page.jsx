@@ -4,6 +4,8 @@ import { ExitButton } from '@/components/ExitButton/ExitButton';
 import styles from './conditions.module.css';
 import Link from 'next/link';
 
+export const dynamic = "force-dynamic";
+
 export default async function Conditions() {
   const supabase = createClientComponentClient();
   const {

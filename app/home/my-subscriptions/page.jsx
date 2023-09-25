@@ -5,6 +5,7 @@ import { BrandBox } from '@/components/BrandBox/BrandBox';
 import { AddPlanContainer } from '@/components/AddPlanContainer/AddPlanContainer';
 import { CategoryButton } from '@/components/CategoryButton/CategoryButton';
 import styles from './my-subscriptions.module.css';
+
 export const dynamic = 'force-dynamic';
 
 export default function ClientComponent() {

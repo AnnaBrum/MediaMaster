@@ -1,17 +1,19 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+"use client";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function StartPage() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createClientComponentClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
   if (session) {
     // this is a protected route - only users who are signed in can view this route
-    redirect("/"); //if logged in - redirect to dashboard
+    redirect('/');
   }
 
   return (

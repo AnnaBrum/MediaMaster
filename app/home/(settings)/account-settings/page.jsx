@@ -2,6 +2,7 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import styles from './settings.module.css';
 
+export const dynamic = "force-dynamic";
 
 export default async function Settings() {
   const supabase = createClientComponentClient()

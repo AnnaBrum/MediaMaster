@@ -1,8 +1,10 @@
 "use client";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { redirect } from 'next/navigation';
 import Messages from './messages';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import Link from 'next/link';
+
+export const dynamic = "force-dynamic";
 
 export default async function Login() {
   const supabase = createClientComponentClient();
