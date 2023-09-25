@@ -1,6 +1,6 @@
 import styles from './about.module.css';
 
-export default async function About() {
+export default function About() {
   return (
     <div className={styles.wrapper}>
       <h1>Hur fungerar <br/> Media Watch?</h1>
