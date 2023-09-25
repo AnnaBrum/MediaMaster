@@ -1,6 +1,6 @@
 import styles from './conditions.module.css';
 
-export default async function Conditions() {
+export default function Conditions() {
   return (
     <div className={styles.wrapper}>
       <h1 className="text-xl">Villkor och sekretess</h1>
@@ -52,7 +52,7 @@ export default async function Conditions() {
         <li>
           Användarvänlig design: Vi har utformat vår app med användbarhet i
           åtanke. Vår layout och navigering är enkla och logiska för att hjälpa
-          alla användare att enkelt komma åt våra tjänster.{" "}
+          alla användare att enkelt komma åt våra tjänster.{' '}
         </li>
         <li>
           Alternativa texter: Vi inkluderar alternativa texter för alla
