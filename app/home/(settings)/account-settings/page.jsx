@@ -1,7 +1,11 @@
-import { ExitButton } from '@/components/ExitButton/ExitButton';
+'use client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import styles from './settings.module.css';
 
 export default function Settings() {
+
+  const supabase = createClientComponentClient()
+
   return (
     <div className={styles.wrapper}>
       <h1 className="text-xl">Kontoinställningar</h1>

@@ -1,8 +1,10 @@
+
 import { ExitButton } from '@/components/ExitButton/ExitButton';
 import styles from './conditions.module.css';
 import Link from 'next/link';
 
 export default async function Conditions() {
+
 
   return (
     <div className={styles.wrapper}>
