@@ -51,7 +51,7 @@
     "app/login/page.jsx",
     "app/home/add-subscription/route.js",
     "app/route-handler/see-sub/route.js",
-    "app/create-account/register-with-email/verify-account/route.js",
+    "app/create-account/register-with-email/verify-account/(route).js",
     "app/server-page/page.jsx",
     "app/startpage/page.jsx",
     "app/layout.jsx",
