@@ -1,5 +1,4 @@
 'use client';
-
 import Link from 'next/link';
 import Messages from './messages';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
