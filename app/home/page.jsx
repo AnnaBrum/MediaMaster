@@ -8,7 +8,7 @@ import '../globals.css';
 import { LoadingSvg } from '@/public/images/loading/loading.svg';
 import Image from 'next/image';
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();

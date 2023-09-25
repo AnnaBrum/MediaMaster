@@ -3,7 +3,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import Link from 'next/link';
 import Messages from './messages';
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export default async function VerifyAccount() {
   const supabase = createClientComponentClient();
@@ -12,7 +12,7 @@ export default async function VerifyAccount() {
   } = await supabase.auth.getSession();
 
   if (session) {
-   //this is a protected route - only users who are signed in can view this route
+    //this is a protected route - only users who are signed in can view this route
     redirect('/');
   }
 

@@ -4,7 +4,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState, useRef } from 'react';
 import styles from './add-subscription.module.css';
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
