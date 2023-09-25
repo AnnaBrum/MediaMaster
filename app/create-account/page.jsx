@@ -1,10 +1,10 @@
-import Messages from "./messages";
-import Link from "next/link";
+'use client';
+import Messages from './messages';
+import Link from 'next/link';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
-export default async function CreateAccount() {
-
+export default function CreateAccount() {
   return (
     <div className="flex min-h-screen flex-col py-12">
       <h1 className="text-xl">Skapa konto</h1>
