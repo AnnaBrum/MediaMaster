@@ -1,13 +1,13 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+'use client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { redirect } from 'next/navigation';
 import Messages from './messages';
 import Link from 'next/link';
-import { cookies } from 'next/headers';
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export default async function Login() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createClientComponentClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -48,10 +48,7 @@ export default async function Login() {
             placeholder="••••••••"
             required
           />
-          <button
-            formAction="/auth/sign-in"
-            className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2"
-          >
+          <button className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2">
             Logga in
           </button>
           <Link className="underline " href="/reset-password">
