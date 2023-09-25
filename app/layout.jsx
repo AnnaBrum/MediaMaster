@@ -11,7 +11,7 @@ const sequel_sans = localFont({
     {
       path: './fonts/SequelSans_BoldHead.woff2',
       weight: '400',
-      style: 'italic',
+      style: 'normal',
     },
     {
       path: './fonts/SequelSans_LightDisp.woff2',
@@ -21,12 +21,12 @@ const sequel_sans = localFont({
     {
       path: './fonts/SequelSans_MediumHead.woff2',
       weight: '700',
-      style: 'italic',
+      style: 'normal',
     },
     {
       path: './fonts/SequelSans_SemiBoldDisp.woff2',
       weight: '700',
-      style: 'italic',
+      style: 'normal',
     },
   ],
 });

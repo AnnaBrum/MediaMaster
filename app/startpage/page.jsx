@@ -2,7 +2,6 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { useEffect } from 'react';
 
 // export const dynamic = "force-dynamic";
 
