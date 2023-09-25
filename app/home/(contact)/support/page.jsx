@@ -2,7 +2,7 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import styles from './support.module.css';
 
-export default function Support() {
+export default async function Support() {
 
   const supabase = createClientComponentClient()
   

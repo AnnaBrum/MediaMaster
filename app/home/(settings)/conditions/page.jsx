@@ -3,7 +3,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import styles from "./conditions.module.css";
 
 
-export default function Conditions() {
+export default async function Conditions() {
   const supabase = createClientComponentClient();
 
   return (
