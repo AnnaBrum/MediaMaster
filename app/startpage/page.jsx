@@ -2,19 +2,23 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { useEffect } from 'react';
 
 // export const dynamic = "force-dynamic";
 
 export default async function StartPage() {
-  const supabase = createClientComponentClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session) {
-    // this is a protected route - only users who are signed in can view this route
-    redirect('/');
-  }
+  useEffect(() => {
+    // This code will only be executed on the client side.
+    const supabase = createClientComponentClient();
+    async function fetchData() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        // this is a protected route - only users who are signed in can view this route
+        redirect('/');
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <>
