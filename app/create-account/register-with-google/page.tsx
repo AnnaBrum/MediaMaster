@@ -1,14 +1,9 @@
+'use client';
 
-
-
+export const dynamic = 'force-dynamic';
 
 export default async function RegisterWithGoogle() {
-
-
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      
-
-    </div>
+    <div className="flex min-h-screen flex-col items-center justify-center py-2"></div>
   );
 }

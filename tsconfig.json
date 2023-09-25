@@ -50,7 +50,6 @@
     "app/login/messages.jsx",
     "app/login/page.jsx",
     "app/route-handler/add-sub/route.js",
-    "app/route-handler/see-sub/route.js",
     "app/route-handler/verify/route.js",
     "app/server-page/page.jsx",
     "app/startpage/page.jsx",

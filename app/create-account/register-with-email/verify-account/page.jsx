@@ -1,19 +1,21 @@
-import Link from "next/link";
-import Messages from './messages';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+'use client';
 
-export const dynamic = "force-dynamic";
+import Link from 'next/link';
+import Messages from './messages';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+// import { cookies } from 'next/headers';
+
+export const dynamic = 'force-dynamic';
 
 export default async function VerifyAccount() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createClientComponentClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
   if (session) {
     // this is a protected route - only users who are signed in can view this route
-    redirect('/');
+    // redirect('/');
   }
   return (
     <form
