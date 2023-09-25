@@ -1,6 +1,20 @@
 import Link from "next/link";
+import Messages from './messages';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
-export default function VerifyAccount() {
+export const dynamic = "force-dynamic";
+
+export default async function VerifyAccount() {
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (session) {
+    // this is a protected route - only users who are signed in can view this route
+    redirect('/');
+  }
   return (
     <form
       className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
@@ -46,6 +60,7 @@ export default function VerifyAccount() {
       >
         Kom igång
       </button>
+      <Messages />
     </form>
   );
 }

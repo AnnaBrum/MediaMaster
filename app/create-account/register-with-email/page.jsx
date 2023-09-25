@@ -3,7 +3,10 @@ import Messages from './messages';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 
+export const dynamic = "force-dynamic";
+
 export default async function RegisterWithEmail() {
+
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },
