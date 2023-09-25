@@ -1,6 +1,6 @@
 'use client';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
 export default async function Index() {
   const supabase = createClientComponentClient();
@@ -8,17 +8,17 @@ export default async function Index() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (session) {
-   //this is a protected route - only users who are signed in can view this route
-    redirect('/');
-  }
- else {
-  // Redirect to /home after 5 seconds
-  setTimeout(() => {
-    console.log("hejsan")
-    redirect("/home");
-   
-  }, 5000)};
+  // if (session) {
+  //   //this is a protected route - only users who are signed in can view this route
+  //   redirect('/');
+  // }
+  //  else {
+  //   // Redirect to /home after 5 seconds
+  //   setTimeout(() => {
+  //     console.log("hejsan")
+  //     redirect("/home");
+
+  //   }, 5000)};
 
   return (
     <>
