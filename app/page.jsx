@@ -14,14 +14,13 @@ export default async function Index() {
   if (!session) {
     // Redirect to /startpage if the user is not authenticated
     return redirect("/startpage");
-  }
-
+  } else {
   // Redirect to /home after 5 seconds
   setTimeout(() => {
     console.log("hejsan")
     redirect("/home");
    
-  }, 5000);
+  }, 5000)};
 
   return (
     <>

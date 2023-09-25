@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
 import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
 import '../globals.css';
-import { LogoutButton } from '@/components/LogoutButton/LogoutButton';
 import { LoadingSvg } from '@/public/images/loading/loading.svg';
 import Image from 'next/image';
 
