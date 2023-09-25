@@ -1,7 +1,7 @@
 import { ExitButton } from '@/components/ExitButton/ExitButton';
 import styles from './settings.module.css';
 
-export default async function Settings() {
+export default function Settings() {
   return (
     <div className={styles.wrapper}>
       <h1 className="text-xl">Kontoinställningar</h1>
