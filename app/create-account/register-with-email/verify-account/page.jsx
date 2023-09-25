@@ -3,9 +3,6 @@
 import Link from 'next/link';
 import Messages from './messages';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-// import { cookies } from 'next/headers';
-
-export const dynamic = 'force-dynamic';
 
 export default async function VerifyAccount() {
   const supabase = createClientComponentClient();
@@ -14,9 +11,10 @@ export default async function VerifyAccount() {
   } = await supabase.auth.getSession();
 
   if (session) {
-    // this is a protected route - only users who are signed in can view this route
-    // redirect('/');
+   //this is a protected route - only users who are signed in can view this route
+    redirect('/');
   }
+
   return (
     <form
       className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
