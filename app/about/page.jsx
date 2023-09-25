@@ -1,16 +1,20 @@
-import { ExitButton } from "@/components/ExitButton/ExitButton";
-import styles from "./about.module.css";
-import Link from "next/link";
+'use client';
+
+import { ExitButton } from '@/components/ExitButton/ExitButton';
+import styles from './about.module.css';
+import Link from 'next/link';
+
 
 export default function About() {
   return (
     <div className={styles.wrapper}>
       <Link className={styles.exitButton} href="/startpage">
-        <ExitButton 
-        />
+        <ExitButton />
       </Link>
       <div className={styles.infoContainer}>
-        <h1>Hur fungerar <br/> Media Watch?</h1>
+        <h1>
+          Hur fungerar <br /> Media Watch?
+        </h1>
         <p className={styles.intro}>
           Håll enkelt koll på dina webbaserade betalningar med vår app – få
           översikt, påminnelser och säkerhet i ett enda verktyg.
