@@ -15,6 +15,13 @@ export default async function ServerComponent() {
     redirect('/startpage');
   }
 
+  // if (session) {
+  //   setTimeout(() => {
+  //     redirect('/home');
+  //   }, 3000);
+
+  // }
+
   return (
     <>
       <div className="welcomePage">

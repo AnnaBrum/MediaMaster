@@ -5,10 +5,11 @@ import { useEffect, useState } from 'react';
 import { CostSlider } from '@/components/CostSlider/CostSlider';
 import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
 import '../globals.css';
-import { LoadingSvg } from '@/public/images/loading/loading.svg';
+// import { LoadingSvg } from '@/public/images/loading/loading.svg';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 
-// export const dynamic = "force-dynamic";
+// export const dynamic = 'force-dynamic';
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
@@ -16,6 +17,25 @@ export default function ClientComponent() {
   const [totalCost, setTotalCost] = useState(0);
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // This code will only be executed on the client side.
+    // const supabase = createClientComponentClient();
+    async function fetchData() {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        // this is a protected route - only users who are signed in can view this route
+        console.log('we have session');
+      }
+      if (!session) {
+        // this is a protected route - only users who are signed in can view this route
+        redirect('/startpage');
+      }
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
