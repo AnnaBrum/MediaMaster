@@ -5,6 +5,9 @@ import { useEffect, useState, useRef } from 'react';
 import styles from './add-subscription.module.css';
 import dropdownArrow from '@/public/images/form/dropdownArrow.svg';
 import Image from 'next/image';
+// import DatePicker from 'react-datindex.jsepicker';
+import DatePicker from 'react-datepicker/dist/react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 // export const dynamic = "force-dynamic";
 
 export default function ClientComponent() {
@@ -19,6 +22,7 @@ export default function ClientComponent() {
   const [price, setPrice] = useState(1);
   const [period, setPeriod] = useState('monthly');
   const [periodDropdown, setPeriodDropdown] = useState(false);
+  const [startDate, setStartDate] = useState();
   const [payDate, setPaydate] = useState(27);
 
   useEffect(() => {
@@ -303,9 +307,16 @@ export default function ClientComponent() {
           </div>
 
           <label htmlFor="period" className={styles.headingTwo}>
-            Period
+            Betaldatum
           </label>
-          <input type="text" placeholder="2" className={styles.inputField} />
+          <div className={styles.datefieldContainer}>
+            <DatePicker
+              className={styles.dateInputField}
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              placeholder="27/08/2023"
+            />
+          </div>
         </form>
       </section>
       {/* <form
