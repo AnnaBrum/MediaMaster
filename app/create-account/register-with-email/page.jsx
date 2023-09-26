@@ -6,21 +6,16 @@ import Messages from './messages';
 // export const dynamic = "force-dynamic";
 
 export default async function RegisterWithEmail() {
-  useEffect(() => {
-    const supabase = createClientComponentClient();
-    async function fetchData() {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+  const supabase = createClientComponentClient();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-      if (session) {
-        //this is a protected route - only users who are signed in can view this route
-        redirect("/");
-      }
-    }
-    fetchData();
-  }, []);
-  
+  if (session) {
+    // this is a protected route - only users who are signed in can view this route
+    redirect('/');
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">

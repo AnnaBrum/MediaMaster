@@ -1,26 +1,21 @@
-"use client";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import Link from "next/link";
-import Messages from "./messages";
+'use client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import Link from 'next/link';
+import Messages from './messages';
 
 // export const dynamic = "force-dynamic";
 
 export default async function VerifyAccount() {
-  useEffect(() => {
-    const supabase = createClientComponentClient();
-    async function fetchData() {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+  const supabase = createClientComponentClient();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-      if (session) {
-        //this is a protected route - only users who are signed in can view this route
-        redirect("/");
-      }
-    }
-    fetchData();
-  }, []);
-  
+  if (session) {
+    //this is a protected route - only users who are signed in can view this route
+    redirect('/');
+  }
+
   return (
     <form
       className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
