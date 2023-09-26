@@ -1,10 +1,12 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import Messages from './messages';
-import Link from 'next/link';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import Messages from "./messages";
+import Link from "next/link";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { NavDots } from "../../components/NavDots/NavDots";
+import styles from "./create-account.module.css";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function CreateAccount() {
   const supabase = createServerComponentClient({ cookies });
@@ -14,21 +16,27 @@ export default async function CreateAccount() {
 
   if (session) {
     //this is a protected route - only users who are signed in can view this route
-    redirect('/startpage');
+    redirect("/startpage");
   }
   return (
-    <div className="flex min-h-screen flex-col py-12">
-      <h1 className="text-xl">Skapa konto</h1>
-      <h2>Registrera dig med</h2>
+    <div className={styles.pageWrapper}>
+      <NavDots
+        imageUrl1="/images/navigation/nav_dot_active.svg"
+        imageUrl2="/images/navigation/nav_dot.svg"
+        imageUrl3="/images/navigation/nav_dot.svg"
+        imageUrl4="/images/navigation/nav_dot.svg"
+      />
+      <h1 className={styles.headingOne}>Skapa konto</h1>
+      <h2 className={styles.headingTwo}>Registrera dig med</h2>
       <Link
         href="/register-with-google"
-        className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+        className={styles.register}
       >
         Google
       </Link>
       <Link
         href="/create-account/register-with-email"
-        className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+        className={styles.register}
       >
         Email
       </Link>

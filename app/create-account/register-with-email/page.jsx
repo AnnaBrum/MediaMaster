@@ -1,9 +1,11 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { redirect } from 'next/navigation';
-import Messages from './messages';
-import { cookies } from 'next/headers';
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { redirect } from "next/navigation";
+import Messages from "./messages";
+import { cookies } from "next/headers";
+import styles from "./register.module.css";
+import { NavDots } from "../../../components/NavDots/NavDots";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function RegisterWithEmail() {
   const supabase = createServerComponentClient({ cookies });
@@ -13,48 +15,45 @@ export default async function RegisterWithEmail() {
 
   if (session) {
     // this is a protected route - only users who are signed in can view this route
-    redirect('/startpage');
+    redirect("/startpage");
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
-        <form
-          className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-          action="/auth/sign-up"
-          method="post"
+    <div className={styles.pageWrapper}>
+      <NavDots
+        imageUrl1="/images/navigation/nav_dot_active.svg"
+        imageUrl2="/images/navigation/nav_dot_active.svg"
+        imageUrl3="/images/navigation/nav_dot.svg"
+        imageUrl4="/images/navigation/nav_dot.svg"
+      />
+      <h1 className={styles.headingOne}>Registrera dig</h1>
+      <form className={styles.form} action="/auth/sign-up" method="post">
+        <label htmlFor="email">Email*</label>
+        <input
+          className={styles.input}
+          name="email"
+          id="email"
+          type="email"
+          placeholder="you@example.com"
+          required
+        />
+        <label htmlFor="password">Lösenord*</label>
+        <input
+          className={styles.input}
+          type="password"
+          name="password"
+          id="password"
+          placeholder="••••••••"
+          required
+        />
+        <button
+          formAction="/auth/sign-up"
+          className={styles.login}
         >
-          <label className="text-md" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="rounded-md px-4 py-2 bg-inherit border mb-6"
-            name="email"
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            required
-          />
-          <label className="text-md" htmlFor="password">
-            Lösenord
-          </label>
-          <input
-            className="rounded-md px-4 py-2 bg-inherit border mb-6"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="••••••••"
-            required
-          />
-          <button
-            formAction="/auth/sign-up"
-            className="border border-gray-700 rounded-full px-4 py-1 text-black mb-2"
-          >
-            Registrera dig
-          </button>
-          <Messages />
-        </form>
-      </div>
+          Logga in
+        </button>
+        <Messages />
+      </form>
     </div>
   );
 }

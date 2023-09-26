@@ -30,7 +30,7 @@ export async function POST(request) {
   }
 
   return NextResponse.redirect(
-    `${requestUrl.origin}/create-account/register-with-email/verify-account`,
+    `${requestUrl.origin}/create-account/verify-account`,
     {
       // a 301 status is required to redirect from a POST to a GET route
       status: 301,
