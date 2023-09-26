@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "SequelSans-BoldDisp";
+  src:
+    local("Sequel Sans Bold Display"),
+    url("../public/fonts/SequelSans_BoldDisplay.woff2") format("Web Open Font Format 2"),
+}
+@font-face {
+  font-family: "SequelSans-BoldHead";
+  src:
+    local("Sequel Sans Bold Head"),
+    url("../public/fonts/SequelSans_BoldHead.woff2") format("Web Open Font Format 2"),
+}
+@font-face {
+  font-family: "SequelSans-LightDisp";
+  src:
+    local("Sequel Sans Light Display"),
+    url("../public/fonts/SequelSans_LightDisp.woff2") format("Web Open Font Format 2"),
+}
+@font-face {
+  font-family: "SequelSans-MediumHead";
+  src:
+    local("Sequel Sans Medium Head"),
+    url("../public/fonts/SequelSans_MediumHead.woff2") format("Web Open Font Format 2"),
+}
+@font-face {
+  font-family: "SequelSans-SemiBoldDisp";
+  src:
+    local("Sequel Sans Medium Head"),
+    url("../public/fonts/SequelSans_SemiBoldDisp.woff2") format("Web Open Font Format 2"),
+}
+
+
 :root {
   /* colors */
   --secondary: #9999ff;
@@ -16,11 +48,11 @@
   --gradient-button: linear-gradient(180deg, rgba(244, 240, 255, 0.67) 21.35%, #99B6FF 100%);
   
   /* fonts */
-  --Bold-Display: 'SequelSans-BoldDisp', 'Inter', sans-serif;
-  --Bold-Head: 'SequelSans-BoldHead', 'Inter', sans-serif;
-  --Light-Display: 'SequelSans-LightDisp', 'Inter', sans-serif;
-  --Medium-Head: 'SequelSans-MediumHead', 'Inter', sans-serif;
-  --Semi-Bold-Display: 'SequelSans-SBoldDisp', 'Inter', sans-serif;
+  --Bold-Display: "SequelSans-BoldDisp", 'Inter', sans-serif;
+  --Bold-Head: "SequelSans-BoldHead", 'Inter', sans-serif;
+  --Light-Display: "SequelSans-LightDisp", 'Inter', sans-serif;
+  --Medium-Head: "SequelSans-MediumHead", 'Inter', sans-serif;
+  --Semi-Bold-Display: "SequelSans-SemiBoldDisp", 'Inter', sans-serif;
 }
 
 * {
