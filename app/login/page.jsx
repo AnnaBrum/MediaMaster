@@ -1,13 +1,14 @@
-'use client';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+// 'use client';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { redirect } from 'next/navigation';
 import Messages from './messages';
 import Link from 'next/link';
+import { cookies } from 'next/headers';
 
-// export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 
 export default async function Login() {
-  const supabase = createClientComponentClient();
+  const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },
   } = await supabase.auth.getSession();
