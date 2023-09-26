@@ -75,6 +75,12 @@
   cursor: pointer;
 }
 
+.arrowImg {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
 /* amount of users */
 
 .usersInputField {
@@ -86,11 +92,27 @@
   padding: 10px 18px;
   align-items: center;
   gap: 10px;
+  height: 44px;
+}
+
+/* price field*/
+.priceInputField {
+  border-radius: 30px;
+  border: 1px solid var(--Stroke-grey, #747373);
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 18px;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  height: 44px;
 }
 
 /* Date field*/
 .dateInputField {
   width: 100%;
+  height: 30px;
 }
 
 .datefieldContainer {
@@ -102,4 +124,5 @@
   padding: 10px 18px;
   align-items: center;
   gap: 10px;
+  height: 44px;
 }

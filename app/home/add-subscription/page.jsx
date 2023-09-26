@@ -5,10 +5,8 @@ import { useEffect, useState, useRef } from 'react';
 import styles from './add-subscription.module.css';
 import dropdownArrow from '@/public/images/form/dropdownArrow.svg';
 import Image from 'next/image';
-// import DatePicker from 'react-datindex.jsepicker';
 import DatePicker from 'react-datepicker/dist/react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-// export const dynamic = "force-dynamic";
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
@@ -19,17 +17,25 @@ export default function ClientComponent() {
   const [userDropdown, setUserDropdown] = useState(false);
   const [users, setUsers] = useState(1);
   const [priceDropdown, setPriceDropdown] = useState(false);
-  const [price, setPrice] = useState(1);
+  const [pricePlanId, setPricePlanId] = useState(1);
   const [period, setPeriod] = useState('monthly');
   const [periodDropdown, setPeriodDropdown] = useState(false);
   const [startDate, setStartDate] = useState();
-  const [payDate, setPaydate] = useState(27);
+  const [plans, setPlans] = useState([]);
+  // const [payDate, setPaydate] = useState(27);
+  const [chosenServiceId, setChosenServiceId] = useState();
+  const [pricePlanLabel, setPricePlanLabel] = useState();
+  const [serviceName, setServiceName] = useState('');
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await supabase.from('services').select();
-      if (data) {
-        setServiceData(data);
+      const { data: services } = await supabase.from('services').select();
+      const { data: subscriptions } = await supabase
+        .from('subscriptions')
+        .select();
+      if (services && subscriptions) {
+        setServiceData(services);
+        setPlans(subscriptions);
       }
     };
 
@@ -43,41 +49,49 @@ export default function ClientComponent() {
   };
 
   useEffect(() => {
-    const filteredData = serviceData
-      .filter((item) =>
-        item.service_name.toLowerCase().includes(input.toLowerCase())
-      )
-      .sort((a, b) => {
-        // Sort by whether the item starts with the input letter
-        const aStartsWithInput = a.service_name
-          .toLowerCase()
-          .startsWith(input.toLowerCase()); // returns true/false
-        const bStartsWithInput = b.service_name
-          .toLowerCase()
-          .startsWith(input.toLowerCase());
+    // Define a function to update the filtered data
+    const updateFilteredData = () => {
+      const filteredData = serviceData
+        .filter((item) =>
+          item.service_name.toLowerCase().includes(input.toLowerCase())
+        )
+        .sort((a, b) => {
+          // Sort by whether the item starts with the input letter
+          const aStartsWithInput = a.service_name
+            .toLowerCase()
+            .startsWith(input.toLowerCase()); // returns true/false
+          const bStartsWithInput = b.service_name
+            .toLowerCase()
+            .startsWith(input.toLowerCase());
 
-        if (aStartsWithInput && !bStartsWithInput) {
-          //if a starts with input and b doesnt, put a before b in the array.
-          return -1;
-        }
-        if (bStartsWithInput && !aStartsWithInput) {
-          //if b starts with innput and a doesnt, put b before a in the array
-          return 1;
-        }
-      });
+          if (aStartsWithInput && !bStartsWithInput) {
+            // if a starts with input and b doesn't, put a before b in the array.
+            return -1;
+          }
+          if (bStartsWithInput && !aStartsWithInput) {
+            // if b starts with input and a doesn't, put b before a in the array.
+            return 1;
+          }
+        });
 
-    setFilteredData(filteredData);
+      setFilteredData(filteredData);
+    };
+
+    setTimeout(updateFilteredData, 100);
   }, [input, serviceData]);
 
   const handleClick = (e) => {
     setInput(e.target.value);
-  };
-
-  const handleFocus = () => {
-    console.log('focused');
+    setServiceName(e.target.value);
   };
 
   const handleBlur = () => {
+    if (serviceName.toLowerCase() !== input.toLowerCase()) {
+      setServiceName('');
+      setInput('');
+    } else {
+      setServiceName(input);
+    }
     setTimeout(() => {
       setDropdown(false);
     }, 100);
@@ -100,12 +114,53 @@ export default function ClientComponent() {
 
   //price field
 
+  useEffect(() => {
+    const getServiceIdByName = (serviceName) => {
+      if (serviceName) {
+        const service = serviceData.find(
+          (item) => item.service_name === serviceName
+        );
+        if (service) {
+          console.log(service.id);
+          setChosenServiceId(service.id);
+        }
+      }
+    };
+
+    // Check if serviceName is defined and not an empty string before calling the function.
+    if (serviceName !== undefined && serviceName.trim() !== '') {
+      getServiceIdByName(serviceName);
+    }
+  }, [serviceName]);
+
+  useEffect(() => {
+    const getPlans = async () => {
+      if (chosenServiceId !== undefined) {
+        // Check if chosenServiceId is defined
+        console.log(chosenServiceId);
+        const { data: paymentPlans } = await supabase
+          .from('subscriptions')
+          .select()
+          .eq('service_id', `${chosenServiceId}`);
+
+        if (paymentPlans) {
+          setPlans(paymentPlans);
+        }
+      }
+    };
+
+    getPlans();
+  }, [chosenServiceId]);
+
   const handlePriceFieldClick = () => {
-    setPriceDropdown(true);
+    if (chosenServiceId) {
+      setPriceDropdown(true);
+    }
   };
 
-  const handlePriceOptionCLick = (e) => {
-    setPrice(e.target.value);
+  const handlePriceOptionCLick = (item) => {
+    setPricePlanId(item.id);
+    setPricePlanLabel(`${item.plan_name}: ${item.price} KR`);
   };
 
   const hadlePriceFieldBlur = () => {
@@ -129,6 +184,7 @@ export default function ClientComponent() {
       setPeriodDropdown(false);
     }, 100);
   };
+
   return (
     <>
       <section className={styles.sectionOne}>
@@ -144,7 +200,6 @@ export default function ClientComponent() {
             required
             placeholder="Service Name"
             onChange={handleChange}
-            onFocus={handleFocus}
             onBlur={handleBlur}
             value={input}
             autoComplete="off"
@@ -222,15 +277,16 @@ export default function ClientComponent() {
             onClick={handlePriceFieldClick}
             onBlur={hadlePriceFieldBlur}
             placeholder="2"
-            className={styles.usersInputField}
+            className={styles.priceInputField}
             name="price"
             type="text"
             htmlFor="price"
             id="price"
-            value={price}
+            value={pricePlanId}
           >
-            {price}
+            {pricePlanLabel}
             <Image
+              className={styles.arrowImg}
               src={dropdownArrow}
               height={15}
               width={15}
@@ -240,27 +296,17 @@ export default function ClientComponent() {
           <div className={styles.dropdownContainer}>
             <div className={styles.dropDown}>
               {priceDropdown && (
-                <>
-                  <div className={styles.dropDown}>
-                    <ul>
-                      <option onClick={handlePriceOptionCLick} value="100">
-                        100
-                      </option>
-                      <option onClick={handlePriceOptionCLick} value="200">
-                        200
-                      </option>
-                      <option onClick={handlePriceOptionCLick} value="300">
-                        300
-                      </option>
-                      <option onClick={handlePriceOptionCLick} value="400">
-                        400
-                      </option>
-                      <option onClick={handlePriceOptionCLick} value="500">
-                        500
-                      </option>
-                    </ul>
-                  </div>
-                </>
+                <ul>
+                  {plans?.map((item) => (
+                    <option
+                      key={item.id}
+                      onClick={() => handlePriceOptionCLick(item)}
+                      value={item.id}
+                    >
+                      {`${item.plan_name}: ${item.price} KR`}
+                    </option>
+                  ))}
+                </ul>
               )}
             </div>
           </div>
@@ -294,10 +340,10 @@ export default function ClientComponent() {
                   <div className={styles.dropDown}>
                     <ul>
                       <option onClick={handlePeriodOptionCLick} value="monthly">
-                        100
+                        Monthly
                       </option>
                       <option onClick={handlePeriodOptionCLick} value="yearly">
-                        200
+                        Yearly
                       </option>
                     </ul>
                   </div>
