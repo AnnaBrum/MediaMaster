@@ -44,7 +44,7 @@
 }
 
 .costHeading {
-  font-family: Sequel Sans;
+  font-family: var(--light-display);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

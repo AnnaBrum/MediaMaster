@@ -32,9 +32,10 @@
 .nav {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
-.register {
+.button {
   margin-top: 1.62rem;
   display: inline-flex;
   padding: 0.5rem 3rem;
@@ -43,4 +44,18 @@
   border-radius: 1.875rem;
   background: var(--background);
   box-shadow: var(--button-small);
+}
+
+.login {
+  margin-top: 1.62rem;
+}
+
+.loginText {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.login a:active {
+  text-decoration: underline;
 }

@@ -1,13 +1,13 @@
-'use client';
-import styles from './home.module.css';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useEffect, useState } from 'react';
-import { CostSlider } from '@/components/CostSlider/CostSlider';
-import { TotalCostSlider } from '@/components/TotalCostSlider/TotalCostSlider';
-import '../globals.css';
+"use client";
+import styles from "./home.module.css";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect, useState } from "react";
+import { CostSlider } from "@/components/CostSlider/CostSlider";
+import { TotalCostSlider } from "@/components/TotalCostSlider/TotalCostSlider";
+import "../globals.css";
 // import { LoadingSvg } from '@/public/images/loading/loading.svg';
-import Image from 'next/image';
-import { redirect } from 'next/navigation';
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
 // export const dynamic = 'force-dynamic';
 
@@ -27,11 +27,11 @@ export default function ClientComponent() {
       } = await supabase.auth.getSession();
       if (session) {
         // this is a protected route - only users who are signed in can view this route
-        console.log('we have session');
+        console.log("we have session");
       }
       if (!session) {
         // this is a protected route - only users who are signed in can view this route
-        redirect('/startpage');
+        redirect("/startpage");
       }
     }
     fetchData();
@@ -40,11 +40,11 @@ export default function ClientComponent() {
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      const { data } = await supabase.from('user_subscriptions').select(`
+      const { data } = await supabase.from("user_subscriptions").select(`
     id,
     billing_start_date,
     billing_date,
-    subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_logo))
+    subscriptions:subscription_id (plan_name, price, services:service_id (service_name, service_icon))
   `);
       if (data) {
         setSubsData(data);
@@ -70,13 +70,13 @@ export default function ClientComponent() {
     <>
       <div className={styles.homeWrapper}>
         <section className={styles.sectionOne}>
-          <h1 className={styles.headingOne}>Home</h1>
+          <h1 className={styles.headingOne}>Hem</h1>
           <TotalCostSlider totalCost={totalCost} />
         </section>
         <section className={styles.sectionTwo}>
           <div className={styles.amountOfSubsWrapper}>
             <h2 className={styles.amountOfSubsHeading}>Prenumerationer</h2>
-            <h2 className={styles.subAmount}>{subsCount}st</h2>
+            <h2 className={styles.subAmount}>{subsCount} st</h2>
           </div>
           <ul className={styles.costSliderList}>
             {isLoading ? (
@@ -86,6 +86,7 @@ export default function ClientComponent() {
                   alt="huhu"
                   width={44}
                   height={44}
+                  style={{ width: 44, height: 44 }}
                   placeholder="empty"
                   priority={false}
                   src="/images/loading/loading.svg"
@@ -95,7 +96,7 @@ export default function ClientComponent() {
             {subsData.map((item) => (
               <li key={item.id}>
                 <CostSlider
-                  logoUrl={item.subscriptions.services.service_logo}
+                  iconUrl={item.subscriptions.services.service_icon}
                   serviceName={item.subscriptions.services.service_name}
                   cost={item.subscriptions.price}
                 />
