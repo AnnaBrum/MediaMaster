@@ -3,7 +3,8 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState, useRef } from 'react';
 import styles from './add-subscription.module.css';
-
+import dropdownArrow from '@/public/images/form/dropdownArrow.svg';
+import Image from 'next/image';
 // export const dynamic = "force-dynamic";
 
 export default function ClientComponent() {
@@ -12,6 +13,13 @@ export default function ClientComponent() {
   const [input, setInput] = useState('');
   const [dropdown, setDropdown] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
+  const [userDropdown, setUserDropdown] = useState(false);
+  const [users, setUsers] = useState(1);
+  const [priceDropdown, setPriceDropdown] = useState(false);
+  const [price, setPrice] = useState(1);
+  const [period, setPeriod] = useState('monthly');
+  const [periodDropdown, setPeriodDropdown] = useState(false);
+  const [payDate, setPaydate] = useState(27);
 
   useEffect(() => {
     const getData = async () => {
@@ -71,6 +79,52 @@ export default function ClientComponent() {
     }, 100);
   };
 
+  //user field
+  const handleUserFieldClick = () => {
+    setUserDropdown(true);
+  };
+
+  const handleUserOptionCLick = (e) => {
+    setUsers(e.target.value);
+  };
+
+  const hadleUserFieldBlur = () => {
+    setTimeout(() => {
+      setUserDropdown(false);
+    }, 100);
+  };
+
+  //price field
+
+  const handlePriceFieldClick = () => {
+    setPriceDropdown(true);
+  };
+
+  const handlePriceOptionCLick = (e) => {
+    setPrice(e.target.value);
+  };
+
+  const hadlePriceFieldBlur = () => {
+    setTimeout(() => {
+      setPriceDropdown(false);
+    }, 100);
+  };
+
+  //period
+
+  const handlePeriodFieldClick = () => {
+    setPeriodDropdown(true);
+  };
+
+  const handlePeriodOptionCLick = (e) => {
+    setPeriod(e.target.value);
+  };
+
+  const hadlePeriodFieldBlur = () => {
+    setTimeout(() => {
+      setPeriodDropdown(false);
+    }, 100);
+  };
   return (
     <>
       <section className={styles.sectionOne}>
@@ -106,48 +160,147 @@ export default function ClientComponent() {
               </>
             )}
           </div>
+          {/* Users section */}
           <label htmlFor="users" className={styles.headingTwo}>
             Antal Användare
           </label>
-          <select
+          <button
+            onClick={handleUserFieldClick}
+            onBlur={hadleUserFieldBlur}
             placeholder="2"
-            className={styles.inputField}
+            className={styles.usersInputField}
             name="users"
             type="text"
             htmlFor="users"
             id="users"
+            value={users}
           >
-            {/* <option value="" disabled selected>
-              Select your option
-            </option> */}
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-
+            {users}
+            <Image
+              src={dropdownArrow}
+              height={15}
+              width={15}
+              alt="arrow for dropdownmenu"
+            />
+          </button>
+          <div className={styles.dropdownContainer}>
+            <div className={styles.dropDown}>
+              {userDropdown && (
+                <>
+                  <div className={styles.dropDown}>
+                    <ul>
+                      <option onClick={handleUserOptionCLick} value="1">
+                        1
+                      </option>
+                      <option onClick={handleUserOptionCLick} value="2">
+                        2
+                      </option>
+                      <option onClick={handleUserOptionCLick} value="3">
+                        3
+                      </option>
+                      <option onClick={handleUserOptionCLick} value="4">
+                        4
+                      </option>
+                      <option onClick={handleUserOptionCLick} value="5">
+                        5
+                      </option>
+                    </ul>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+          {/* price section */}
           <label htmlFor="price" className={styles.headingTwo}>
-            Pris
+            Prisplan
           </label>
-          <select
-            placeholder="Pris plan"
-            className={styles.inputField}
-            name="users"
+          <button
+            onClick={handlePriceFieldClick}
+            onBlur={hadlePriceFieldBlur}
+            placeholder="2"
+            className={styles.usersInputField}
+            name="price"
             type="text"
-            htmlFor="users"
+            htmlFor="price"
             id="price"
+            value={price}
           >
-            {/* <option value="" disabled selected>
-              Select your option
-            </option> */}
-            <option value="1">Basic 99kr</option>
-            <option value="2">Standard 120kr</option>
-            <option value="3">Premium 159kr</option>
-          </select>
+            {price}
+            <Image
+              src={dropdownArrow}
+              height={15}
+              width={15}
+              alt="arrow for dropdownmenu"
+            />
+          </button>
+          <div className={styles.dropdownContainer}>
+            <div className={styles.dropDown}>
+              {priceDropdown && (
+                <>
+                  <div className={styles.dropDown}>
+                    <ul>
+                      <option onClick={handlePriceOptionCLick} value="100">
+                        100
+                      </option>
+                      <option onClick={handlePriceOptionCLick} value="200">
+                        200
+                      </option>
+                      <option onClick={handlePriceOptionCLick} value="300">
+                        300
+                      </option>
+                      <option onClick={handlePriceOptionCLick} value="400">
+                        400
+                      </option>
+                      <option onClick={handlePriceOptionCLick} value="500">
+                        500
+                      </option>
+                    </ul>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
 
           <label htmlFor="period" className={styles.headingTwo}>
             Period
           </label>
-          <input type="text" placeholder="2" className={styles.inputField} />
+          <button
+            onClick={handlePeriodFieldClick}
+            onBlur={hadlePeriodFieldBlur}
+            placeholder="2"
+            className={styles.usersInputField}
+            name="period"
+            type="text"
+            htmlFor="period"
+            id="period"
+            value={period}
+          >
+            {period}
+            <Image
+              src={dropdownArrow}
+              height={15}
+              width={15}
+              alt="arrow for dropdownmenu"
+            />
+          </button>
+          <div className={styles.dropdownContainer}>
+            <div className={styles.dropDown}>
+              {periodDropdown && (
+                <>
+                  <div className={styles.dropDown}>
+                    <ul>
+                      <option onClick={handlePeriodOptionCLick} value="monthly">
+                        100
+                      </option>
+                      <option onClick={handlePeriodOptionCLick} value="yearly">
+                        200
+                      </option>
+                    </ul>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
 
           <label htmlFor="period" className={styles.headingTwo}>
             Period
