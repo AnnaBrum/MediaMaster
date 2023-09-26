@@ -1,0 +1,55 @@
+.headingOne {
+  text-align: center;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 30px; /* 107.143% */
+  letter-spacing: 1.4px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.headingTwo {
+  text-align: center;
+  font-family: var(--Light-Display);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.headingThree {
+  margin-top: 1.88rem;
+  font-family: var(--Light-Display);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 0%; 
+}
+
+.pageWrapper {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.searchField {
+  margin-top: 3.63rem;
+  display: flex;
+  font-size: 1.25rem;
+  border-radius: 1.875rem;
+  border: 1px solid var(--Stroke-grey, #747373);
+  background: #fff;
+  background-image: url("../../../public/images/navigation/plus.svg");
+  background-repeat: no-repeat;
+  background-position: right 2rem center;
+  display: flex;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  align-items: center;
+}
+
+.sectionTwo {
+  margin-top: 1.19rem;
+  margin-bottom: 1.19rem;
+}
+
