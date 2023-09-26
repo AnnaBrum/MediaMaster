@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+// import Link from 'next/link';
 import Messages from './messages';
 
 export default async function VerifyAccount() {
@@ -37,9 +37,9 @@ export default async function VerifyAccount() {
       <div>
         <input type="checkbox" id="conditions" name="conditions" required />
         <label htmlFor="conditions">
-          <Link className="underline " href="/conditions">
+          {/* <Link className="underline " href="/conditions">
             Användarvillkor
-          </Link>
+          </Link> */}
         </label>
       </div>
       <button
