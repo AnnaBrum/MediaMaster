@@ -16,13 +16,6 @@ export default async function StartPage() {
     redirect('/startpage');
   }
 
-  // if (session) {
-  //   setTimeout(() => {
-  //     redirect('/home');
-  //   }, 3000);
-
-  // }
-
   return (
     <>
       <div className="flex min-h-screen flex-col items-center justify-center py-2">
