@@ -6,15 +6,21 @@ import Link from 'next/link';
 // export const dynamic = "force-dynamic";
 
 export default async function CreateAccount() {
-  const supabase = createClientComponentClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  useEffect(() => {
+    const supabase = createClientComponentClient();
+    async function fetchData() {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
 
-  if (session) {
-   //this is a protected route - only users who are signed in can view this route
-    redirect('/');
-  }
+      if (session) {
+        //this is a protected route - only users who are signed in can view this route
+        redirect("/");
+      }
+    }
+    fetchData();
+  }, []);
+  
   return (
     <div className="flex min-h-screen flex-col py-12">
       <h1 className="text-xl">Skapa konto</h1>
