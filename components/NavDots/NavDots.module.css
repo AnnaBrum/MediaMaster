@@ -1,10 +1,15 @@
 .imageContainer {
   margin-top: 3rem;
+  margin-left: 1.75rem;
+  margin-right: 6rem;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: row;
   gap: 2.5rem;
 }
 
-.back {
-
+.dropshadow {
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.35));
 }
+

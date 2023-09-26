@@ -19,28 +19,28 @@ export default async function CreateAccount() {
     redirect("/startpage");
   }
   return (
-    <div className={styles.pageWrapper}>
+    <>
       <NavDots
+        redirectBack="/"
         imageUrl1="/images/navigation/nav_dot_active.svg"
         imageUrl2="/images/navigation/nav_dot.svg"
         imageUrl3="/images/navigation/nav_dot.svg"
         imageUrl4="/images/navigation/nav_dot.svg"
       />
-      <h1 className={styles.headingOne}>Skapa konto</h1>
-      <h2 className={styles.headingTwo}>Registrera dig med</h2>
-      <Link
-        href="/register-with-google"
-        className={styles.register}
-      >
-        Google
-      </Link>
-      <Link
-        href="/create-account/register-with-email"
-        className={styles.register}
-      >
-        Email
-      </Link>
-      <Messages />
-    </div>
+      <div className={styles.pageWrapper}>
+        <h1 className={styles.headingOne}>Skapa konto</h1>
+        <h2 className={styles.headingTwo}>Registrera dig med</h2>
+        <Link href="/register-with-google" className={styles.register}>
+          Google
+        </Link>
+        <Link
+          href="/create-account/register-with-email"
+          className={styles.register}
+        >
+          Email
+        </Link>
+        <Messages />
+      </div>
+    </>
   );
 }

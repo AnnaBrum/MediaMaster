@@ -1,0 +1,44 @@
+
+.checkboxContainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  
+  .checkboxContainer::before {
+      /* Position the X inside the checkbox */
+      content: "";
+      background-image: url("/public/images/navigation/exit.svg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+    
+    .checkboxContainer:checked::before {
+      /* Show the X when the checkbox is checked */
+      display: block;
+    }
+
+    
