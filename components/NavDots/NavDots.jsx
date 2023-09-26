@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
 import styles from "./NavDots.module.css";
+import Link from "next/link";
 
 
-export function NavDots({imageUrl1, imageUrl2, imageUrl3, imageUrl4}) {
+export function NavDots({imageUrl1, imageUrl2, imageUrl3, imageUrl4, redirectBack}) {
   return (
     <div className={styles.imageContainer}>
       <div className={styles.back}>
+        <Link href={redirectBack}>
         <svg
           width="31"
           height="31"
@@ -19,36 +21,45 @@ export function NavDots({imageUrl1, imageUrl2, imageUrl3, imageUrl4}) {
             fill="black"
           />
         </svg>
+        </Link>
       </div>
       <Image
+        className={styles.dropshadow}
         src={imageUrl1}
         alt="navigation"
-        width={22}
-        height={22}
+        width={19}
+        height={19}
+        style={{ width: 19, height: 19}}
         placeholder="empty"
         priority={false}
       ></Image>
       <Image
+      className={styles.dropshadow}
         src={imageUrl2}
         alt="navigation"
-        width={22}
-        height={22}
+        width={19}
+        height={19}
+        style={{ width: 19, height: 19 }}
         placeholder="empty"
         priority={false}
       ></Image>
       <Image
+      className={styles.dropshadow}
         src={imageUrl3}
         alt="navigation"
-        width={22}
-        height={22}
+        width={19}
+        height={19}
+        style={{ width: 19, height: 19 }}
         placeholder="empty"
         priority={false}
       ></Image>
       <Image
+      className={styles.dropshadow}
         src={imageUrl4}
         alt="navigation"
-        width={22}
-        height={22}
+        width={19}
+        height={19}
+        style={{ width: 19, height: 19 }}
         placeholder="empty"
         priority={false}
       ></Image>

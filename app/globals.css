@@ -41,11 +41,15 @@
   --background: #e6e7fe;
   --background-blue: #99b6ff;
   --stroke-grey: #747373;
+
+    /* box-shadows */
   --primary-box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.25);
+  --button-small:2px 2px 7px 3px rgba(0, 0, 0, 0.35);
 
   /* color styles */
   --primary-color: linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%);
   --gradient-button: linear-gradient(180deg, rgba(244, 240, 255, 0.67) 21.35%, #99B6FF 100%);
+  --gradient-2: linear-gradient(180deg, #C1C3FF 23.58%, #6D91E7 100%);
   
   /* fonts */
   --Bold-Display: "SequelSans-BoldDisp", 'Inter', sans-serif;

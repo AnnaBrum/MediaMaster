@@ -1,8 +1,4 @@
-.exitButton {
-  display: flex;
-  width: 100%;
-  justify-content: end;
-}
+
 .wrapper {
   padding: 2rem 2rem;
   word-wrap: break-word;
