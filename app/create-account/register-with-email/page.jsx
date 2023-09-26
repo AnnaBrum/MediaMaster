@@ -30,6 +30,7 @@ export default async function RegisterWithEmail() {
           <input
             className="rounded-md px-4 py-2 bg-inherit border mb-6"
             name="email"
+            id="email"
             type="email"
             placeholder="you@example.com"
             required
@@ -41,6 +42,7 @@ export default async function RegisterWithEmail() {
             className="rounded-md px-4 py-2 bg-inherit border mb-6"
             type="password"
             name="password"
+            id="password"
             placeholder="••••••••"
             required
           />

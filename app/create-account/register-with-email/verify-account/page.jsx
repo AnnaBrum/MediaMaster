@@ -15,6 +15,7 @@ export default async function VerifyAccount() {
       <input
         className="rounded-md px-4 py-2 bg-inherit border mb-6"
         name="firstname"
+        id="firstname"
         type="text"
         placeholder="Skriv in ditt förnamn"
         required
@@ -25,6 +26,7 @@ export default async function VerifyAccount() {
       <input
         className="rounded-md px-4 py-2 bg-inherit border mb-6"
         name="lastname"
+        id="lastname" 
         type="text"
         placeholder="Skriv in ditt efternamn"
         required
