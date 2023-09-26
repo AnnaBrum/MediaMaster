@@ -64,6 +64,6 @@
     "components/LogoutButton/LogoutButton.jsx",
     "components/MenuItems/MenuItems.jsx",
     "components/TotalCostSlider/TotalCostSlider.jsx"
-, "middleware.js"  ],
+, "middleware.js", "app/_examples/client-component/page.jsx", "app/_examples/server-action/page.jsx", "app/_examples/server-component/page.jsx"  ],
   "exclude": ["node_modules"]
 }
