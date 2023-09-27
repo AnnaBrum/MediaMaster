@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function GET() {
+export async function GET(request) {
   const requestUrl = new URL(request.url);
   // Delay the response for 5 seconds
   await new Promise((resolve) => setTimeout(resolve, 2500));
