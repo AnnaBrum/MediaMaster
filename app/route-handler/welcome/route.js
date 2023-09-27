@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   // Delay the response for 5 seconds
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 2500));
   
   // Redirect to the home page
   return NextResponse.redirect(`${requestUrl.origin}/home`, { status: 302 });
