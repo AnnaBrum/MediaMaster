@@ -1,0 +1,25 @@
+.pageWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  
+  .headingOne {
+    font-family: var(--Semi-Bold-Display);
+    text-align: center;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 550;
+    line-height: 1.875rem; /* 107.143% */
+    letter-spacing: 0.0875rem;
+  }
+  
+.illustration {
+    margin-top: 4.69rem;
+    display: flex;
+    justify-content: center;
+}
+  

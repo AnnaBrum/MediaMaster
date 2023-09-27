@@ -1,9 +1,10 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import styles from "./get-started.module.css";
 import { NavDots } from "../../../components/NavDots/NavDots";
-// export const dynamic = 'force-dynamic';
+import { CostSlider } from "../../../components/CostSlider/CostSlider";
+import Image from 'next/image';
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
@@ -115,6 +116,7 @@ export default function ClientComponent() {
   return (
     <div className={styles.pageWrapper}>
       <NavDots
+      redirectBack="/create-account"
         imageUrl1="/images/navigation/nav_dot_active.svg"
         imageUrl2="/images/navigation/nav_dot_active.svg"
         imageUrl3="/images/navigation/nav_dot_active.svg"
@@ -135,6 +137,30 @@ export default function ClientComponent() {
 
       <section className={styles.sectionTwo}>
         <h3 className={styles.headingThree}>Mest populära</h3>
+        <ul className={styles.costSliderList}>
+            {isLoading ? (
+              <div className={styles.loadingContainer}>
+                <Image
+                  className={styles.loading}
+                  alt="huhu"
+                  width={44}
+                  height={44}
+                  placeholder="empty"
+                  priority={false}
+                  src="/images/loading/loading.svg"
+                ></Image>
+              </div>
+            ) : null}
+            {subsData.map((item) => (
+              <li key={item.id}>
+                <CostSlider
+                  logoUrl={item.subscriptions.services.service_logo}
+                  serviceName={item.subscriptions.services.service_name}
+                  cost={item.subscriptions.price}
+                />
+              </li>
+            ))}
+          </ul>
       </section>
     </div>
   );

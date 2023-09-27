@@ -6,34 +6,41 @@
   margin-right: 2rem;
 }
 
+.logo {
+  margin-top: 3.38rem;
+  display: flex;
+  justify-content: center;
+}
+
 .headingOne {
   font-family: var(--Semi-Bold-Display);
   text-align: center;
   font-size: 1.75rem;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 550;
   line-height: 1.875rem; /* 107.143% */
   letter-spacing: 0.0875rem;
   margin-top: 3.5rem;
-  margin-bottom: 50px;
 }
 
-.form {
-  margin-top: 4rem;
-  flex: 1;
+.headingTwo {
+  text-align: center;
+  font-family: var(--Light-Display);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.nav {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 0.5rem;
+  text-align: center;
 }
 
-.input {
-  background-color: inherit; /* Equivalent to bg-inherit in Tailwind CSS */
-  border-bottom: 1px solid currentColor; /* Equivalent to border in Tailwind CSS */
-  margin-bottom: 1.5rem;
-}
-
-.login {
+.button {
   font-family: var(--Light-Display);
   font-weight: 300;
   font-size: 1.25rem;
@@ -47,7 +54,23 @@
   box-shadow: var(--button-small);
 }
 
-.login:active {
+.button:active {
   background: var(--on-secondary);
   color: white;
 }
+
+
+.login {
+  margin-top: 1.62rem;
+}
+
+.loginText {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.login a:active {
+  text-decoration: underline;
+}
+

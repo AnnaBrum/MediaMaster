@@ -1,8 +1,15 @@
+.background {
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+}
+
 .exitButton {
   display: flex;
   width: 100%;
-  justify-content: end;
+  justify-content: flex-end;
 }
+
 .wrapper {
   padding: 2rem 2rem;
   word-wrap: break-word;
@@ -12,30 +19,31 @@
   padding-top: 2rem;
 }
 
-.infoContainer h1 {
+.headingOne {
+  margin-top: 3rem;
   font-family: var(--Semi-Bold-Display);
   font-size: 1.75rem;
+  font-style: normal;
   font-weight: bold;
-  text-align: start;
-  line-height: 1.2;
+  line-height: 1.875rem; /* 107.143% */
+  letter-spacing: 0.0875rem;
 }
-
 .intro {
   font-family: var(--Light-Display);
   margin-top: 1rem;
   font-size: 1.7rem;
-  font-weight: 400;
+  font-weight: 300;
   text-align: start;
   line-height: 1.2;
 }
 
-.infoContainer ul {
+.list {
   margin-top: 1rem;
   padding-left: 1rem;
   text-align: start;
 }
 
-.infoContainer li {
+.list li {
   font-family: var(--Light-Display);
   font-size: 1rem;
   list-style-type: disc;

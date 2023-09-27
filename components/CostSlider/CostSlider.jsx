@@ -3,13 +3,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styles from './CostSlider.module.css';
 
-// interface CostSliderProps {
-//   logoUrl: string;
-//   serviceName: string;
-//   cost: string;
-// }
 
-export function CostSlider({ logoUrl, serviceName, cost }) {
+export function CostSlider({ iconUrl, serviceName, cost }) {
   const [content, setContent] = useState('Visa kostnad');
 
   const handleClick = () => {
@@ -24,10 +19,10 @@ export function CostSlider({ logoUrl, serviceName, cost }) {
     <div className={styles.costSliderWrapper}>
       <div className={styles.imageContainer}>
         <Image
-          src={logoUrl}
+          src={iconUrl}
           alt="huhu"
-          width={44}
-          height={44}
+          width={20}
+          height={20}
           placeholder="empty"
           priority={false}
         ></Image>
@@ -42,4 +37,4 @@ export function CostSlider({ logoUrl, serviceName, cost }) {
   );
 }
 
-///images/logos/netflix_logo.jpeg
+
