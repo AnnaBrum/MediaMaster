@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import styles from "./index.module.css";
+import { Logo } from "../components/Logo/Logo";
 
 export const dynamic = "force-dynamic";
 
@@ -14,13 +15,16 @@ export default async function StartPage() {
   } = await supabase.auth.getSession();
 
   if (session) {
-    redirect("/startpage");
+    redirect("/home");
   }
 
   return (
     <>
       <div className={styles.pageWrapper}>
-        <h1 className={styles.headingOne}>Välkommen till Media Watch!</h1>
+        <div className={styles.logo}>
+          <Logo />
+        </div>
+        <h1 className={styles.headingOne}>Välkommen till <br/> Media Watch!</h1>
         <h2 className={styles.headingTwo}>
           Samla dina betaltjänster på ett ställe
         </h2>

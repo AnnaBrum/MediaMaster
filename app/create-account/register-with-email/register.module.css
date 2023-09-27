@@ -34,12 +34,20 @@
 }
 
 .login {
-    margin-top: 1.62rem;
-    display: inline-flex;
-    padding: 0.5rem 3rem;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1.875rem;
-    background: var(--background);
-    box-shadow: var(--button-small);
-  }
+  font-family: var(--Light-Display);
+  font-weight: 300;
+  font-size: 1.25rem;
+  margin-top: 1.62rem;
+  display: inline-flex;
+  padding: 0.5rem 3rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.875rem;
+  background: var(--background);
+  box-shadow: var(--button-small);
+}
+
+.login:active {
+  background: var(--on-secondary);
+  color: white;
+}

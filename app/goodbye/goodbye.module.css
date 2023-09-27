@@ -1,16 +1,10 @@
 .pageWrapper {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     min-height: 100vh;
+    justify-content: center;
     margin-left: 2rem;
     margin-right: 2rem;
-  }
-  
-  .logo {
-    margin-top: 3.38rem;
-    display: flex;
-    justify-content: center;
   }
   
   .headingOne {

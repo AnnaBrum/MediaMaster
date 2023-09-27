@@ -45,6 +45,9 @@
 }
 
 .verify {
+  font-family: var(--Light-Display);
+  font-weight: 300;
+  font-size: 1.25rem;
   margin-top: 0.8rem;
   display: inline-flex;
   padding: 0.5rem 3rem;
@@ -53,6 +56,11 @@
   border-radius: 1.875rem;
   background: var(--background);
   box-shadow: var(--button-small);
+}
+
+.verify:active {
+  background: var(--on-secondary);
+  color: white;
 }
 
 .checkboxContainer {
@@ -104,3 +112,4 @@
   background: var(--background);
   border-radius: 0.5rem;
 }
+

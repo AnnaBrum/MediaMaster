@@ -4,12 +4,13 @@ import Link from "next/link";
 
 export default async function Conditions() {
   return (
+    <div className={styles.background}>
     <div className={styles.wrapper}>
       <Link className={styles.exitButton} href="/">
         <ExitButton />
       </Link>
-      <h1 className="text-xl">Villkor och sekretess</h1>
-      <div className="conditionsIntro">
+      <h1 className={styles.headingOne}>Villkor & sekretess</h1>
+      <div className={styles.intro}>
         <p>Din Integritet är Vår Prioritet. GDPR och WCAG-Överensstämmelse:</p>
         <p>
           I vår strävan efter att säkerställa din integritet och tillgänglighet
@@ -24,6 +25,7 @@ export default async function Conditions() {
           information i enlighet med GDPR. Här är några sätt vi följer GDPR:
         </p>
       </div>
+      <div className={styles.section}>
       <ol>
         <li>
           Samtycke: Vi respekterar ditt samtycke. Innan vi samlar in eller
@@ -47,7 +49,8 @@ export default async function Conditions() {
           önskar detta, vänligen kontakta vår support.
         </li>
       </ol>
-
+      </div>
+      <div className={styles.section}>
       <p>
         WCAG-Överensstämmelse: Vi strävar efter att göra vår app tillgänglig för
         alla användare, oavsett eventuella funktionshinder. Vi följer
@@ -76,6 +79,8 @@ export default async function Conditions() {
           möjliggjort textstorleksjusteringar för att passa individuella behov.
         </li>
       </ol>
+      </div>
+      <div className={styles.section}>
       <p>
         Vi är stolta över att följa dessa riktlinjer för att säkerställa att vår
         app är användbar för alla användare, och vi arbetar kontinuerligt för
@@ -86,6 +91,8 @@ export default async function Conditions() {
         några frågor eller önskar mer information, är du välkommen att kontakta
         vår support.
       </p>
+      </div>
+    </div>
     </div>
   );
 }

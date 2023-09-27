@@ -17,19 +17,22 @@ export default async function About() {
   //   redirect('/');
   // }
   return (
+    <div className={styles.background}>
     <div className={styles.wrapper}>
       <Link className={styles.exitButton} href="/">
         <ExitButton />
       </Link>
-      <div className={styles.infoContainer}>
-        <h1>
+
+        <h1 className={styles.headingOne}>
           Hur fungerar <br /> Media Watch?
         </h1>
+
         <p className={styles.intro}>
           Håll enkelt koll på dina webbaserade betalningar med vår app – få
           översikt, påminnelser och säkerhet i ett enda verktyg.
         </p>
-        <ul>
+
+        <ul className={styles.list}>
           <li>
             Betaltjänster Under Ett Tak: Slipp bläddra genom flera webbplatser
             och appar för att hålla koll på dina månatliga betalningar. Vår app
@@ -58,5 +61,6 @@ export default async function About() {
         </ul>
       </div>
     </div>
+
   );
 }

@@ -31,7 +31,7 @@ export default function ClientComponent() {
       }
       if (!session) {
         // this is a protected route - only users who are signed in can view this route
-        redirect("/startpage");
+        redirect("/");
       }
     }
     fetchData();
