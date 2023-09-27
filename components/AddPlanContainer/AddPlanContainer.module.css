@@ -11,8 +11,3 @@
     background: #e6e7fe;
     margin-bottom: 20px;
   }
-
-  .addPlanContainer:active {
-    background: var(--on-secondary);
-    color: white;
-  }
