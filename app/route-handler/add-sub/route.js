@@ -13,13 +13,20 @@ export async function POST(request) {
   const subscriptionId = formData.get('pricePlanId');
   const serviceName = formData.get('serviceName');
   const users = formData.get('users');
-  // const introtext = String(formData.get('text'));
   const supabase = createRouteHandlerClient({ cookies });
 
   console.log(subscriptionId);
   console.log(billingStartDate);
   console.log(serviceName);
   console.log(users);
+
+  //split up date to take out just the day of the month.
+  const dateString = billingStartDate;
+
+  const dateParts = dateString.split('/');
+  const day = parseInt(dateParts[1], 10); // Parse the day (e.g., "25" becomes 25)
+
+  console.log(day);
 
   // This assumes you have a `todos` table in Supabase. Check out
   // the `Create Table and seed with data` section of the README 👇
@@ -34,7 +41,7 @@ export async function POST(request) {
     user_id: userId,
     subscription_id: subscriptionId,
     billing_start_date: billingStartDate,
-    billing_date: 27,
+    billing_date: day,
   });
 
   //   if (error) {
