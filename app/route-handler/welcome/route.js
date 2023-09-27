@@ -5,5 +5,5 @@ export async function GET() {
   await new Promise((resolve) => setTimeout(resolve, 5000));
   
   // Redirect to the home page
-  return NextResponse.redirect('/home', { status: 302 });
+  return NextResponse.redirect(`${requestUrl.origin}/home`, { status: 302 });
 }
