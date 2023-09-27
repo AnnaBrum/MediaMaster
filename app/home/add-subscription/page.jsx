@@ -17,7 +17,7 @@ export default function ClientComponent() {
   const [userDropdown, setUserDropdown] = useState(false);
   const [users, setUsers] = useState(1);
   const [priceDropdown, setPriceDropdown] = useState(false);
-  const [pricePlanId, setPricePlanId] = useState(1);
+  const [pricePlanId, setPricePlanId] = useState('');
   const [period, setPeriod] = useState('monthly');
   const [periodDropdown, setPeriodDropdown] = useState(false);
   const [startDate, setStartDate] = useState();
@@ -26,6 +26,8 @@ export default function ClientComponent() {
   const [chosenServiceId, setChosenServiceId] = useState();
   const [pricePlanLabel, setPricePlanLabel] = useState();
   const [serviceName, setServiceName] = useState('');
+
+  const [send, setSend] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -41,6 +43,8 @@ export default function ClientComponent() {
 
     getData();
   }, [supabase, setServiceData]);
+
+  //Service Name field eventHandlers
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -97,7 +101,7 @@ export default function ClientComponent() {
     }, 100);
   };
 
-  //user field
+  //user field eventHandlers
   const handleUserFieldClick = () => {
     setUserDropdown(true);
   };
@@ -112,7 +116,7 @@ export default function ClientComponent() {
     }, 100);
   };
 
-  //price field
+  //price field event-handlers
 
   useEffect(() => {
     const getServiceIdByName = (serviceName) => {
@@ -127,7 +131,7 @@ export default function ClientComponent() {
       }
     };
 
-    // Check if serviceName is defined and not an empty string before calling the function.
+    // Check if serviceName is defined and not an empty string before calling the function
     if (serviceName !== undefined && serviceName.trim() !== '') {
       getServiceIdByName(serviceName);
     }
@@ -159,6 +163,7 @@ export default function ClientComponent() {
   };
 
   const handlePriceOptionCLick = (item) => {
+    console.log(item.id);
     setPricePlanId(item.id);
     setPricePlanLabel(`${item.plan_name}: ${item.price} KR`);
   };
@@ -169,7 +174,7 @@ export default function ClientComponent() {
     }, 100);
   };
 
-  //period
+  //period eventhandlers
 
   const handlePeriodFieldClick = () => {
     setPeriodDropdown(true);
@@ -185,11 +190,29 @@ export default function ClientComponent() {
     }, 100);
   };
 
+  const handleSparaClick = () => {
+    setSend(true);
+  };
+
+  //submit
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (send) {
+      document.getElementById('myForm').submit();
+    }
+  };
+
   return (
     <>
       <section className={styles.sectionOne}>
         <h1 className={styles.headingOne}>Lägg till prenumeration</h1>
-        <form className={styles.serviceForm} action="" method="post">
+        <form
+          className={styles.serviceForm}
+          action="/route-handler/add-sub"
+          method="post"
+          onSubmit={onSubmit}
+          id="myForm"
+        >
           <label htmlFor="serviceName" className={styles.headingTwo}>
             Lägg till
           </label>
@@ -223,16 +246,12 @@ export default function ClientComponent() {
           <label htmlFor="users" className={styles.headingTwo}>
             Antal Användare
           </label>
+          <input type="hidden" name="users" value={users} />
           <button
             onClick={handleUserFieldClick}
             onBlur={hadleUserFieldBlur}
             placeholder="2"
             className={styles.usersInputField}
-            name="users"
-            type="text"
-            htmlFor="users"
-            id="users"
-            value={users}
           >
             {users}
             <Image
@@ -270,19 +289,15 @@ export default function ClientComponent() {
             </div>
           </div>
           {/* price section */}
-          <label htmlFor="price" className={styles.headingTwo}>
+          <label htmlFor="pricePlanId" className={styles.headingTwo}>
             Prisplan
           </label>
+          <input type="hidden" name="pricePlanId" value={pricePlanId} />
           <button
             onClick={handlePriceFieldClick}
             onBlur={hadlePriceFieldBlur}
             placeholder="2"
             className={styles.priceInputField}
-            name="price"
-            type="text"
-            htmlFor="price"
-            id="price"
-            value={pricePlanId}
           >
             {pricePlanLabel}
             <Image
@@ -339,10 +354,10 @@ export default function ClientComponent() {
                 <>
                   <div className={styles.dropDown}>
                     <ul>
-                      <option onClick={handlePeriodOptionCLick} value="monthly">
+                      <option onClick={handlePeriodOptionCLick} value="Monthly">
                         Monthly
                       </option>
-                      <option onClick={handlePeriodOptionCLick} value="yearly">
+                      <option onClick={handlePeriodOptionCLick} value="Yearly">
                         Yearly
                       </option>
                     </ul>
@@ -352,41 +367,26 @@ export default function ClientComponent() {
             </div>
           </div>
 
-          <label htmlFor="period" className={styles.headingTwo}>
+          <label htmlFor="startDate" className={styles.headingTwo}>
             Betaldatum
           </label>
           <div className={styles.datefieldContainer}>
             <DatePicker
+              name="startDate"
+              value={startDate}
               className={styles.dateInputField}
               selected={startDate}
               onChange={(date) => setStartDate(date)}
-              placeholder="27/08/2023"
+              // placeholder="27/08/2023"
             />
+          </div>
+          <div className={styles.saveBtnContainer}>
+            <button onClick={handleSparaClick} className={styles.saveBtn}>
+              Spara
+            </button>
           </div>
         </form>
       </section>
-      {/* <form
-        className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
-        action="/route-handler/add-sub"
-        method="post"
-      >
-        <label className="text-md" htmlFor="text">
-          Intro Text
-        </label>
-        <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
-          type="text"
-          name="text"
-          placeholder="intro text"
-          required
-        />
-        <button
-          formAction="/route-handler/add-sub"
-          className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
-        >
-          Insert Values
-        </button>
-      </form> */}
     </>
   );
 }
