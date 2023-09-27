@@ -15,7 +15,7 @@ export default async function RegisterWithEmail() {
 
   if (session) {
     // this is a protected route - only users who are signed in can view this route
-    redirect("/startpage");
+    redirect("/home");
   }
 
   return (
