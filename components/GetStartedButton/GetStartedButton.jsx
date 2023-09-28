@@ -1,10 +1,19 @@
 'use client';
 import Image from 'next/image';
 import styles from './GetStartedButton.module.css';
-import Link from 'next/link';
+
+import { useState } from 'react';
 
 
 export function GetStartedButton({ logoUrl, serviceName }) {
+  const [isBoxShadowApplied, setIsBoxShadowApplied] = useState(false);
+
+  const handleClick = () => {
+      setIsBoxShadowApplied(true); 
+      setTimeout(() => {
+        setIsBoxShadowApplied(false);
+      }, 1000);
+  };
   
   return (
     <div className={styles.brandBoxWrapper}>
@@ -15,11 +24,13 @@ export function GetStartedButton({ logoUrl, serviceName }) {
           width={30}
           height={30}
           placeholder="empty"
-          priority={false}
+          priority={false}       
         ></Image>
         <h2 className={styles.serviceNameHeading}>{serviceName}</h2>
       </div>   
-      <div className={styles.add}>
+      <div className= {`${styles.add} ${
+          isBoxShadowApplied ? styles.boxShadowClass : ''
+        }`}>
       <Image
           src="/images/navigation/plus.svg"
           alt="service icon"
@@ -28,10 +39,11 @@ export function GetStartedButton({ logoUrl, serviceName }) {
           style={{ width: 18, height: 18 }}
           placeholder="empty"
           priority={false}
+          onClick={handleClick}
         ></Image>
         </div>  
     </div>
   );
 }
 
-///images/logos/netflix_logo.jpeg
+

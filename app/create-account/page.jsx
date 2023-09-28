@@ -9,15 +9,15 @@ import styles from "./create-account.module.css";
 export const dynamic = "force-dynamic";
 
 export default async function CreateAccount() {
-  const supabase = createServerComponentClient({ cookies });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  // const supabase = createServerComponentClient({ cookies });
+  // const {
+  //   data: { session },
+  // } = await supabase.auth.getSession();
 
-  if (session) {
-    //this is a protected route - only users who are signed in can view this route
-    redirect("/");
-  }
+  // if (session) {
+  //   //this is a protected route - only users who are signed in can view this route
+  //   redirect("/");
+  // }
   return (
     <>
       <NavDots
@@ -30,7 +30,7 @@ export default async function CreateAccount() {
       <div className={styles.pageWrapper}>
         <h1 className={styles.headingOne}>Skapa konto</h1>
         <h2 className={styles.headingTwo}>Registrera dig med</h2>
-        <Link href="/register-with-google" className={styles.register}>
+        <Link href="/create-account/register-with-google" className={styles.register}>
           Google
         </Link>
         <Link

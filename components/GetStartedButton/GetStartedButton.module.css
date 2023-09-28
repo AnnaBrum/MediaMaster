@@ -41,7 +41,7 @@
   box-shadow: var(--primary-box-shadow);
 }
 
-.add:active {
-  background: var(--on-secondary);
-  color: white;
+.boxShadowClass {
+  box-shadow: var(--button-pressed);
+  transition: box-shadow 0.3s ease-in-out;
 }
