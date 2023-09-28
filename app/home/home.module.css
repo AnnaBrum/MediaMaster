@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
+
   /* background: var(--primary-color);
   height: 100vh; */
 }
@@ -24,6 +25,7 @@
   background: var(--primary-color);
   box-shadow: var(--primary-box-shadow);
   min-height: 70vh;
+  padding-bottom: 6rem;
   /* box-shadow: 0 0 0 2px black; */
 }
 
@@ -78,6 +80,12 @@
 }
 .loading {
   animation: spin 1s linear infinite;
+}
+
+.pushWrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 @keyframes spin {

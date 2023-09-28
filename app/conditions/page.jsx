@@ -1,6 +1,6 @@
 import { ExitButton } from "@/components/ExitButton/ExitButton";
-import styles from "./conditions.module.css";
 import Link from "next/link";
+import styles from "./conditions.module.css";
 
 export default async function Conditions() {
   return (

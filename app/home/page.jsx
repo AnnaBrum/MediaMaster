@@ -106,7 +106,9 @@ export default function ClientComponent() {
               </li>
             ))}
           </ul>
+          <div className={styles.pushWrapper}>
         < PushNotice />
+        </div>
         </section>
       </div>
     </>
