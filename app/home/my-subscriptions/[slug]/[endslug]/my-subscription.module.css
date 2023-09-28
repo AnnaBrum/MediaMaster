@@ -1,3 +1,80 @@
+.pageWrapper {
+  padding-top: 2.62rem;
+}
+
+.back {
+  padding-left: 1.75rem;
+}
+
+.logo {
+  position: relative;
+  top: -40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.headingOne {
+  padding-left: 1.75rem;
+  font-family: var(--Semi-Bold-Display);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.875rem; /* 107.143% */
+  letter-spacing: 0.0875rem;
+}
+
+.headingTwo {
+  margin-bottom: 2rem;
+  font-family: var(--Semi-Bold-Display);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.875rem; /* 107.143% */
+  letter-spacing: 0.0875rem;
+}
+
+.infoSection {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background: var(--gradient-button);
+  width: 101vw;
+  background: var(--primary-color);
+  box-shadow: var(--primary-box-shadow);
+  padding: 2rem 1.75rem 10rem 1.75rem;
+  margin-top: 3rem;
+}
+
+.infoRow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.headingThree {
+  font-family: var(--Semi-Bold-Display);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+}
+
+.value {
+  font-family: var(--Light-Display);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.buttonWrapper {
+  margin-top: 9rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .changePlanBtn {
   border-radius: 30px;
   background: var(--Background, #e6e7fe);

@@ -1,9 +1,9 @@
 'use client';
+import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useEffect, useState, useRef } from 'react';
 import { BrandBox } from '@/components/BrandBox/BrandBox';
 import { AddPlanContainer } from '@/components/AddPlanContainer/AddPlanContainer';
-import { CategoryButton } from '@/components/CategoryButton/CategoryButton';
 import Image from 'next/image';
 import styles from './my-subscriptions.module.css';
 
@@ -122,6 +122,8 @@ export default function ClientComponent() {
   };
 
   return (
+    <>
+    < HamburgerMenu />
     <div className={styles.pageWrapper}>
       <section className={styles.sectionOne}>
         {/* <CategoryButton /> */}
@@ -195,5 +197,6 @@ export default function ClientComponent() {
         </ul>
       </section>
     </div>
+    </>
   );
 }
