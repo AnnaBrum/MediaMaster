@@ -1,4 +1,3 @@
-
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
@@ -10,7 +9,8 @@ export async function POST(request) {
   const formData = await request.formData();
   const billingStartDate = formData.get('startDate');
   const subscriptionId = formData.get('pricePlanId');
-  const serviceName = formData.get('serviceName');
+  const idToUpdate = formData.get('idToUpdate');
+  //   const serviceName = formData.get('serviceName');
   const users = formData.get('users');
   const supabase = createRouteHandlerClient({ cookies });
 
@@ -25,15 +25,23 @@ export async function POST(request) {
   } = await supabase.auth.getUser();
 
   const userId = user?.id;
-  await supabase.from('user_subscriptions').insert({
-    user_id: userId,
-    subscription_id: subscriptionId,
-    billing_start_date: billingStartDate,
-    billing_date: day,
-    amount_of_users: users,
-  });
+  await supabase
+    .from('user_subscriptions')
+    .update({
+      user_id: userId,
+      subscription_id: subscriptionId,
+      billing_start_date: billingStartDate,
+      billing_date: day,
+      amount_of_users: users,
+    })
+    .eq('id', `${idToUpdate}`);
 
   return NextResponse.redirect(`${requestUrl.origin}/home/my-subscriptions`, {
     status: 301,
   });
 }
+
+// const { error } = await supabase
+//   .from('countries')
+//   .update({ name: 'Australia' })
+//   .eq('id', 1);
