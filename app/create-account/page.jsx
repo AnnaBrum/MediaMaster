@@ -30,7 +30,7 @@ export default async function CreateAccount() {
       <div className={styles.pageWrapper}>
         <h1 className={styles.headingOne}>Skapa konto</h1>
         <h2 className={styles.headingTwo}>Registrera dig med</h2>
-        <Link href="/register-with-google" className={styles.register}>
+        <Link href="/create-account/register-with-google" className={styles.register}>
           Google
         </Link>
         <Link
