@@ -31,6 +31,7 @@ export async function POST(request) {
     subscription_id: subscriptionId,
     billing_start_date: billingStartDate,
     billing_date: day,
+    amount_of_users: users,
   });
 
   return NextResponse.redirect(`${requestUrl.origin}/home/my-subscriptions`, {

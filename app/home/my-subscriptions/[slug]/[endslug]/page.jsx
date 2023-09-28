@@ -45,7 +45,10 @@ export default async function ServerComponent({ params }) {
       <h1>Pris: {subData[0].price}</h1>
       <h1>Antal användare: {mySubData[0].amount_of_users}</h1>
       <h1>Första räkning: {mySubData[0].billing_start_date}</h1>
-      <Link href="temp" className={styles.changePlanBtn}>
+      <Link
+        href={`home/my-subscriptions/${params.slug}/${params.endslug}/change-subscription`}
+        className={styles.changePlanBtn}
+      >
         Ändra Betalningsplan
       </Link>
     </div>

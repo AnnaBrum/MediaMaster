@@ -18,11 +18,8 @@ export default function ClientComponent() {
   const [users, setUsers] = useState(1);
   const [priceDropdown, setPriceDropdown] = useState(false);
   const [pricePlanId, setPricePlanId] = useState('');
-  const [period, setPeriod] = useState('monthly');
-  const [periodDropdown, setPeriodDropdown] = useState(false);
   const [startDate, setStartDate] = useState();
   const [plans, setPlans] = useState([]);
-  // const [payDate, setPaydate] = useState(27);
   const [chosenServiceId, setChosenServiceId] = useState();
   const [pricePlanLabel, setPricePlanLabel] = useState();
   const [serviceName, setServiceName] = useState('');
@@ -175,27 +172,11 @@ export default function ClientComponent() {
     }, 150);
   };
 
-  //period eventhandlers
-
-  // const handlePeriodFieldClick = () => {
-  //   setPeriodDropdown(true);
-  // };
-
-  // const handlePeriodOptionCLick = (e) => {
-  //   setPeriod(e.target.value);
-  // };
-
-  // const hadlePeriodFieldBlur = () => {
-  //   setTimeout(() => {
-  //     setPeriodDropdown(false);
-  //   }, 100);
-  // };
-
+  //submit
   const handleSparaClick = () => {
     setSend(true);
   };
 
-  //submit
   const onSubmit = (e) => {
     e.preventDefault();
     if (send) {
@@ -326,48 +307,6 @@ export default function ClientComponent() {
               )}
             </div>
           </div>
-
-          {/* <label htmlFor="period" className={styles.headingTwo}>
-            Period
-          </label>
-          <button
-            onClick={handlePeriodFieldClick}
-            onBlur={hadlePeriodFieldBlur}
-            placeholder="2"
-            className={styles.usersInputField}
-            name="period"
-            type="text"
-            htmlFor="period"
-            id="period"
-            value={period}
-          >
-            {period}
-            <Image
-              src={dropdownArrow}
-              height={15}
-              width={15}
-              alt="arrow for dropdownmenu"
-            />
-          </button>
-          <div className={styles.dropdownContainer}>
-            <div className={styles.dropDown}>
-              {periodDropdown && (
-                <>
-                  <div className={styles.dropDown}>
-                    <ul>
-                      <option onClick={handlePeriodOptionCLick} value="Monthly">
-                        Monthly
-                      </option>
-                      <option onClick={handlePeriodOptionCLick} value="Yearly">
-                        Yearly
-                      </option>
-                    </ul>
-                  </div>
-                </>
-              )}
-            </div>
-          </div> */}
-
           <label htmlFor="startDate" className={styles.headingTwo}>
             Betaldatum
           </label>
