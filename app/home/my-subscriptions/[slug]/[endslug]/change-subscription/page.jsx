@@ -7,6 +7,7 @@ import Image from 'next/image';
 import DatePicker from 'react-datepicker/dist/react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './change-subscription.module.css';
+import Link from 'next/link';
 
 export default function ClientComponent({ params }) {
   const supabase = createClientComponentClient();
@@ -21,6 +22,8 @@ export default function ClientComponent({ params }) {
   const [currentSubData, setCurrentSubData] = useState();
   const [currentServiceData, setCurrentServiceData] = useState();
   const [currentAvaliblePlans, setCurrentAvaliblePlans] = useState();
+  const [notis, setNotis] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -57,6 +60,7 @@ export default function ClientComponent({ params }) {
               .eq('id', `${currentSubscriptions[0].service_id}`);
 
             if (currentService) {
+              setIsLoading(false);
               //has the current service data from the service table - such as service name and logo.
               setCurrentServiceData(currentService[0]);
             }
@@ -132,6 +136,33 @@ export default function ClientComponent({ params }) {
   return (
     <>
       <section className={styles.sectionOne}>
+        <div className={styles.backContainer}>
+          <Link
+            className={styles.back}
+            href={`home/my-subscriptions/${params.slug}/${params.endslug}`}
+          >
+            <Image
+              src="/images/navigation/back.svg"
+              alt="navigate back"
+              height={30}
+              width={30}
+            ></Image>
+          </Link>
+        </div>
+        {isLoading ? (
+          <div className={styles.loadingContainer}>
+            <Image
+              className={styles.loading}
+              alt="huhu"
+              width={44}
+              height={44}
+              style={{ width: 44, height: 44 }}
+              placeholder="empty"
+              priority={false}
+              src="/images/loading/loading.svg"
+            ></Image>
+          </div>
+        ) : null}
         {currentServiceData && (
           <>
             <Image
@@ -247,6 +278,20 @@ export default function ClientComponent({ params }) {
               className={styles.dateInputField}
               selected={startDate}
               onChange={(date) => setStartDate(date)}
+              autoComplete="off"
+            />
+          </div>
+
+          <label htmlFor="notis" className={styles.headingTwo}>
+            Notis
+          </label>
+          <div className={styles.datefieldContainer}>
+            <DatePicker
+              name="notis"
+              value={notis}
+              className={styles.dateInputField}
+              selected={notis}
+              onChange={(date) => setNotis(date)}
               autoComplete="off"
             />
           </div>

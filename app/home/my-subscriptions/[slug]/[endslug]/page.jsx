@@ -1,34 +1,34 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import Image from "next/image";
-import styles from "./my-subscription.module.css";
-import Link from "next/link";
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
+import Image from 'next/image';
+import styles from './my-subscription.module.css';
+import Link from 'next/link';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export default async function ServerComponent({ params }) {
   const supabase = createServerComponentClient({ cookies });
 
   const { data: mySubData } = await supabase
-    .from("user_subscriptions")
+    .from('user_subscriptions')
     .select()
-    .eq("id", `${params.endslug}`);
+    .eq('id', `${params.endslug}`);
 
   const { data: subData } = await supabase
-    .from("subscriptions")
+    .from('subscriptions')
     .select()
-    .eq("id", `${mySubData[0].subscription_id}`);
+    .eq('id', `${mySubData[0].subscription_id}`);
 
   const { data: serviceData } = await supabase
-    .from("services")
+    .from('services')
     .select()
-    .eq("id", `${subData[0].service_id}`);
+    .eq('id', `${subData[0].service_id}`);
 
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.headerSection}>
-        <div className={styles.back}>
-          <Link className={styles.back} href="/home/my-subscriptions">
+        <div className={styles.backContainer}>
+          <Link className={styles.back} href={`/home/my-subscriptions`}>
             <Image
               src="/images/navigation/back.svg"
               alt="navigate back"
