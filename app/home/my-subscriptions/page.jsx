@@ -1,10 +1,10 @@
-'use client';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useEffect, useState, useRef } from 'react';
-import { BrandBox } from '@/components/BrandBox/BrandBox';
-import { AddPlanContainer } from '@/components/AddPlanContainer/AddPlanContainer';
-import { CategoryButton } from '@/components/CategoryButton/CategoryButton';
-import styles from './my-subscriptions.module.css';
+"use client";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect, useState, useRef } from "react";
+import { BrandBox } from "@/components/BrandBox/BrandBox";
+import { AddPlanContainer } from "@/components/AddPlanContainer/AddPlanContainer";
+import { CategoryButton } from "@/components/CategoryButton/CategoryButton";
+import styles from "./my-subscriptions.module.css";
 
 // export const dynamic = 'force-dynamic';
 
@@ -16,13 +16,13 @@ export default function ClientComponent() {
   const [totalCost, setTotalCost] = useState(0);
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [filteredCategory, setFilteredCategory] = useState(subsData);
 
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      const { data: userSubsData } = await supabase.from('user_subscriptions')
+      const { data: userSubsData } = await supabase.from("user_subscriptions")
         .select(`
     id,
     billing_start_date,
@@ -32,7 +32,7 @@ export default function ClientComponent() {
     )
   `);
       const { data: categoryData } = await supabase
-        .from('service_categories')
+        .from("service_categories")
         .select();
 
       if (userSubsData && categoryData) {

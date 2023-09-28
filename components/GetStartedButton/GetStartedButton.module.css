@@ -1,0 +1,47 @@
+.fixedWidth {
+  width: 121px;
+}
+
+.brandBoxWrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 4.68rem;
+  flex-shrink: 0;
+  align-items: center;
+  border-radius: 1.25rem;
+  margin-top: 1.19rem;
+  background: var(--gradient-button);
+  box-shadow: var(--primary-box-shadow);
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+
+.serviceNameHeading {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.add {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 30%;
+  border-radius: 1.25rem;
+  background: var(--gradient-button);
+  box-shadow: var(--primary-box-shadow);
+}
+
+.add:active {
+  background: var(--on-secondary);
+  color: white;
+}
