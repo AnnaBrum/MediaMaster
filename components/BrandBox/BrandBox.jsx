@@ -1,9 +1,9 @@
-"use client";
-import Image from "next/image";
-import styles from "./BrandBox.module.css";
-import Link from "next/link";
+'use client';
+import Image from 'next/image';
+import styles from './BrandBox.module.css';
+import Link from 'next/link';
 
-export function BrandBox({ logoUrl, serviceName, cost }) {
+export function BrandBox({ logoUrl, serviceName, cost, plan, mySub }) {
   return (
     <div className={styles.brandBoxWrapper}>
       <div className={styles.serviceContainer}>
@@ -16,7 +16,7 @@ export function BrandBox({ logoUrl, serviceName, cost }) {
               placeholder="empty"
               priority={false}
               style={{
-                objectFit: "contain",
+                objectFit: 'contain',
               }}
             ></Image>
           </div>
@@ -27,7 +27,10 @@ export function BrandBox({ logoUrl, serviceName, cost }) {
         <p>{cost}kr</p>
       </div>
       <div className={styles.changePlan}>
-        <Link className={styles.link} href={serviceName}>
+        <Link
+          className={styles.link}
+          href={`home/my-subscriptions/${serviceName}/${mySub}`}
+        >
           Byt betalningsplan
           <Image
             src="/images/navigation/forward.svg"

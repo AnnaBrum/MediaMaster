@@ -89,6 +89,7 @@ export default function ClientComponent() {
     setServiceName(e.target.value);
   };
 
+  //if user has spelled out an actual existing server in the inputfield, set is as serviceName, else reset.
   const handleBlur = () => {
     if (serviceName.toLowerCase() !== input.toLowerCase()) {
       setServiceName('');
@@ -98,7 +99,7 @@ export default function ClientComponent() {
     }
     setTimeout(() => {
       setDropdown(false);
-    }, 100);
+    }, 150);
   };
 
   //user field eventHandlers
@@ -113,7 +114,7 @@ export default function ClientComponent() {
   const hadleUserFieldBlur = () => {
     setTimeout(() => {
       setUserDropdown(false);
-    }, 100);
+    }, 150);
   };
 
   //price field event-handlers
@@ -171,24 +172,24 @@ export default function ClientComponent() {
   const hadlePriceFieldBlur = () => {
     setTimeout(() => {
       setPriceDropdown(false);
-    }, 100);
+    }, 150);
   };
 
   //period eventhandlers
 
-  const handlePeriodFieldClick = () => {
-    setPeriodDropdown(true);
-  };
+  // const handlePeriodFieldClick = () => {
+  //   setPeriodDropdown(true);
+  // };
 
-  const handlePeriodOptionCLick = (e) => {
-    setPeriod(e.target.value);
-  };
+  // const handlePeriodOptionCLick = (e) => {
+  //   setPeriod(e.target.value);
+  // };
 
-  const hadlePeriodFieldBlur = () => {
-    setTimeout(() => {
-      setPeriodDropdown(false);
-    }, 100);
-  };
+  // const hadlePeriodFieldBlur = () => {
+  //   setTimeout(() => {
+  //     setPeriodDropdown(false);
+  //   }, 100);
+  // };
 
   const handleSparaClick = () => {
     setSend(true);

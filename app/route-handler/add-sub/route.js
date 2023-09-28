@@ -33,7 +33,7 @@ export async function POST(request) {
     billing_date: day,
   });
 
-  return NextResponse.redirect(`${requestUrl.origin}/home/add-subscription`, {
+  return NextResponse.redirect(`${requestUrl.origin}/home/my-subscriptions`, {
     status: 301,
   });
 }
