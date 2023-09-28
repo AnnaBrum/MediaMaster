@@ -1,12 +1,17 @@
 .headingOne {
-  /* font-family: Sequel Sans; */
+  margin-top: 100px;
+  margin-bottom: 60px;
+
+  color: var(--OnSecondary, #000);
+  /* H1 */
+  font-family: var(--Semi-Bold-Display);
   font-size: 28px;
   font-style: normal;
   font-weight: 420;
   line-height: 30px; /* 107.143% */
   letter-spacing: 1.4px;
-  margin-top: 100px;
-  margin-bottom: 60px;
+  text-align: left;
+  width: 100%;
 }
 
 .sectionOne {
@@ -77,8 +82,8 @@
 
 .arrowImg {
   position: absolute;
-  right: 10px;
-  top: 18px;
+  right: 16px;
+  top: 15px;
 }
 
 /* amount of users */

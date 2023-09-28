@@ -221,7 +221,7 @@ export default function ClientComponent() {
             name="serviceName"
             type="text"
             required
-            placeholder="Service Name"
+            placeholder="Skriv in din prenumeration här"
             onChange={handleChange}
             onBlur={handleBlur}
             value={input}
@@ -326,7 +326,7 @@ export default function ClientComponent() {
             </div>
           </div>
 
-          <label htmlFor="period" className={styles.headingTwo}>
+          {/* <label htmlFor="period" className={styles.headingTwo}>
             Period
           </label>
           <button
@@ -365,7 +365,7 @@ export default function ClientComponent() {
                 </>
               )}
             </div>
-          </div>
+          </div> */}
 
           <label htmlFor="startDate" className={styles.headingTwo}>
             Betaldatum
@@ -377,7 +377,7 @@ export default function ClientComponent() {
               className={styles.dateInputField}
               selected={startDate}
               onChange={(date) => setStartDate(date)}
-              // placeholder="27/08/2023"
+              autoComplete="off"
             />
           </div>
           <div className={styles.saveBtnContainer}>
