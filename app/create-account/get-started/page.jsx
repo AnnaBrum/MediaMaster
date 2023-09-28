@@ -94,7 +94,7 @@ export default function ClientComponent() {
   // }, [subsData, filteredCategory]);
 
   return (
-    <div className={styles.pageWrapper}>
+    <>
       <NavDots
         redirectBack="/create-account"
         imageUrl1="/images/navigation/nav_dot_active.svg"
@@ -102,6 +102,7 @@ export default function ClientComponent() {
         imageUrl3="/images/navigation/nav_dot_active.svg"
         imageUrl4="/images/navigation/nav_dot_active.svg"
       />
+    <div className={styles.pageWrapper}>
       <section className={styles.sectionOne}>
         <h1 className={styles.headingOne}>Kom igång!</h1>
         <h2 className={styles.headingTwo}>Skriv in prenumeration</h2>
@@ -146,5 +147,6 @@ export default function ClientComponent() {
         Klar!
       </button>
     </div>
+    </>
   );
 }
