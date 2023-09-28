@@ -1,52 +1,59 @@
-.fixedWidth {
-  width: 121px;
-}
-
 .brandBoxWrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   height: 7.5rem;
-  flex-shrink: 0;
   align-items: center;
-  border-radius: 20px;
-  margin-bottom: 32px;
+  padding-top: 1.5rem;
+  padding-right: 2.13rem;
+  padding-left: 1rem;
+  border-radius: 1.25rem;
+  margin-bottom: 2rem;
   background: var(--gradient-button);
   box-shadow: var(--primary-box-shadow);
+  gap: 1.81rem;
 }
 
-.imageContainer {
+.serviceContainer {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
-  margin-left: 20px;
+  justify-content: space-between;
 }
 
+.logoAndName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.imageContainer {
+  position: relative;
+  max-width: 45px;
+  max-height: 36px;
+  min-height: 30px;
+  min-width: 30px;
+}
 
 .serviceNameHeading {
+  font-family: var(--Light-Display);
   font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
-.innerDiv {
-  /* border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black; */
-  border-radius: 20px;
-  width: 99px;
-  height: 75px;
+.changePlan {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+.link {
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: var(--primary-box-shadow);
-}
-
-.costHeading {
-  font-family: Sequel Sans;
+  gap: 0.6rem;
+  font-family: var(--Light-Display);
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
 }

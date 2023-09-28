@@ -10,11 +10,12 @@
   justify-content: end;
 }
   .wrapper {
-    padding: 2rem 2rem;
+    padding: 4rem 2rem;
     word-wrap: break-word;
   }
   
   .wrapper h1 {
+    font-family: var(--Semi-Bold-Display);
     font-size: 1.75rem;
     font-weight: bold;
     text-align: start;
@@ -22,6 +23,7 @@
   }
   
   .intro {
+    font-family: var(--Light-Display);
     margin-top: 1rem;
     font-size: 1.7rem;
     font-weight: 400;
@@ -29,15 +31,20 @@
     line-height: 1.2;
   }
   
-  .wrapper ul {
+  .list ul {
+    font-family: var(--Light-Display);
     margin-top: 1rem;
-    padding-left: 1rem;
+    padding-left: 2rem;
     text-align: start;
   }
   
-  .wrapper li {
+  .list li {
     font-size: 1rem;
     list-style-type: disc;
     padding-top: 1rem;
+    font-family: var(--Light-Display);
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.4;
   }
   

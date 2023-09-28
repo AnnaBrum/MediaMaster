@@ -30,22 +30,23 @@
 }
 .intro {
   font-family: var(--Light-Display);
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   font-size: 1.7rem;
   font-weight: 300;
   text-align: start;
   line-height: 1.2;
 }
 
-.list {
+.list ul{
   margin-top: 1rem;
-  padding-left: 1rem;
+  padding-left: 2rem;
   text-align: start;
 }
 
 .list li {
   font-family: var(--Light-Display);
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-weight: 300;
   list-style-type: disc;
   padding-top: 1rem;
 }

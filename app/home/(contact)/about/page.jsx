@@ -1,32 +1,23 @@
-"use client";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import styles from "./about.module.css";
 
-// export const dynamic = "force-dynamic";
+import styles from './about.module.css';
 
 export default async function About() {
-  const supabase = createClientComponentClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session) {
-    //this is a protected route - only users who are signed in can view this route
-    redirect("/");
-  }
 
   return (
     <div className={styles.background}>
-      <div className={styles.wrapper}>
-        <h1>
+    <div className={styles.wrapper}>
+
+        <h1 className={styles.headingOne}>
           Hur fungerar <br /> Media Watch?
         </h1>
-        <p className="intro">
+
+        <p className={styles.intro}>
           Håll enkelt koll på dina webbaserade betalningar med vår app – få
           översikt, påminnelser och säkerhet i ett enda verktyg.
         </p>
-        <ul>
-          <li>
+
+        <ul className={styles.list}>
+          <li >
             Betaltjänster Under Ett Tak: Slipp bläddra genom flera webbplatser
             och appar för att hålla koll på dina månatliga betalningar. Vår app
             aggregerar alla dina betaltjänster på en enda plattform.
@@ -54,5 +45,6 @@ export default async function About() {
         </ul>
       </div>
     </div>
+
   );
 }

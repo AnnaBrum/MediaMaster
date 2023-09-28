@@ -17,8 +17,8 @@ export const menuItems = [
   {
     title: "Kontakt",
     submenu: [
-      { title: "Support", url: "support" },
-      { title: "Om Media Watch", url: "about" },
+      { title: "Support", url: "/home/support" },
+      { title: "Om Media Watch", url: "/home/about" },
     ],
   },
   {

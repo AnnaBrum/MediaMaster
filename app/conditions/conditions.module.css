@@ -36,7 +36,7 @@
   font-weight: 300;
   margin-top: 1rem;
   text-align: start;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 
 .section {
@@ -48,9 +48,13 @@
   padding-left: 1rem;
 }
 
-.wrapper li {
-  font-size: 1rem;
+.section li {
+  font-family: var(--Light-Display);
+  font-size: 1.25rem;
+  font-weight: 300;
   list-style-type: decimal;
   padding-top: 1rem;
+  line-height: 1.4;
 }
+
 

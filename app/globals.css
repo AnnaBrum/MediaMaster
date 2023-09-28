@@ -4,35 +4,34 @@
 
 @font-face {
   font-family: "SequelSans-BoldDisp";
-  src:
-    local("Sequel Sans Bold Display"),
-    url("../public/fonts/SequelSans_BoldDisplay.woff2") format("Web Open Font Format 2"),
+  src: local("Sequel Sans Bold Display"),
+    url("../public/fonts/SequelSans_BoldDisplay.woff2")
+      format("Web Open Font Format 2");
 }
 @font-face {
   font-family: "SequelSans-BoldHead";
-  src:
-    local("Sequel Sans Bold Head"),
-    url("../public/fonts/SequelSans_BoldHead.woff2") format("Web Open Font Format 2"),
+  src: local("Sequel Sans Bold Head"),
+    url("../public/fonts/SequelSans_BoldHead.woff2")
+      format("Web Open Font Format 2");
 }
 @font-face {
   font-family: "SequelSans-LightDisp";
-  src:
-    local("Sequel Sans Light Display"),
-    url("../public/fonts/SequelSans_LightDisp.woff2") format("Web Open Font Format 2"),
+  src: local("Sequel Sans Light Display"),
+    url("../public/fonts/SequelSans_LightDisp.woff2")
+      format("Web Open Font Format 2");
 }
 @font-face {
   font-family: "SequelSans-MediumHead";
-  src:
-    local("Sequel Sans Medium Head"),
-    url("../public/fonts/SequelSans_MediumHead.woff2") format("Web Open Font Format 2"),
+  src: local("Sequel Sans Medium Head"),
+    url("../public/fonts/SequelSans_MediumHead.woff2")
+      format("Web Open Font Format 2");
 }
 @font-face {
   font-family: "SequelSans-SemiBoldDisp";
-  src:
-    local("Sequel Sans Medium Head"),
-    url("../public/fonts/SequelSans_SemiBoldDisp.woff2") format("Web Open Font Format 2"),
+  src: local("Sequel Sans Medium Head"),
+    url("../public/fonts/SequelSans_SemiBoldDisp.woff2")
+      format("Web Open Font Format 2");
 }
-
 
 :root {
   /* colors */
@@ -42,21 +41,25 @@
   --background-blue: #99b6ff;
   --stroke-grey: #747373;
 
-    /* box-shadows */
+  /* box-shadows */
   --primary-box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.25);
-  --button-small:2px 2px 7px 3px rgba(0, 0, 0, 0.35);
+  --button-small: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);
 
   /* color styles */
   --primary-color: linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%);
-  --gradient-button: linear-gradient(180deg, rgba(244, 240, 255, 0.67) 21.35%, #99B6FF 100%);
-  --gradient-2: linear-gradient(180deg, #C1C3FF 23.58%, #6D91E7 100%);
-  
+  --gradient-button: linear-gradient(
+    180deg,
+    rgba(244, 240, 255, 0.67) 21.35%,
+    #99b6ff 100%
+  );
+  --gradient-2: linear-gradient(180deg, #c1c3ff 23.58%, #6d91e7 100%);
+
   /* fonts */
-  --Bold-Display: "SequelSans-BoldDisp", 'Inter', sans-serif;
-  --Bold-Head: "SequelSans-BoldHead", 'Inter', sans-serif;
-  --Light-Display: "SequelSans-LightDisp", 'Inter', sans-serif;
-  --Medium-Head: "SequelSans-MediumHead", 'Inter', sans-serif;
-  --Semi-Bold-Display: "SequelSans-SemiBoldDisp", 'Inter', sans-serif;
+  --Bold-Display: "SequelSans-BoldDisp", "Inter", sans-serif;
+  --Bold-Head: "SequelSans-BoldHead", "Inter", sans-serif;
+  --Light-Display: "SequelSans-LightDisp", "Inter", sans-serif;
+  --Medium-Head: "SequelSans-MediumHead", "Inter", sans-serif;
+  --Semi-Bold-Display: "SequelSans-SemiBoldDisp", "Inter", sans-serif;
 }
 
 * {
@@ -88,17 +91,7 @@
     font-weight: bold;
     font-size: 1.75rem;
     letter-spacing: 5%;
-  } 
-
-  /* h2 {
-    font-family: var(--Light-Display);
-    font-size: 2rem;
   }
-
-  p {
-    font-family: var(--Light-Display);
-    font-size: 1.25rem;
-  } */
 
   a {
     text-decoration: none;

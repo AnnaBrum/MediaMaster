@@ -36,6 +36,10 @@
   margin: 0.5rem;
 }
 
+.categoryButton:focus {
+  border: 1px solid #000;
+}
+
 .categoryButton :active {
   border: 1px solid #000;
 }

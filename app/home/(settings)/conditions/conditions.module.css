@@ -5,40 +5,55 @@
 }
 
 .exitButton {
-  padding: 2rem;
   display: flex;
   width: 100%;
   justify-content: end;
 }
-  .wrapper {
-    padding: 2rem 2rem;
-    word-wrap: break-word;
-  }
+
+.wrapper {
+  padding: 2rem;
+  word-wrap: break-word;
+}
+
+.headingOne {
+  margin-top: 3rem;
+  font-family: var(--Semi-Bold-Display);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.875rem; /* 107.143% */
+  letter-spacing: 0.0875rem;
+}
+
+.intro {
+  margin-top: 1.5rem;
+}
+
+.intro p {
+  font-family: var(--Light-Display);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 300;
+  margin-top: 1rem;
+  text-align: start;
+  line-height: 1.4;
+}
+
+.section {
+  margin-top: 1rem;
   
-  .wrapper h1 {
-    font-size: 1.75rem;
-    font-weight: bold;
-    text-align: start;
-    line-height: 1.2;
-  }
-  
-  .intro {
-    margin-top: 1rem;
-    font-size: 1.7rem;
-    font-weight: 400;
-    text-align: start;
-    line-height: 1.2;
-  }
-  
-  .wrapper ul {
-    margin-top: 1rem;
-    padding-left: 1rem;
-    text-align: start;
-  }
-  
-  .wrapper li {
-    font-size: 1rem;
-    list-style-type: disc;
-    padding-top: 1rem;
-  }
-  
+  text-align: start;
+}
+.wrapper ol {
+  padding-left: 1rem;
+}
+
+.section li {
+  font-family: var(--Light-Display);
+  font-size: 1.25rem;
+  font-weight: 300;
+  list-style-type: decimal;
+  padding-top: 1rem;
+  line-height: 1.4;
+}
+

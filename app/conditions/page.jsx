@@ -26,8 +26,8 @@ export default async function Conditions() {
         </p>
       </div>
       <div className={styles.section}>
-      <ol>
-        <li>
+      <ol className={styles.section}>
+        <li className={styles.section}>
           Samtycke: Vi respekterar ditt samtycke. Innan vi samlar in eller
           behandlar någon personlig information kommer du att tydligt ombedjas
           att ge ditt medgivande. Detta sker enkelt genom att klicka på en knapp
