@@ -39,9 +39,9 @@
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   background: var(--gradient-button);
-  width: 101vw;
+  width: 100vw;
   background: var(--primary-color);
-  box-shadow: var(--primary-box-shadow);
+  box-shadow: 0px -1px 10px 1px rgba(0, 0, 0, 0.2);
   padding: 2rem 1.75rem 10rem 1.75rem;
   margin-top: 3rem;
 }

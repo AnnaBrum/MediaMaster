@@ -28,7 +28,7 @@ export default async function ServerComponent({ params }) {
     <div className={styles.pageWrapper}>
       <div className={styles.headerSection}>
         <div className={styles.back}>
-          <Link className={styles.back} href={`home/my-subscriptions/${params.slug}/${params.endslug}`}>
+          <Link className={styles.back} href="/home/my-subscriptions">
             <Image
               src="/images/navigation/back.svg"
               alt="navigate back"
