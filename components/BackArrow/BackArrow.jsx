@@ -1,6 +1,7 @@
+import React from "react";
 import Image from "next/image";
 
-export function BackArrow() {
+function BackArrow() {
   return (
     <Image
       src="/images/navigation/back.svg"
@@ -10,3 +11,5 @@ export function BackArrow() {
     ></Image>
   );
 }
+
+export default BackArrow();

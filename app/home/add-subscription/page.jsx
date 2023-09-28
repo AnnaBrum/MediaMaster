@@ -1,36 +1,37 @@
-'use client';
+"use client";
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useEffect, useState, useRef } from 'react';
-import styles from './add-subscription.module.css';
-import dropdownArrow from '@/public/images/form/dropdownArrow.svg';
-import Image from 'next/image';
-import DatePicker from 'react-datepicker/dist/react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect, useState, useRef } from "react";
+import styles from "./add-subscription.module.css";
+import dropdownArrow from "@/public/images/form/dropdownArrow.svg";
+import Image from "next/image";
+import DatePicker from "react-datepicker/dist/react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Link from "next/link";
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
   const [serviceData, setServiceData] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [dropdown, setDropdown] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
   const [userDropdown, setUserDropdown] = useState(false);
   const [users, setUsers] = useState(1);
   const [priceDropdown, setPriceDropdown] = useState(false);
-  const [pricePlanId, setPricePlanId] = useState('');
+  const [pricePlanId, setPricePlanId] = useState("");
   const [startDate, setStartDate] = useState();
   const [plans, setPlans] = useState([]);
   const [chosenServiceId, setChosenServiceId] = useState();
   const [pricePlanLabel, setPricePlanLabel] = useState();
-  const [serviceName, setServiceName] = useState('');
+  const [serviceName, setServiceName] = useState("");
 
   const [send, setSend] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
-      const { data: services } = await supabase.from('services').select();
+      const { data: services } = await supabase.from("services").select();
       const { data: subscriptions } = await supabase
-        .from('subscriptions')
+        .from("subscriptions")
         .select();
       if (services && subscriptions) {
         setServiceData(services);
@@ -89,8 +90,8 @@ export default function ClientComponent() {
   //if user has spelled out an actual existing server in the inputfield, set is as serviceName, else reset.
   const handleBlur = () => {
     if (serviceName.toLowerCase() !== input.toLowerCase()) {
-      setServiceName('');
-      setInput('');
+      setServiceName("");
+      setInput("");
     } else {
       setServiceName(input);
     }
@@ -130,7 +131,7 @@ export default function ClientComponent() {
     };
 
     // Check if serviceName is defined and not an empty string before calling the function
-    if (serviceName !== undefined && serviceName.trim() !== '') {
+    if (serviceName !== undefined && serviceName.trim() !== "") {
       getServiceIdByName(serviceName);
     }
   }, [serviceName]);
@@ -141,9 +142,9 @@ export default function ClientComponent() {
         // Check if chosenServiceId is defined
         console.log(chosenServiceId);
         const { data: paymentPlans } = await supabase
-          .from('subscriptions')
+          .from("subscriptions")
           .select()
-          .eq('service_id', `${chosenServiceId}`);
+          .eq("service_id", `${chosenServiceId}`);
 
         if (paymentPlans) {
           setPlans(paymentPlans);
@@ -180,13 +181,23 @@ export default function ClientComponent() {
   const onSubmit = (e) => {
     e.preventDefault();
     if (send) {
-      document.getElementById('myForm').submit();
+      document.getElementById("myForm").submit();
     }
   };
 
   return (
     <>
       <section className={styles.sectionOne}>
+        <div className={styles.back}>
+          <Link className={styles.back} href="/home/my-subscriptions">
+            <Image
+              src="/images/navigation/back.svg"
+              alt="navigate back"
+              height={30}
+              width={30}
+            ></Image>
+          </Link>
+        </div>
         <h1 className={styles.headingOne}>Lägg till prenumeration</h1>
         <form
           className={styles.serviceForm}

@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import styles from "./my-subscription.module.css";
 import Link from "next/link";
-import { BackArrow } from "../../../../../components/BackArrrow/BackArrow";
 
 export const dynamic = "force-dynamic";
 
@@ -25,14 +24,17 @@ export default async function ServerComponent({ params }) {
     .select()
     .eq("id", `${subData[0].service_id}`);
 
-  console.log(serviceData);
-
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.headerSection}>
         <div className={styles.back}>
           <Link className={styles.back} href="/home/my-subscriptions">
-            <BackArrow />
+            <Image
+              src="/images/navigation/back.svg"
+              alt="navigate back"
+              height={30}
+              width={30}
+            ></Image>
           </Link>
         </div>
         <div className={styles.logo}>

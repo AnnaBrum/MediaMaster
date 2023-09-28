@@ -1,6 +1,6 @@
 "use client";
 
-import { Illustration } from "../../components/Illustration/Illustration";
+// import { LoginAnimation } from "../../components/LoginAnimation/LogintAnimation";
 import styles from "./welcome.module.css";
 
 import { useEffect, useState } from "react";
@@ -25,7 +25,7 @@ export default function Welcome() {
           Välkommen till <br /> Media Watch!
         </h1>
         <div className={styles.illustration}>
-          <Illustration imageUrl="/images/illustration/login_face.svg" />
+          {/* <LoginAnimation /> */}
         </div>
       </div>
     );
