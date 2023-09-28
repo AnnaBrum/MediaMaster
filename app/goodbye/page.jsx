@@ -1,7 +1,6 @@
 "use client";
 
-import { Illustration } from "../../components/Illustration/Illustration";
-import { Logo } from "../../components/Logo/Logo";
+import { LogoutAnimation } from "../../components/LogoutAnimation/LogoutAnimation";
 import styles from "./goodbye.module.css";
 
 import { useEffect, useState } from "react";
@@ -27,7 +26,7 @@ export default function Goodbye() {
           Farväl
         </h1>
         <div className={styles.illustration}>
-          <Illustration imageUrl="/images/illustration/logout_face.svg" />
+          <LogoutAnimation />
         </div>
       </div>
     );

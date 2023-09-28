@@ -1,13 +1,10 @@
 .headingOne {
-  margin-top: 100px;
+  margin-top: 2rem;
   margin-bottom: 60px;
-
-  color: var(--OnSecondary, #000);
-  /* H1 */
   font-family: var(--Semi-Bold-Display);
   font-size: 28px;
   font-style: normal;
-  font-weight: 420;
+  font-weight: bold;
   line-height: 30px; /* 107.143% */
   letter-spacing: 1.4px;
   text-align: left;
@@ -17,8 +14,8 @@
 .sectionOne {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0px 32px;
+  padding: 2.62rem 2rem;
+ 
 }
 
 .serviceForm {
