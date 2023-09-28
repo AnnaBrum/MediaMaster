@@ -3,6 +3,8 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import styles from './my-subscription.module.css';
+import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,10 +40,14 @@ export default async function ServerComponent({ params }) {
         height={44}
         width={44}
       ></Image>
-      <h1>{subData[0].plan_name}</h1>
-      <h1>{serviceData[0].service_name}</h1>
-      <h1>{subData[0].price}</h1>
-      <h1>{mySubData[0].billing_start_date}</h1>
+      <h1>Plan namn: {subData[0].plan_name}</h1>
+      <h1> Service namn: {serviceData[0].service_name}</h1>
+      <h1>Pris: {subData[0].price}</h1>
+      <h1>Antal användare: {mySubData[0].amount_of_users}</h1>
+      <h1>Första räkning: {mySubData[0].billing_start_date}</h1>
+      <Link href="temp" className={styles.changePlanBtn}>
+        Ändra Betalningsplan
+      </Link>
     </div>
   );
 }

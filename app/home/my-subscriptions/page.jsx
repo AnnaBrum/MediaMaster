@@ -20,7 +20,6 @@ export default function ClientComponent() {
   const [input, setInput] = useState('');
   const [filteredCategory, setFilteredCategory] = useState(subsData);
 
-
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
@@ -127,16 +126,14 @@ export default function ClientComponent() {
       <section className={styles.sectionOne}>
         {/* <CategoryButton /> */}
         <h1 className={styles.headingOne}>Mina Prenumerationer</h1>
-        <AddPlanContainer 
-        focus={focus}
-        onClick={handleFocus}/>
+        <AddPlanContainer focus={focus} onClick={handleFocus} />
 
         <input
           className={styles.searchField}
           type="text"
           placeholder="Sök bland dina prenumerationer"
           onChange={handleChange}
-          value={input}     
+          value={input}
         />
       </section>
       <section className={styles.sectionTwo}>
