@@ -85,3 +85,9 @@
   align-items: center;
   gap: 10px;
 }
+
+.backContainer {
+  position: absolute;
+  top: 3.8rem;
+  left: 1.75rem;
+}
