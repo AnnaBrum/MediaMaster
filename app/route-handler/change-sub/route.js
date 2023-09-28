@@ -40,8 +40,3 @@ export async function POST(request) {
     status: 301,
   });
 }
-
-// const { error } = await supabase
-//   .from('countries')
-//   .update({ name: 'Australia' })
-//   .eq('id', 1);
