@@ -24,9 +24,10 @@
 }
 
 .serviceNameHeading {
+  font-family: var(--Light-Display);
   font-size: 20px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
 }
 
@@ -44,9 +45,14 @@
 }
 
 .costHeading {
-  font-family: var(--light-display);
+  font-family: var(--Light-Display);
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
+}
+
+.boxShadowClass {
+  box-shadow: var(--button-pressed);
+  transition: box-shadow 0.3s ease-in-out;
 }

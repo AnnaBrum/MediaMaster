@@ -1,4 +1,5 @@
 .headingOne {
+  font-family: var(--Semi-Bold-Display);
   font-size: 28px;
   font-style: normal;
   font-weight: bold;
@@ -14,7 +15,8 @@
 }
 
 .searchField {
-  font-size: 1.25rem;
+  font-family: var(--Semi-Bold-Display);
+  font-size: 1.2rem;
   border-radius: 1.875rem;
   border: 1px solid var(--Stroke-grey, #747373);
   background: #fff;
@@ -37,11 +39,8 @@
 }
 
 .categoryButton:focus {
-  border: 1px solid #000;
-}
-
-.categoryButton :active {
-  border: 1px solid #000;
+  background: var(--on-secondary);
+  color: white;
 }
 
 .sectionTwo {
@@ -59,7 +58,9 @@
   font-weight: 375;
 }
 
-.total, .amount{
+.total,
+.amount {
+  font-family: var(--Semi-Bold-Display);
   display: flex;
   justify-content: space-between;
 }
