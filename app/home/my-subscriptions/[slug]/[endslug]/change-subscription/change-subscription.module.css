@@ -177,6 +177,15 @@
   gap: 10px;
   margin-top: 30px;
 }
+.deleteBtn:focus {
+  background-color: var(--on-secondary);
+  color: white;
+}
+
+.saveBtn:focus {
+  background-color: var(--on-secondary);
+  color: white;
+}
 
 .saveBtnContainer {
   display: flex;
