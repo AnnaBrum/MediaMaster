@@ -1,9 +1,8 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { BrandBox } from "@/components/BrandBox/BrandBox";
 import { AddPlanContainer } from "@/components/AddPlanContainer/AddPlanContainer";
-import { CategoryButton } from "@/components/CategoryButton/CategoryButton";
 import Image from "next/image";
 import styles from "./my-subscriptions.module.css";
 
@@ -19,6 +18,7 @@ export default function ClientComponent() {
   const [isLoading, setIsLoading] = useState(true);
   const [input, setInput] = useState("");
   const [filteredCategory, setFilteredCategory] = useState(subsData);
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -115,18 +115,27 @@ export default function ClientComponent() {
     setSubsCount(amountOfsubs);
   }, [subsData, filteredCategory]);
 
+  // change color of AddPlanContainer svg
+  const [focus, setFocus] = useState(false);
+  const handleFocus = () => {
+    setFocus(!focus);
+  };
+
   return (
     <div className={styles.pageWrapper}>
       <section className={styles.sectionOne}>
         {/* <CategoryButton /> */}
         <h1 className={styles.headingOne}>Mina Prenumerationer</h1>
-        <AddPlanContainer />
+        <AddPlanContainer 
+        focus={focus}
+        onClick={handleFocus}/>
+
         <input
           className={styles.searchField}
           type="text"
           placeholder="Sök bland dina prenumerationer"
           onChange={handleChange}
-          value={input}
+          value={input}     
         />
       </section>
       <section className={styles.sectionTwo}>
