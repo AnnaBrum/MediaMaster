@@ -23,7 +23,7 @@ export default function Goodbye() {
       <div className={styles.pageWrapper}>
 
         <h1 className={styles.headingOne}>
-          Farväl
+          Vi ses snart igen!
         </h1>
         <div className={styles.illustration}>
           <LogoutAnimation />

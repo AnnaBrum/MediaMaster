@@ -1,4 +1,5 @@
-
+import { ExitButton } from "@/components/ExitButton/ExitButton";
+import Link from "next/link";
 import styles from './about.module.css';
 
 export default async function About() {
@@ -6,7 +7,9 @@ export default async function About() {
   return (
     <div className={styles.background}>
     <div className={styles.wrapper}>
-
+    <Link className={styles.exitButton} href="/">
+        <ExitButton />
+      </Link>
         <h1 className={styles.headingOne}>
           Hur fungerar <br /> Media Watch?
         </h1>
