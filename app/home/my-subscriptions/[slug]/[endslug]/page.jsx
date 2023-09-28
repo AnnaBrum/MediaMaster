@@ -1,56 +1,91 @@
-// TODO: Duplicate or move this file outside the `_examples` folder to make it a route
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import Image from "next/image";
+import styles from "./my-subscription.module.css";
+import Link from "next/link";
+import { BackArrow } from "../../../../../components/BackArrrow/BackArrow";
 
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-import Image from 'next/image';
-import styles from './my-subscription.module.css';
-import Link from 'next/link';
-
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function ServerComponent({ params }) {
-  // Create a Supabase client configured to use cookies
   const supabase = createServerComponentClient({ cookies });
 
-  // This assumes you have a `todos` table in Supabase. Check out
-  // the `Create Table and seed with data` section of the README 👇
-  // https://github.com/vercel/next.js/blob/canary/examples/with-supabase/README.md
   const { data: mySubData } = await supabase
-    .from('user_subscriptions')
+    .from("user_subscriptions")
     .select()
-    .eq('id', `${params.endslug}`);
+    .eq("id", `${params.endslug}`);
 
   const { data: subData } = await supabase
-    .from('subscriptions')
+    .from("subscriptions")
     .select()
-    .eq('id', `${mySubData[0].subscription_id}`);
+    .eq("id", `${mySubData[0].subscription_id}`);
 
   const { data: serviceData } = await supabase
-    .from('services')
+    .from("services")
     .select()
-    .eq('id', `${subData[0].service_id}`);
+    .eq("id", `${subData[0].service_id}`);
 
   console.log(serviceData);
 
   return (
-    <div>
-      <Image
-        src={serviceData[0].service_logo}
-        alt="service logo"
-        height={44}
-        width={44}
-      ></Image>
-      <h1>Plan namn: {subData[0].plan_name}</h1>
-      <h1> Service namn: {serviceData[0].service_name}</h1>
-      <h1>Pris: {subData[0].price}</h1>
-      <h1>Antal användare: {mySubData[0].amount_of_users}</h1>
-      <h1>Första räkning: {mySubData[0].billing_start_date}</h1>
-      <Link
-        href={`home/my-subscriptions/${params.slug}/${params.endslug}/change-subscription`}
-        className={styles.changePlanBtn}
-      >
-        Ändra Betalningsplan
-      </Link>
+    <div className={styles.pageWrapper}>
+      <div className={styles.headerSection}>
+        <div className={styles.back}>
+          <Link className={styles.back} href="/home/my-subscriptions">
+            <BackArrow />
+          </Link>
+        </div>
+        <div className={styles.logo}>
+          <Image
+            src={serviceData[0].service_logo}
+            alt="service logo"
+            height={40}
+            width={150}
+          ></Image>
+        </div>
+
+        <div className={styles.headingOne}>
+          <h1>{subData[0].plan_name}</h1>
+        </div>
+      </div>
+
+      <div className={styles.infoSection}>
+        <div className={styles.infoRow}>
+          <h2 className={styles.headingTwo}>{subData[0].price} kr/mån</h2>
+        </div>
+
+        <div className={styles.infoRow}>
+          <h3 className={styles.headingThree}> Namn </h3>
+          <span className={styles.value}>{serviceData[0].service_name}</span>
+        </div>
+
+        <div className={styles.infoRow}>
+          <h3 className={styles.headingThree}>Antal konton </h3>
+          <span className={styles.value}>{mySubData[0].amount_of_users}</span>
+        </div>
+
+        <div className={styles.infoRow}>
+          <h3 className={styles.headingThree}>Första räkning </h3>
+          <span className={styles.value}>
+            {mySubData[0].billing_start_date}
+          </span>
+        </div>
+
+        <div className={styles.buttonWrapper}>
+          <Link
+            href={`home/my-subscriptions/${params.slug}/${params.endslug}/change-subscription`}
+            className={styles.changePlanBtn}
+          >
+            Ändra Betalningsplan
+            <Image
+              src="/images/navigation/forward.svg"
+              alt="navigate forward"
+              height={8}
+              width={8}
+            ></Image>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
