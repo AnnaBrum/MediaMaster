@@ -15,7 +15,6 @@
   display: flex;
   flex-direction: column;
   padding: 2.62rem 2rem;
- 
 }
 
 .serviceForm {
@@ -140,6 +139,11 @@
   align-items: center;
   gap: 10px;
   width: 85px;
+}
+
+.saveBtn:focus {
+  background-color: var(--on-secondary);
+  color: white;
 }
 
 .saveBtnContainer {

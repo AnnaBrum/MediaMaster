@@ -21,6 +21,25 @@
   padding: 0px 32px;
 }
 
+.sectionTwo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 32px 0px 32px;
+  border-radius: 30px 30px 0px 0px;
+  background: var(
+    --Gradient-Frame,
+    linear-gradient(180deg, #f4f0ff 13.02%, #99b6ff 100%)
+  );
+
+  /* Card */
+  box-shadow: 0px -1px 10px 1px rgba(0, 0, 0, 0.2);
+  min-height: 80vh;
+}
+.logoImg {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 .serviceForm {
   display: flex;
   flex-direction: column;
@@ -35,6 +54,7 @@
   font-weight: 375;
   line-height: normal;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .inputField {
@@ -144,6 +164,27 @@
   align-items: center;
   gap: 10px;
   width: 85px;
+}
+
+.deleteBtn {
+  border-radius: 30px;
+  background: var(--Background, #e6e7fe);
+  box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+  padding: 10px 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+.deleteBtn:focus {
+  background-color: var(--on-secondary);
+  color: white;
+}
+
+.saveBtn:focus {
+  background-color: var(--on-secondary);
+  color: white;
 }
 
 .saveBtnContainer {

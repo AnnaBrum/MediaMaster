@@ -105,7 +105,7 @@ export default function ClientComponent({ params }) {
     }, 150);
   };
 
-  //submit
+  //Update submit
   const handleSparaClick = () => {
     setSend(true);
   };
@@ -117,6 +117,18 @@ export default function ClientComponent({ params }) {
     }
   };
 
+  //Delete Submit
+  const handleDeleteClick = () => {
+    setSend(true);
+  };
+
+  const deleteSubmit = (e) => {
+    e.preventDefault();
+    if (send) {
+      document.getElementById('deleteForm').submit();
+    }
+  };
+
   return (
     <>
       <section className={styles.sectionOne}>
@@ -125,12 +137,14 @@ export default function ClientComponent({ params }) {
             <Image
               src={currentServiceData.service_logo}
               alt="service logo"
-              height={44}
-              width={44}
+              height={40}
+              width={150}
+              className={styles.logoImg}
             ></Image>
           </>
         )}
-
+      </section>
+      <section className={styles.sectionTwo}>
         <form
           className={styles.serviceForm}
           action="/route-handler/change-sub"
@@ -241,6 +255,18 @@ export default function ClientComponent({ params }) {
               Spara
             </button>
           </div>
+        </form>
+        <form
+          onSubmit={deleteSubmit}
+          action="/route-handler/delete-sub
+        "
+          method="post"
+          id="deleteForm"
+        >
+          <input type="hidden" name="idToDelete" value={params.endslug} />
+          <button onClick={handleDeleteClick} className={styles.deleteBtn}>
+            Ta bort prenumeration
+          </button>
         </form>
       </section>
     </>
