@@ -11,6 +11,7 @@ export default function ClientComponent() {
   const [serviceData, setServiceData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [input, setInput] = useState("");
+  const [filteredService, setFilteredService] = useState(serviceData)
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,48 +36,48 @@ export default function ClientComponent() {
 
   // // Function to filter subscription data based on category + input, sorts order based on firstletter match.
 
-  // function filterAndSortSubs(subscriptionsArray, input) {
-  //   return subscriptionsArray
-  //     .filter((item) =>
-  //       item.subscriptions.services.service_name
-  //         .toLowerCase()
-  //         .includes(input.toLowerCase())
-  //     )
-  //     .sort((a, b) => {
-  //       // Sort by whether the item starts with the input letter
-  //       const aStartsWithInput = a.subscriptions.services.service_name
-  //         .toLowerCase()
-  //         .startsWith(input.toLowerCase());
-  //       const bStartsWithInput = b.subscriptions.services.service_name
-  //         .toLowerCase()
-  //         .startsWith(input.toLowerCase());
+  function filterAndSortSubs(subscriptionsArray, input) {
+    return subscriptionsArray
+      .filter((item) =>
+        item.services.service_name
+          .toLowerCase()
+          .includes(input.toLowerCase())
+      )
+      .sort((a, b) => {
+        // Sort by whether the item starts with the input letter
+        const aStartsWithInput = a.services.service_name
+          .toLowerCase()
+          .startsWith(input.toLowerCase());
+        const bStartsWithInput = b.services.service_name
+          .toLowerCase()
+          .startsWith(input.toLowerCase());
 
-  //       if (aStartsWithInput && !bStartsWithInput) {
-  //         return -1;
-  //       }
-  //       if (bStartsWithInput && !aStartsWithInput) {
-  //         return 1;
-  //       }
+        if (aStartsWithInput && !bStartsWithInput) {
+          return -1;
+        }
+        if (bStartsWithInput && !aStartsWithInput) {
+          return 1;
+        }
 
-  //       return 0;
-  //     });
-  // }
+        return 0;
+      });
+  }
 
   // useEffect(() => {
-  //   if (category !== 0) {
-  //     setFilteredCategory(
+  //   if (input !== 0) {
+  //     setFilteredService(
   //       filterAndSortSubs(
-  //         subsData.filter(
+  //         serviceData.filter(
   //           (item) =>
-  //             item.subscriptions.services.service_categories.id == category
+  //             item.services.id == input
   //         ),
   //         input
   //       )
   //     );
   //   } else {
-  //     setFilteredCategory(filterAndSortSubs(subsData, input));
+  //     setFilteredCategory(filterAndSortSubs(serviceData, input));
   //   }
-  // }, [subsData, category, input]);
+  // }, [serviceData, input]);
 
   // // Count totalcost and number of subscriptions for every filtering
   // useEffect(() => {
@@ -117,6 +118,20 @@ export default function ClientComponent() {
       <section className={styles.sectionTwo}>
         <h3 className={styles.headingThree}>Mest populära</h3>
         <ul className={styles.costSliderList}>
+        {isLoading ? (
+              <div className={styles.loadingContainer}>
+                <Image
+                  className={styles.loading}
+                  alt="huhu"
+                  width={44}
+                  height={44}
+                  style={{ width: 44, height: 44 }}
+                  placeholder="empty"
+                  priority={false}
+                  src="/images/loading/loading.svg"
+                ></Image>
+              </div>
+            ) : null}
           {serviceData.map((item) => (
             <li key={item.id}>
               <GetStartedButton
@@ -127,9 +142,9 @@ export default function ClientComponent() {
           ))}
         </ul>
       </section>
-      <button formAction="/auth/sign-up" className={styles.ready}>
-            Klar!
-          </button>
+      <button formAction="/route-handler/welcome" className={styles.ready}>
+        Klar!
+      </button>
     </div>
   );
 }

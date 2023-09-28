@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { BrandBox } from "@/components/BrandBox/BrandBox";
 import { AddPlanContainer } from "@/components/AddPlanContainer/AddPlanContainer";
 import { CategoryButton } from "@/components/CategoryButton/CategoryButton";
+import Image from "next/image";
 import styles from "./my-subscriptions.module.css";
 
 // export const dynamic = 'force-dynamic';
@@ -159,6 +160,20 @@ export default function ClientComponent() {
       </section>
       <section className={styles.sectionFour}>
         <ul>
+          {isLoading ? (
+            <div className={styles.loadingContainer}>
+              <Image
+                className={styles.loading}
+                alt="huhu"
+                width={44}
+                height={44}
+                style={{ width: 44, height: 44 }}
+                placeholder="empty"
+                priority={false}
+                src="/images/loading/loading.svg"
+              ></Image>
+            </div>
+          ) : null}
           {filteredCategory.map((item) => (
             <li key={item.id}>
               <BrandBox
