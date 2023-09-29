@@ -24,6 +24,7 @@ export default function ClientComponent({ params }) {
   const [currentAvaliblePlans, setCurrentAvaliblePlans] = useState();
   const [notis, setNotis] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [confirmation, setConfirmation] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -122,10 +123,16 @@ export default function ClientComponent({ params }) {
   };
 
   //Delete Submit
-  const handleDeleteClick = () => {
-    setSend(true);
+  const closeDeleteForm = () => {
+    setConfirmation(false);
   };
 
+  const handleDeleteClick = () => {
+    setConfirmation(true);
+  };
+  const confirmDeleteClick = () => {
+    setSend(true);
+  };
   const deleteSubmit = (e) => {
     e.preventDefault();
     if (send) {
@@ -301,19 +308,27 @@ export default function ClientComponent({ params }) {
             </button>
           </div>
         </form>
-        <form
-          onSubmit={deleteSubmit}
-          action="/route-handler/delete-sub
-        "
-          method="post"
-          id="deleteForm"
-        >
-          <input type="hidden" name="idToDelete" value={params.endslug} />
-          <button onClick={handleDeleteClick} className={styles.deleteBtn}>
-            Ta bort prenumeration
-          </button>
-        </form>
+        <button onClick={handleDeleteClick} className={styles.deleteBtn}>
+          Ta bort prenumeration
+        </button>
       </section>
+      {confirmation ? (
+        <div className={styles.deleteFormContainer}>
+          <p>Vill du ta bort denna prenumeration?</p>
+          <form
+            onSubmit={deleteSubmit}
+            action="/route-handler/delete-sub"
+            method="post"
+            id="deleteForm"
+          >
+            <input type="hidden" name="idToDelete" value={params.endslug} />
+            <div className={styles.confirmationBtnContainer}>
+              <button onClick={confirmDeleteClick}>Ja</button>
+              <button onClick={closeDeleteForm}>Nej</button>
+            </div>
+          </form>
+        </div>
+      ) : null}
     </>
   );
 }
