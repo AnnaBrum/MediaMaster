@@ -13,11 +13,11 @@
     margin-bottom: 20px;
   }
 
-  .addPlanContainer:focus {
+  .addPlanContainer:active {
     background-color: var(--on-secondary);
     color: white;
   }
 
-   .addPlanContainer:focus + svg {
+   .addPlanContainer:active > svg {
     fill: white;
   }  

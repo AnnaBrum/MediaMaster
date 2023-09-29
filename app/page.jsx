@@ -26,7 +26,7 @@ export default async function StartPage() {
         </div>
         <h1 className={styles.headingOne}>Välkommen till <br/> Media Watch!</h1>
         <h2 className={styles.headingTwo}>
-          Samla dina betaltjänster på ett ställe
+          Samla dina betaltjänster <br/> på ett ställe
         </h2>
         <nav className={styles.nav}>
           <Link className={styles.button} href="/about">

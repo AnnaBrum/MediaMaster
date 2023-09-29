@@ -116,9 +116,9 @@ export default function ClientComponent() {
   }, [subsData, filteredCategory]);
 
   // change color of AddPlanContainer svg
-  const [focus, setFocus] = useState(false);
-  const handleFocus = () => {
-    setFocus(!focus);
+  const [isActive, setIsActive] = useState(false);
+  const toggleActiveState = () => {
+    setIsActive(!isActive);
   };
 
   return (
@@ -128,7 +128,7 @@ export default function ClientComponent() {
       <section className={styles.sectionOne}>
         {/* <CategoryButton /> */}
         <h1 className={styles.headingOne}>Mina Prenumerationer</h1>
-        <AddPlanContainer focus={focus} onClick={handleFocus} />
+        <AddPlanContainer isActive={focus} onClick={toggleActiveState} />
 
         <input
           className={styles.searchField}

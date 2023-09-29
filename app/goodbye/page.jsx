@@ -13,7 +13,7 @@ export default function Goodbye() {
       setVisible(false);
       // Redirect to the home page after 5 seconds
       window.location.href = "/login";
-    }, 2000);
+    }, 4000);
 
     return () => clearTimeout(timer);
   }, []);
