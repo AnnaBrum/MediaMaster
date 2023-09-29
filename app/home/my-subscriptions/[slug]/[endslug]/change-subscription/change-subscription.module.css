@@ -49,10 +49,10 @@
 }
 
 .headingTwo {
-  /* font-family: Sequel Sans; */
+  font-family: var(--Semi-Bold-Display);
   font-size: 20px;
   font-style: normal;
-  font-weight: 375;
+  font-weight: bold;
   line-height: normal;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -94,6 +94,7 @@
 
 .dropDown ul {
   padding-left: 30px;
+  padding-bottom: 10px;
 }
 
 .dropDown ul:hover {
@@ -156,6 +157,7 @@
 
 /*sumbit*/
 .saveBtn {
+  font-family: var(--Light-Display);
   border-radius: 30px;
   background: var(--Background, #e6e7fe);
   box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);
@@ -168,6 +170,7 @@
 }
 
 .deleteBtn {
+  font-family: var(--Light-Display);
   border-radius: 30px;
   background: var(--Background, #e6e7fe);
   box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);
@@ -246,7 +249,7 @@
   text-align: center;
 
   /* H2 */
-  /* font-family: var(--Light-Display); */
+   /* font-family: var(--Light-Display);  */
   font-size: 28px;
   font-style: normal;
   font-weight: 400;
@@ -260,6 +263,7 @@
 }
 
 .confirmationBtnContainer button {
+  
   border-radius: 30px;
   background: var(--Background, #e6e7fe);
   box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);

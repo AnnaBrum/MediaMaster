@@ -5,6 +5,7 @@ import styles from "./get-started.module.css";
 import { NavDots } from "../../../components/NavDots/NavDots";
 import { GetStartedButton } from "../../../components/GetStartedButton/GetStartedButton";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
@@ -143,9 +144,9 @@ export default function ClientComponent() {
           ))}
         </ul>
       </section>
-      <button formAction="/route-handler/welcome" className={styles.ready}>
+      <Link href="/welcome" className={styles.ready}>
         Klar!
-      </button>
+      </Link>
     </div>
     </>
   );
