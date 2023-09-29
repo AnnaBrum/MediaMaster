@@ -75,6 +75,10 @@
   /* z-index: 10; */
 }
 
+.dropDown ul option {
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+}
 .priceInputField .dropDown ul {
   padding-left: 30px;
   padding-bottom: 10px;

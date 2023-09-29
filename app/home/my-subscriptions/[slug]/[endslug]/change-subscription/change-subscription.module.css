@@ -274,3 +274,8 @@
   background-color: var(--on-secondary);
   color: white;
 }
+
+.dropDown ul option {
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+}
