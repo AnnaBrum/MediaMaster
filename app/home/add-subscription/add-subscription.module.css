@@ -55,13 +55,11 @@
   /* z-index: 5; */
 }
 
-
-
 .dropDown {
   /* position: absolute; */
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  
+
   /* border-left: 1px solid var(--Stroke-grey, #747373); 
   border-right: 1px solid var(--Stroke-grey, #747373);  */
   background: #fff;
@@ -73,23 +71,23 @@
   left: 6%;
   top: 0%;
   padding-left: 30px;
-  
+
   /* z-index: 10; */
 }
 
 .priceInputField .dropDown ul {
   padding-left: 30px;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--Stroke-grey, #747373);  
+  border-bottom: 1px solid var(--Stroke-grey, #747373);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
 
-
+/* 
 .dropDown ul:hover {
   background: rgb(225, 218, 218);
   cursor: pointer;
-}
+} */
 
 .arrowImg {
   position: absolute;
@@ -110,7 +108,6 @@
   gap: 10px;
   height: 44px;
 }
-
 
 /* price field*/
 .priceInputField {
