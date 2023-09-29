@@ -3,18 +3,17 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styles from './CostSlider.module.css';
 
-
 export function CostSlider({ iconUrl, serviceName, cost }) {
   const [content, setContent] = useState('Visa kostnad');
   const [isBoxShadowApplied, setIsBoxShadowApplied] = useState(false);
 
   const handleClick = () => {
-    if (content == cost) {
+    if (content !== 'Visa kostnad') {
       setContent('Visa kostnad');
-      setIsBoxShadowApplied(false); 
+      setIsBoxShadowApplied(false);
     } else {
-      setContent(cost);
-      setIsBoxShadowApplied(true); 
+      setContent(`${cost} kr`);
+      setIsBoxShadowApplied(true);
     }
   };
 
@@ -31,9 +30,11 @@ export function CostSlider({ iconUrl, serviceName, cost }) {
         ></Image>
         <h2 className={styles.serviceNameHeading}>{serviceName}</h2>
       </div>
-      <div className={`${styles.innerDiv} ${
+      <div
+        className={`${styles.innerDiv} ${
           isBoxShadowApplied ? styles.boxShadowClass : ''
-        }`}>
+        }`}
+      >
         <h3 className={styles.costHeading} onClick={handleClick}>
           {content}
         </h3>
@@ -41,5 +42,3 @@ export function CostSlider({ iconUrl, serviceName, cost }) {
     </div>
   );
 }
-
-

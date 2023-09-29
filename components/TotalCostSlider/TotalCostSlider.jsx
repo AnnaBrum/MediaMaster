@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useState } from 'react';
 import styles from './TotalCostSlider.module.css';
 
@@ -7,12 +7,12 @@ export function TotalCostSlider({ totalCost }) {
   const [isBoxShadowApplied, setIsBoxShadowApplied] = useState(false);
 
   const handleClick = () => {
-    if (content === totalCost) {
+    if (content !== 'Visa kostnad') {
       setContent('Visa kostnad');
-      setIsBoxShadowApplied(false); 
+      setIsBoxShadowApplied(false);
     } else {
-      setContent(totalCost);
-      setIsBoxShadowApplied(true); 
+      setContent(`${totalCost} kr`);
+      setIsBoxShadowApplied(true);
     }
   };
 
