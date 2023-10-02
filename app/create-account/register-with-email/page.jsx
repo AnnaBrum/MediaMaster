@@ -1,11 +1,11 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { redirect } from "next/navigation";
-import Messages from "./messages";
-import { cookies } from "next/headers";
-import styles from "./register.module.css";
-import { NavDots } from "../../../components/NavDots/NavDots";
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { redirect } from 'next/navigation';
+import Messages from './messages';
+import { cookies } from 'next/headers';
+import styles from './register.module.css';
+import { NavDots } from '../../../components/NavDots/NavDots';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export default async function RegisterWithEmail() {
   const supabase = createServerComponentClient({ cookies });
@@ -15,7 +15,7 @@ export default async function RegisterWithEmail() {
 
   if (session) {
     // this is a protected route - only users who are signed in can view this route
-    redirect("/home");
+    redirect('/home');
   }
 
   return (
@@ -49,7 +49,7 @@ export default async function RegisterWithEmail() {
             required
           />
           <button formAction="/auth/sign-up" className={styles.login}>
-            Logga in
+            Registrera konto
           </button>
           <Messages />
         </form>
