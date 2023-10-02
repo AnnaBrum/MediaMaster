@@ -1,15 +1,15 @@
-'use client';
-import Image from 'next/image';
-import { useState } from 'react';
-import styles from './CostSlider.module.css';
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+import styles from "./CostSlider.module.css";
 
 export function CostSlider({ iconUrl, serviceName, cost }) {
-  const [content, setContent] = useState('Visa kostnad');
+  const [content, setContent] = useState("Visa kostnad");
   const [isBoxShadowApplied, setIsBoxShadowApplied] = useState(false);
 
   const handleClick = () => {
-    if (content !== 'Visa kostnad') {
-      setContent('Visa kostnad');
+    if (content !== "Visa kostnad") {
+      setContent("Visa kostnad");
       setIsBoxShadowApplied(false);
     } else {
       setContent(`${cost} kr`);
@@ -32,7 +32,7 @@ export function CostSlider({ iconUrl, serviceName, cost }) {
       </div>
       <div
         className={`${styles.innerDiv} ${
-          isBoxShadowApplied ? styles.boxShadowClass : ''
+          isBoxShadowApplied ? styles.boxShadowClass : ""
         }`}
       >
         <h3 className={styles.costHeading} onClick={handleClick}>

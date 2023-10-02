@@ -1,5 +1,3 @@
-// 'use client';
-// import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { ExitButton } from "@/components/ExitButton/ExitButton";
 import styles from "./about.module.css";
 import Link from "next/link";

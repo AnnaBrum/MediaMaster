@@ -1,17 +1,14 @@
 import React from "react";
 import DropDown from "../DropDown/DropDown";
 import styles from "./MenuItems.module.css";
-import { useState, useEffect } from "react";
-// import { menuItems } from "../HamburgerMenu/HamburgerMenu";
 import Link from "next/link";
 
 const MenuItems = ({ items, isOpen, onClick }) => {
-
   return (
     <>
       {items.submenu ? (
         <>
-        <div className={styles.subMenuButton}></div>
+          <div className={styles.subMenuButton}></div>
           <button
             className={styles.menuItems}
             aria-expanded={isOpen ? "true" : "false"}
@@ -24,7 +21,14 @@ const MenuItems = ({ items, isOpen, onClick }) => {
           {isOpen && <DropDown submenus={items.submenu} />}
         </>
       ) : (
-        <li className={styles.menuItems}><Link href={items.url} onClick={() => setTimeout(() => onClick(), 500)}>{items.title}</Link></li>
+        <li className={styles.menuItems}>
+          <Link
+            href={items.url}
+            onClick={() => setTimeout(() => onClick(), 500)}
+          >
+            {items.title}
+          </Link>
+        </li>
       )}
     </>
   );

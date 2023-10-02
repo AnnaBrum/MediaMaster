@@ -1,17 +1,15 @@
 "use client";
-import { HamburgerMenu } from '@/components/HamburgerMenu/HamburgerMenu';
+import { HamburgerMenu } from "@/components/HamburgerMenu/HamburgerMenu";
 import styles from "./home.module.css";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useEffect, useState } from "react";
 import { CostSlider } from "@/components/CostSlider/CostSlider";
 import { TotalCostSlider } from "@/components/TotalCostSlider/TotalCostSlider";
 import "../globals.css";
-// import { LoadingSvg } from '@/public/images/loading/loading.svg';
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import  PushNotice  from "@/components/PushNotice/PushNotice";
+import PushNotice from "@/components/PushNotice/PushNotice";
 
-// export const dynamic = 'force-dynamic';
 
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
@@ -70,7 +68,7 @@ export default function ClientComponent() {
 
   return (
     <>
-    <HamburgerMenu />
+      <HamburgerMenu />
       <div className={styles.homeWrapper}>
         <section className={styles.sectionOne}>
           <h1 className={styles.headingOne}>Hem</h1>
@@ -107,8 +105,8 @@ export default function ClientComponent() {
             ))}
           </ul>
           <div className={styles.pushWrapper}>
-        < PushNotice />
-        </div>
+            <PushNotice />
+          </div>
         </section>
       </div>
     </>

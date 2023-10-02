@@ -43,7 +43,6 @@ export default function ClientComponent() {
   }, [supabase, setServiceData]);
 
   //Service Name field eventHandlers
-
   const handleChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
@@ -116,7 +115,6 @@ export default function ClientComponent() {
   };
 
   //price field event-handlers
-
   useEffect(() => {
     const getServiceIdByName = (serviceName) => {
       if (serviceName) {

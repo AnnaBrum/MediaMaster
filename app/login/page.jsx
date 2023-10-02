@@ -22,11 +22,7 @@ export default async function Login() {
   return (
     <div className={styles.pageWrapper}>
       <h1 className={styles.headingOne}>Logga in</h1>
-      <form
-        className={styles.form}
-        action="/auth/sign-in"
-        method="post"
-      >
+      <form className={styles.form} action="/auth/sign-in" method="post">
         <label className="text-md" htmlFor="email">
           Email*
         </label>
@@ -50,9 +46,7 @@ export default async function Login() {
           placeholder="Skriv in ditt lösenord här"
           required
         />
-        <button className={styles.login}>
-          Logga in
-        </button>
+        <button className={styles.login}>Logga in</button>
         <Link className={styles.reset} href="/reset-password">
           Återställ lösenord
         </Link>

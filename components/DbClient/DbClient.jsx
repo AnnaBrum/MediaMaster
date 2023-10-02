@@ -1,8 +1,7 @@
-'use client';
+"use client";
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useEffect, useState } from 'react';
-
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect, useState } from "react";
 
 export default function ClientComponent({ insert }) {
   const [users, setUsers] = useState([]);
@@ -12,7 +11,7 @@ export default function ClientComponent({ insert }) {
 
   useEffect(() => {
     const getUsers = async () => {
-      const { data } = await supabase.from('users').select();
+      const { data } = await supabase.from("users").select();
       if (data) {
         setUsers(data);
       }

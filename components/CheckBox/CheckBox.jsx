@@ -1,6 +1,12 @@
-import styles from "./CustomCheckbox.module.css"; 
+import styles from "./CustomCheckbox.module.css";
 
-export default function CustomCheckbox({ id, name, label, isChecked, onToggle }) {
+export default function CustomCheckbox({
+  id,
+  name,
+  label,
+  isChecked,
+  onToggle,
+}) {
   return (
     <label htmlFor={id} className={styles.checkboxContainer}>
       {label}

@@ -1,64 +1,64 @@
-'use client';
+"use client";
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useEffect, useState, useRef } from 'react';
-import dropdownArrow from '@/public/images/form/dropdownArrow.svg';
-import Image from 'next/image';
-import DatePicker from 'react-datepicker/dist/react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import styles from './change-subscription.module.css';
-import Link from 'next/link';
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect, useState, useRef } from "react";
+import dropdownArrow from "@/public/images/form/dropdownArrow.svg";
+import Image from "next/image";
+import DatePicker from "react-datepicker/dist/react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import styles from "./change-subscription.module.css";
+import Link from "next/link";
 
 export default function ClientComponent({ params }) {
   const supabase = createClientComponentClient();
   const [userDropdown, setUserDropdown] = useState(false);
-  const [users, setUsers] = useState('');
+  const [users, setUsers] = useState("");
   const [priceDropdown, setPriceDropdown] = useState(false);
-  const [pricePlanId, setPricePlanId] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [pricePlanLabel, setPricePlanLabel] = useState('');
+  const [pricePlanId, setPricePlanId] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [pricePlanLabel, setPricePlanLabel] = useState("");
   const [send, setSend] = useState(false);
   const [personalSubData, setPersonalSubData] = useState();
   const [currentSubData, setCurrentSubData] = useState();
   const [currentServiceData, setCurrentServiceData] = useState();
   const [currentAvaliblePlans, setCurrentAvaliblePlans] = useState();
-  const [notis, setNotis] = useState('');
+  const [notis, setNotis] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [confirmation, setConfirmation] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
       const { data: mySub } = await supabase
-        .from('user_subscriptions')
+        .from("user_subscriptions")
         .select()
-        .eq('id', `${params.endslug}`);
+        .eq("id", `${params.endslug}`);
 
       if (mySub) {
         //has personal data related to current subscription - such as billing date
         setPersonalSubData(mySub[0]);
 
         const { data: currentSubscriptions } = await supabase
-          .from('subscriptions')
+          .from("subscriptions")
           .select()
-          .eq('id', `${mySub[0].subscription_id}`);
+          .eq("id", `${mySub[0].subscription_id}`);
         if (currentSubscriptions) {
           //has public data to current subscription - such as price and name.
           setCurrentSubData(currentSubscriptions[0]);
 
           //fetch avalible plans for service
           const { data: avaliblePlans } = await supabase
-            .from('subscriptions')
-            .select('*')
-            .eq('service_id', `${currentSubscriptions[0].service_id}`);
+            .from("subscriptions")
+            .select("*")
+            .eq("service_id", `${currentSubscriptions[0].service_id}`);
 
           if (avaliblePlans) {
             //has all avalible plans to choose from for the current service
             setCurrentAvaliblePlans(avaliblePlans);
 
             const { data: currentService } = await supabase
-              .from('services')
+              .from("services")
               .select()
-              .eq('id', `${currentSubscriptions[0].service_id}`);
+              .eq("id", `${currentSubscriptions[0].service_id}`);
 
             if (currentService) {
               setIsLoading(false);
@@ -73,10 +73,6 @@ export default function ClientComponent({ params }) {
     getData();
   }, [supabase]);
 
-  console.log(personalSubData);
-  console.log(currentSubData);
-  console.log(currentServiceData);
-  console.log(currentAvaliblePlans);
   //user field eventHandlers
   const handleUserFieldClick = () => {
     setUserDropdown(true);
@@ -118,7 +114,7 @@ export default function ClientComponent({ params }) {
   const onSubmit = (e) => {
     e.preventDefault();
     if (send) {
-      document.getElementById('myForm').submit();
+      document.getElementById("myForm").submit();
     }
   };
 
@@ -136,7 +132,7 @@ export default function ClientComponent({ params }) {
   const deleteSubmit = (e) => {
     e.preventDefault();
     if (send) {
-      document.getElementById('deleteForm').submit();
+      document.getElementById("deleteForm").submit();
     }
   };
 

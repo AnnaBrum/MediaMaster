@@ -9,7 +9,7 @@ export default async function Settings() {
         <Link className={styles.exitButton} href="/">
           <ExitButton />
         </Link>
-        <h1 className="text-xl">Kontoinställningar</h1>         
+        <h1 className="text-xl">Kontoinställningar</h1>
       </div>
     </div>
   );

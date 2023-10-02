@@ -1,20 +1,19 @@
-'use client';
-import Image from 'next/image';
-import styles from './GetStartedButton.module.css';
+"use client";
+import Image from "next/image";
+import styles from "./GetStartedButton.module.css";
 
-import { useState } from 'react';
-
+import { useState } from "react";
 
 export function GetStartedButton({ logoUrl, serviceName }) {
   const [isBoxShadowApplied, setIsBoxShadowApplied] = useState(false);
 
   const handleClick = () => {
-      setIsBoxShadowApplied(true); 
-      setTimeout(() => {
-        setIsBoxShadowApplied(false);
-      }, 1000);
+    setIsBoxShadowApplied(true);
+    setTimeout(() => {
+      setIsBoxShadowApplied(false);
+    }, 1000);
   };
-  
+
   return (
     <div className={styles.brandBoxWrapper}>
       <div className={styles.imageContainer}>
@@ -24,14 +23,16 @@ export function GetStartedButton({ logoUrl, serviceName }) {
           width={30}
           height={30}
           placeholder="empty"
-          priority={false}       
+          priority={false}
         ></Image>
         <h2 className={styles.serviceNameHeading}>{serviceName}</h2>
-      </div>   
-      <div className= {`${styles.add} ${
-          isBoxShadowApplied ? styles.boxShadowClass : ''
-        }`}>
-      <Image
+      </div>
+      <div
+        className={`${styles.add} ${
+          isBoxShadowApplied ? styles.boxShadowClass : ""
+        }`}
+      >
+        <Image
           src="/images/navigation/plus.svg"
           alt="service icon"
           width={18}
@@ -41,9 +42,7 @@ export function GetStartedButton({ logoUrl, serviceName }) {
           priority={false}
           onClick={handleClick}
         ></Image>
-        </div>  
+      </div>
     </div>
   );
 }
-
-

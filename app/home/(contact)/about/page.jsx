@@ -1,15 +1,14 @@
 import { ExitButton } from "@/components/ExitButton/ExitButton";
 import Link from "next/link";
-import styles from './about.module.css';
+import styles from "./about.module.css";
 
 export default async function About() {
-
   return (
     <div className={styles.background}>
-    <div className={styles.wrapper}>
-    <Link className={styles.exitButton} href="/">
-        <ExitButton />
-      </Link>
+      <div className={styles.wrapper}>
+        <Link className={styles.exitButton} href="/">
+          <ExitButton />
+        </Link>
         <h1 className={styles.headingOne}>
           Hur fungerar <br /> Media Watch?
         </h1>
@@ -20,7 +19,7 @@ export default async function About() {
         </p>
 
         <ul className={styles.list}>
-          <li >
+          <li>
             Betaltjänster Under Ett Tak: Slipp bläddra genom flera webbplatser
             och appar för att hålla koll på dina månatliga betalningar. Vår app
             aggregerar alla dina betaltjänster på en enda plattform.
@@ -48,6 +47,5 @@ export default async function About() {
         </ul>
       </div>
     </div>
-
   );
 }

@@ -1,7 +1,7 @@
-'use client';
-import Image from 'next/image';
-import styles from './BrandBox.module.css';
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import styles from "./BrandBox.module.css";
+import Link from "next/link";
 
 export function BrandBox({ logoUrl, serviceName, cost, plan, mySub }) {
   return (
@@ -16,7 +16,7 @@ export function BrandBox({ logoUrl, serviceName, cost, plan, mySub }) {
               placeholder="empty"
               priority={false}
               style={{
-                objectFit: 'contain',
+                objectFit: "contain",
               }}
             ></Image>
           </div>
@@ -45,5 +45,3 @@ export function BrandBox({ logoUrl, serviceName, cost, plan, mySub }) {
     </div>
   );
 }
-
-///images/logos/netflix_logo.jpeg

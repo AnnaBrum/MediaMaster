@@ -44,7 +44,7 @@ export function HamburgerMenu() {
 
   const handleMenuClick = (index, hasSubMenu) => {
     if (hasSubMenu) {
-    setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
+      setOpenSubMenu((prev) => (prev === index ? null : index)); // Toggle submenu state
     } else {
       setTimeout(closeMenu, 500); // Delay the closing of the menu so that the redirect happens under the hood
     }
@@ -75,7 +75,7 @@ export function HamburgerMenu() {
                     items={menu}
                     key={index}
                     isOpen={openSubMenu === index}
-                    onClick={() =>handleMenuClick(index, !!menu.submenu)}
+                    onClick={() => handleMenuClick(index, !!menu.submenu)}
                     onSubMenuClick={handleSubMenuClick}
                   />
                 );

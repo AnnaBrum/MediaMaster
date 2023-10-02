@@ -1,14 +1,12 @@
 .headingOne {
   margin-top: 100px;
   margin-bottom: 60px;
-
   color: var(--OnSecondary, #000);
-  /* H1 */
   font-family: var(--Semi-Bold-Display);
   font-size: 28px;
   font-style: normal;
   font-weight: 420;
-  line-height: 30px; /* 107.143% */
+  line-height: 30px; 
   letter-spacing: 1.4px;
   text-align: left;
   width: 100%;
@@ -218,7 +216,9 @@
   left: 1.75rem;
 }
 
+
 .deleteFormContainer {
+  font-family: var(--Light-Display); 
   position: fixed;
   width: 347px;
   height: 347px;
@@ -228,7 +228,7 @@
   background-color: white;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 999; /* Adjust the z-index as needed */
+  z-index: 999; 
 
   border-radius: 20px;
   background: var(
@@ -247,9 +247,7 @@
 .deleteFormContainer p {
   color: var(--OnSecondary, #000);
   text-align: center;
-
-  /* H2 */
-   /* font-family: var(--Light-Display);  */
+  font-family: var(--Light-Display); 
   font-size: 28px;
   font-style: normal;
   font-weight: 400;
@@ -263,7 +261,6 @@
 }
 
 .confirmationBtnContainer button {
-  
   border-radius: 30px;
   background: var(--Background, #e6e7fe);
   box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.35);

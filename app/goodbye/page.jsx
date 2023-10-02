@@ -11,7 +11,7 @@ export default function Goodbye() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
-      // Redirect to the home page after 5 seconds
+      // Redirect to the home page after 4 seconds
       window.location.href = "/login";
     }, 4000);
 
@@ -21,10 +21,7 @@ export default function Goodbye() {
   if (visible) {
     return (
       <div className={styles.pageWrapper}>
-
-        <h1 className={styles.headingOne}>
-          Farväl!
-        </h1>
+        <h1 className={styles.headingOne}>Farväl!</h1>
         <div className={styles.illustration}>
           <LogoutAnimation />
         </div>

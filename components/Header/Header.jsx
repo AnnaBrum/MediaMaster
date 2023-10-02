@@ -1,5 +1,5 @@
-import React from 'react';
-import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu';
+import React from "react";
+import { HamburgerMenu } from "../HamburgerMenu/HamburgerMenu";
 
 const Header = () => {
   return (

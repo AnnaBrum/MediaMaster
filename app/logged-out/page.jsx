@@ -1,9 +1,9 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { redirect } from 'next/navigation';
-import { cookies } from 'next/headers';
-import Link from 'next/link';
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+import Link from "next/link";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function StartPage() {
   // Create a Supabase client configured to use cookies
@@ -13,7 +13,7 @@ export default async function StartPage() {
   } = await supabase.auth.getSession();
 
   if (session) {
-    redirect('/startpage');
+    redirect("/startpage");
   }
 
   return (

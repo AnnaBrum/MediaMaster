@@ -20,12 +20,11 @@ export default function Welcome() {
   if (visible) {
     return (
       <div className={styles.pageWrapper}>
-
         <h1 className={styles.headingOne}>
           Välkommen till <br /> Media Watch!
         </h1>
         <div className={styles.illustration}>
-           <LoginAnimation /> 
+          <LoginAnimation />
         </div>
       </div>
     );
