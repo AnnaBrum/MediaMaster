@@ -104,7 +104,7 @@ export default function ClientComponent() {
               </li>
             ))}
           </ul>
-          <div className={styles.pushWrapper}>
+          <div className = {`onesignal-customlink-container ${styles.pushWrapper}`}>
             <PushNotice />
           </div>
         </section>
