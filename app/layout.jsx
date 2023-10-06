@@ -4,6 +4,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+<<<<<<< HEAD
       <head>
         <title>OneSignal + Next.js</title>
         <meta
@@ -16,6 +17,8 @@ export default function RootLayout({ children }) {
           async=""
         ></script>
       </head>
+=======
+>>>>>>> parent of 8e29e37 (Added onesignal service worker file)
       <body>
         <main>{children}</main>
       </body>
