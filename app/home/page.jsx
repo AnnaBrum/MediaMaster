@@ -17,6 +17,26 @@ export default function ClientComponent() {
   const [totalCost, setTotalCost] = useState(0);
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  // One-signal setup
+
+
+  useEffect(() => {
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+        OneSignal.init({
+            appId: "b40b7cc7-13dc-4662-8b48-efa668f9b72a",
+            notifyButton: {
+                enable: true,
+            },
+
+            allowLocalhostAsSecureOrigin: true,
+        });
+    });
+
+    return () => {
+        window.OneSignal = undefined;
+    };
+}, []); 
 
   useEffect(() => {
     // This code will only be executed on the client side.

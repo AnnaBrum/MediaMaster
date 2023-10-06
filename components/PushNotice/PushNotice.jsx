@@ -3,6 +3,7 @@ import styles from "./PushNotice.module.css";
 
 function PushNotice() {
   return (
+    <button>
     <div className={styles.notisWrapper}>
       <iframe
         width="100"
@@ -11,6 +12,7 @@ function PushNotice() {
         allowFullScreen
       ></iframe>
     </div>
+    </button>
   );
 }
 
