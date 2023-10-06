@@ -17,14 +17,13 @@ export default function ClientComponent() {
   const [totalCost, setTotalCost] = useState(0);
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  
   // One-signal setup
-
-
   useEffect(() => {
     window.OneSignal = window.OneSignal || [];
     OneSignal.push(function () {
         OneSignal.init({
-            appId: "b40b7cc7-13dc-4662-8b48-efa668f9b72a",
+            appId: "da56e34c-816e-4938-a025-90af555d5f4c",
             notifyButton: {
                 enable: true,
             },
