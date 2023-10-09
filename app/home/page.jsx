@@ -1,4 +1,6 @@
 "use client";
+import Head from "next/head";
+import OneSignal from "react-onesignal";
 import { HamburgerMenu } from "@/components/HamburgerMenu/HamburgerMenu";
 import styles from "./home.module.css";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -10,31 +12,34 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import PushNotice from "@/components/PushNotice/PushNotice";
 
-
 export default function ClientComponent() {
   const supabase = createClientComponentClient();
   const [subsData, setSubsData] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  
+
+  // One-signal setup
   useEffect(() => {
     window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function () {
-        OneSignal.init({
-            appId: "da56e34c-816e-4938-a025-90af555d5f4c",
-            notifyButton: {
-                enable: true,
-            },
-
-            allowLocalhostAsSecureOrigin: true,
+    if (!window.OneSignal.initialized) {
+      window.OneSignal.push(() => {
+        window.OneSignal.init({
+          appId: process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID,
+          notifyButton: {
+            enable: true,
+          },
+          allowLocalhostAsSecureOrigin: true,
         });
-    });
+      });
+      window.OneSignal.initialized = true;
+    }
 
     return () => {
-        window.OneSignal = undefined;
+      window.OneSignal = undefined;
     };
-}, []); // <-- run this effect once on mount
+  }, []); 
+  // <-- run this effect once on mount
 
   useEffect(() => {
     // This code will only be executed on the client side.
@@ -86,6 +91,22 @@ export default function ClientComponent() {
 
   return (
     <>
+      {/* <Head>
+        <script>
+          window.OneSignalDeferred = window.OneSignalDeferred || [];
+          OneSignalDeferred.push(function(OneSignal){" "}
+          {OneSignal.init({
+            appId: "da56e34c-816e-4938-a025-90af555d5f4c",
+            safari_web_id:
+              "web.onesignal.auto.1997779e-e1de-41f4-ac74-4543cfbf0412",
+            notifyButton: {
+              enable: true,
+            },
+            allowLocalhostAsSecureOrigin: true,
+          })}
+          );
+        </script>
+      </Head> */}
       <HamburgerMenu />
       <div className={styles.homeWrapper}>
         <section className={styles.sectionOne}>
@@ -122,7 +143,9 @@ export default function ClientComponent() {
               </li>
             ))}
           </ul>
-          <div className = {`onesignal-customlink-container ${styles.pushWrapper}`}>
+          <div
+            className={`onesignal-customlink-container ${styles.pushWrapper}`}
+          >
             <PushNotice />
           </div>
         </section>
