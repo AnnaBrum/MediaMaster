@@ -18,24 +18,6 @@ export default function ClientComponent() {
   const [subsCount, setSubsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   
-  // One-signal setup
-  useEffect(() => {
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function () {
-        OneSignal.init({
-            appId: "da56e34c-816e-4938-a025-90af555d5f4c",
-            notifyButton: {
-                enable: true,
-            },
-
-            allowLocalhostAsSecureOrigin: true,
-        });
-    });
-
-    return () => {
-        window.OneSignal = undefined;
-    };
-}, []); 
 
   useEffect(() => {
     // This code will only be executed on the client side.
@@ -123,7 +105,7 @@ export default function ClientComponent() {
               </li>
             ))}
           </ul>
-          <div className = {`onesignal-customlink-container ${styles.pushWrapper}`}>
+          <div className = {styles.pushWrapper}>
             <PushNotice />
           </div>
         </section>
