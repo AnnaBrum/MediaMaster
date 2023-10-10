@@ -22,6 +22,7 @@ export default function ClientComponent() {
   // One-signal setup
   useEffect(() => {
     window.OneSignal = window.OneSignal || [];
+  
     if (!window.OneSignal.initialized) {
       window.OneSignal.push(() => {
         window.OneSignal.init({
@@ -36,7 +37,7 @@ export default function ClientComponent() {
     }
 
     return () => {
-      window.OneSignal = undefined;
+       window.OneSignal = undefined;
     };
   }, []); 
   // <-- run this effect once on mount
@@ -91,7 +92,7 @@ export default function ClientComponent() {
 
   return (
     <>
-      {/* <Head>
+       {/* <Head>
         <script>
           window.OneSignalDeferred = window.OneSignalDeferred || [];
           OneSignalDeferred.push(function(OneSignal){" "}
@@ -106,7 +107,7 @@ export default function ClientComponent() {
           })}
           );
         </script>
-      </Head> */}
+      </Head>  */}
       <HamburgerMenu />
       <div className={styles.homeWrapper}>
         <section className={styles.sectionOne}>
